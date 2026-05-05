@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_LLY_2020-06-30_to_2020-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2020-10-28",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "LLY",
+    "current_period_end": "2020-09-30",
+    "prior_period_end": "2020-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 241200000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Europe",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 173700000,
+        "contribution_pct": 72.01
+      },
+      {
+        "driver": "Immunology",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 78800000,
+        "contribution_pct": 32.67
+      },
+      {
+        "driver": "Oncology",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 64800000,
+        "contribution_pct": 26.87
+      },
+      {
+        "driver": "CHINA",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 49300000,
+        "contribution_pct": 20.44
+      },
+      {
+        "driver": "Neuroscience",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 48200000,
+        "contribution_pct": 19.98
+      },
+      {
+        "driver": "Other Product, Total",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 45400000,
+        "contribution_pct": 18.82
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 16600000,
+        "contribution_pct": 6.88
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 77.78,
+        "current_pct": 76.89,
+        "delta_pp": -0.88
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 22.22,
+        "current_pct": 23.11,
+        "delta_pp": 0.88
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 26.81,
+        "current_pct": 26.02,
+        "delta_pp": -0.79
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 25.69,
+        "current_pct": 25.35,
+        "delta_pp": -0.34
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.9,
+        "current_pct": 6.24,
+        "delta_pp": 0.34
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 25.28,
+        "current_pct": 25.53,
+        "delta_pp": 0.25
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.21,
+        "current_pct": 3.99,
+        "delta_pp": -0.23
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze LLY's financial performance change between the quarter ending 2020-06-30 and the quarter ending 2020-09-30. Revenue increased by $241,200,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2020-10-28.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

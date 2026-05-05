@@ -1,0 +1,39 @@
+{
+  "mandate_id": "mandate_balanced_01",
+  "name": "Balanced Long-Only Equity",
+  "difficulty": "medium",
+  "benchmark": "SPY",
+  "constraints": [
+    {
+      "type": "position_limit_max",
+      "value": 0.05,
+      "description": "No single name > 5%"
+    },
+    {
+      "type": "position_limit_min",
+      "value": 0.001,
+      "description": "Min position 10bp if held"
+    },
+    {
+      "type": "sector_limit_max",
+      "value": 0.25,
+      "description": "No sector > 25%"
+    },
+    {
+      "type": "tracking_error_max",
+      "value": 0.03,
+      "description": "TE vs S&P 500 < 3%"
+    },
+    {
+      "type": "beta_range",
+      "min": 0.8,
+      "max": 1.2,
+      "description": "Portfolio beta 0.8-1.2"
+    },
+    {
+      "type": "long_only",
+      "value": true,
+      "description": "No short positions"
+    }
+  ]
+}

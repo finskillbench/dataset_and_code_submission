@@ -1,0 +1,4656 @@
+{
+  "dataset_id": "jb_all_fin_full_fa100_v1",
+  "description": "Cross-domain dataset: all RM and PC episodes, first 100 (by sorted task_id) per FA subtask. RM: 4 subtasks \u00d7 40 = 160. PC: 5 subtasks \u00d7 40 = 200. FA: 3 subtasks \u00d7 100 = 300. Total: 660 episodes. Excludes PC infeasibility_detection (unsupported schema).",
+  "count": 660,
+  "subtask_counts": {
+    "risk_identification": 40,
+    "constraint_monitoring": 40,
+    "stress_testing": 40,
+    "risk_remediation": 40,
+    "unconstrained_optimization": 40,
+    "constrained_optimization": 40,
+    "rebalancing": 40,
+    "black_litterman": 40,
+    "tool_use_parameterization": 40,
+    "normalization": 100,
+    "earnings_quality": 100,
+    "driver_decomposition": 100
+  },
+  "subtasks": [
+    "black_litterman",
+    "constrained_optimization",
+    "constraint_monitoring",
+    "driver_decomposition",
+    "earnings_quality",
+    "normalization",
+    "rebalancing",
+    "risk_identification",
+    "risk_remediation",
+    "stress_testing",
+    "tool_use_parameterization",
+    "unconstrained_optimization"
+  ],
+  "selection_method": "RM + PC: all available episodes. FA: first 100 by sorted task_id per subtask (normalization/earnings_quality/driver_decomposition). Domain order: RM \u2192 PC \u2192 FA.",
+  "episodes": [
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_000",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_001",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_002",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_003",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_004",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_005",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_006",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_007",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_008",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_009",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_010",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_011",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_012",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_000",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_001",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_002",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_003",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_004",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_005",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_006",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_007",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_008",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_009",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_010",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_011",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_012",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_014",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_000",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_001",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_002",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_003",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_004",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_005",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_006",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_007",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_008",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_009",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_010",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_011",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_012",
+      "sub_task": "risk_identification",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_01",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_02",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_001_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_001_mandate_balanced_01",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_001_mandate_balanced_02",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_002_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_002_mandate_balanced_01",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_002_mandate_balanced_02",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_003_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_003_mandate_balanced_01",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_003_mandate_balanced_02",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_004_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_004_mandate_balanced_01",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_004_mandate_balanced_02",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_005_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_005_mandate_balanced_01",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_005_mandate_balanced_02",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_007_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_008_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_009_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_010_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_012_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_013_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_014_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_015_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_factor_tilted_2023_24_rebound_006_mandate_balanced_02",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_000_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_001_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_002_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_003_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_004_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_005_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_007_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_008_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_009_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_011_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_013_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_014_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_015_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2018_selloff",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2022_tightening",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2023_24_reversal",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_correlation_spike",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_covid_2020",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_credit_crisis",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_equity_crash_20",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_rates_down_100",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_rates_up_200",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_sector_rotation",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_stagflation",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_strong_dollar",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_001_stress_2018_selloff",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_001_stress_2022_tightening",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_001_stress_2023_24_reversal",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_001_stress_correlation_spike",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_001_stress_covid_2020",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_001_stress_credit_crisis",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_001_stress_equity_crash_20",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_001_stress_rates_down_100",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_001_stress_rates_up_200",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_002_stress_2018_selloff",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_002_stress_2022_tightening",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_002_stress_2023_24_reversal",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_002_stress_covid_2020",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_003_stress_2018_selloff",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "easy",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_000_stress_2018_selloff",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_000_stress_2022_tightening",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_000_stress_2023_24_reversal",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_000_stress_covid_2020",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_000_stress_equity_crash_20",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_001_stress_2018_selloff",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_001_stress_2022_tightening",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_001_stress_2023_24_reversal",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_001_stress_covid_2020",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_002_stress_2018_selloff",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_002_stress_2022_tightening",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_002_stress_2023_24_reversal",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_002_stress_covid_2020",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_factor_tilted_2023_24_rebound_003_stress_2018_selloff",
+      "sub_task": "stress_testing",
+      "skill": "risk_management",
+      "difficulty": "medium",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_000_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_001_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_001_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_002_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_002_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_003_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_003_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_004_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_004_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_005_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_005_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_006_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_006_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_007_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_007_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_008_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_008_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_009_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_009_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_010_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_010_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_011_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_011_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_012_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_012_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_013_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_013_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_014_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_014_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_015_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_015_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_016_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_016_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_017_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_017_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_018_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_018_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_019_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_019_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "skill": "risk_management",
+      "difficulty": "hard",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "pc_uncon_2025-01-31_easy_max_return",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-01-31_easy_max_sharpe",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-01-31_easy_min_variance",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-01-31_easy_risk_parity",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-02-28_easy_max_return",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_uncon_2025-02-28_easy_max_sharpe",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_uncon_2025-02-28_easy_min_variance",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_uncon_2025-02-28_easy_risk_parity",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_uncon_2025-03-31_easy_max_sharpe",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-03-31_easy_risk_parity",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-04-30_easy_max_return",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-04-30_easy_max_sharpe",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-04-30_easy_min_variance",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-04-30_easy_risk_parity",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-05-30_easy_max_return",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-05-30_easy_max_sharpe",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-05-30_easy_min_variance",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-05-30_easy_risk_parity",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-06-30_easy_max_return",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-06-30_easy_max_sharpe",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-07-31_easy_max_return",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-07-31_easy_min_variance",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-07-31_easy_risk_parity",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-08-29_easy_max_sharpe",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_uncon_2025-08-29_easy_risk_parity",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_uncon_2025-09-30_easy_max_return",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-09-30_easy_max_sharpe",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-09-30_easy_min_variance",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-09-30_easy_risk_parity",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_uncon_2025-10-31_easy_max_return",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-10-31_easy_max_sharpe",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-10-31_easy_min_variance",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-11-28_easy_max_return",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_uncon_2025-11-28_easy_max_sharpe",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_uncon_2025-11-28_easy_min_variance",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_uncon_2025-11-28_easy_risk_parity",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_uncon_2025-12-31_easy_max_return",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-12-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-12-31_easy_max_sharpe",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-12-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-12-31_easy_min_variance",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-12-31"
+    },
+    {
+      "task_id": "pc_uncon_2025-12-31_easy_risk_parity",
+      "sub_task": "unconstrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-12-31"
+    },
+    {
+      "task_id": "pc_con_2025-01-31_medium_max_return",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_con_2025-01-31_medium_min_variance",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_con_2025-01-31_medium_risk_parity",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_con_2025-02-28_medium_max_return",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_con_2025-02-28_medium_max_sharpe",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_con_2025-02-28_medium_min_variance",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_con_2025-02-28_medium_risk_parity",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_con_2025-03-31_medium_max_return",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_con_2025-03-31_medium_max_sharpe",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_con_2025-03-31_medium_min_variance",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_con_2025-03-31_medium_risk_parity",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_con_2025-04-30_medium_max_return",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_con_2025-04-30_medium_max_sharpe",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_con_2025-05-30_medium_max_return",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_con_2025-05-30_medium_max_sharpe",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_con_2025-05-30_medium_min_variance",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_con_2025-06-30_medium_max_return",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_con_2025-06-30_medium_max_sharpe",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_con_2025-06-30_medium_min_variance",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_con_2025-06-30_medium_risk_parity",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_con_2025-07-31_medium_max_return",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_con_2025-07-31_medium_max_sharpe",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_con_2025-07-31_medium_risk_parity",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_con_2025-08-29_medium_max_sharpe",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_con_2025-08-29_medium_min_variance",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_con_2025-08-29_medium_risk_parity",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_con_2025-09-30_medium_max_return",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_con_2025-09-30_medium_max_sharpe",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_con_2025-09-30_medium_risk_parity",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_con_2025-10-31_medium_max_return",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_con_2025-10-31_medium_max_sharpe",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_con_2025-10-31_medium_min_variance",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_con_2025-10-31_medium_risk_parity",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_con_2025-11-28_medium_max_return",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_con_2025-11-28_medium_max_sharpe",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_con_2025-11-28_medium_min_variance",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_con_2025-11-28_medium_risk_parity",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_con_2025-12-31_medium_max_return",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-12-31"
+    },
+    {
+      "task_id": "pc_con_2025-12-31_medium_min_variance",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-12-31"
+    },
+    {
+      "task_id": "pc_con_2025-12-31_medium_risk_parity",
+      "sub_task": "constrained_optimization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-12-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-01-31_medium_max_return",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-01-31_medium_max_sharpe",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-01-31_medium_min_variance",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-01-31_medium_risk_parity",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-02-28_medium_max_return",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_rebal_2025-02-28_medium_max_sharpe",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_rebal_2025-02-28_medium_min_variance",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_rebal_2025-02-28_medium_risk_parity",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_rebal_2025-03-31_medium_max_return",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-03-31_medium_max_sharpe",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-03-31_medium_min_variance",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-03-31_medium_risk_parity",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-04-30_medium_max_return",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-04-30_medium_max_sharpe",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-04-30_medium_min_variance",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-04-30_medium_risk_parity",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-05-30_medium_max_return",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-05-30_medium_max_sharpe",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-05-30_medium_min_variance",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-05-30_medium_risk_parity",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-06-30_medium_max_return",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-06-30_medium_max_sharpe",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-06-30_medium_min_variance",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-06-30_medium_risk_parity",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-07-31_medium_max_return",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-07-31_medium_max_sharpe",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-07-31_medium_min_variance",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-07-31_medium_risk_parity",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-08-29_medium_max_return",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_rebal_2025-08-29_medium_max_sharpe",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_rebal_2025-08-29_medium_min_variance",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_rebal_2025-08-29_medium_risk_parity",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_rebal_2025-09-30_medium_max_return",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-09-30_medium_max_sharpe",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-09-30_medium_min_variance",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-09-30_medium_risk_parity",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_rebal_2025-10-31_medium_max_return",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-10-31_medium_max_sharpe",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-10-31_medium_min_variance",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_rebal_2025-10-31_medium_risk_parity",
+      "sub_task": "rebalancing",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_bl_2025-01-31_v0",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_bl_2025-01-31_v2",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_bl_2025-01-31_v3",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_bl_2025-02-28_v0",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_bl_2025-02-28_v1",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_bl_2025-02-28_v2",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_bl_2025-02-28_v3",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "pc_bl_2025-03-31_v0",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_bl_2025-03-31_v1",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_bl_2025-03-31_v2",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_bl_2025-04-30_v0",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_bl_2025-04-30_v1",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_bl_2025-04-30_v2",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_bl_2025-05-30_v0",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_bl_2025-05-30_v1",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_bl_2025-05-30_v3",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_bl_2025-06-30_v0",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_bl_2025-06-30_v1",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_bl_2025-06-30_v2",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_bl_2025-06-30_v3",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_bl_2025-07-31_v0",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_bl_2025-07-31_v1",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_bl_2025-07-31_v2",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_bl_2025-07-31_v3",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_bl_2025-08-29_v1",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_bl_2025-08-29_v2",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_bl_2025-08-29_v3",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_bl_2025-09-30_v1",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_bl_2025-09-30_v2",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_bl_2025-09-30_v3",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_bl_2025-10-31_v1",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_bl_2025-10-31_v2",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_bl_2025-10-31_v3",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_bl_2025-11-28_v0",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_bl_2025-11-28_v1",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_bl_2025-11-28_v2",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_bl_2025-11-28_v3",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_bl_2025-12-31_v0",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-12-31"
+    },
+    {
+      "task_id": "pc_bl_2025-12-31_v2",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-12-31"
+    },
+    {
+      "task_id": "pc_bl_2025-12-31_v3",
+      "sub_task": "black_litterman",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-12-31"
+    },
+    {
+      "task_id": "pc_tool_2025-01-31_aggressive_growth",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_tool_2025-01-31_tactical_overlay",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "pc_tool_2025-03-31_aggressive_growth",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_tool_2025-03-31_concentrated_alpha",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "pc_tool_2025-04-30_aggressive_growth",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_tool_2025-04-30_index_tracker",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_tool_2025-04-30_pension_ldi",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "hard",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_tool_2025-04-30_risk_parity",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "pc_tool_2025-05-30_index_tracker",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_tool_2025-05-30_low_vol_defensive",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_tool_2025-05-30_risk_parity",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_tool_2025-05-30_sector_constrained",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-30"
+    },
+    {
+      "task_id": "pc_tool_2025-06-30_concentrated_alpha",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_tool_2025-06-30_index_tracker",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_tool_2025-06-30_low_vol_defensive",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_tool_2025-06-30_risk_parity",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_tool_2025-06-30_sector_constrained",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_tool_2025-06-30_tactical_overlay",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-06-30"
+    },
+    {
+      "task_id": "pc_tool_2025-07-31_aggressive_growth",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_tool_2025-07-31_concentrated_alpha",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_tool_2025-07-31_sector_constrained",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_tool_2025-07-31_tactical_overlay",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-07-31"
+    },
+    {
+      "task_id": "pc_tool_2025-08-29_index_tracker",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_tool_2025-08-29_pension_ldi",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "hard",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_tool_2025-08-29_risk_parity",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-08-29"
+    },
+    {
+      "task_id": "pc_tool_2025-09-30_concentrated_alpha",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_tool_2025-09-30_index_tracker",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_tool_2025-09-30_pension_ldi",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "hard",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_tool_2025-09-30_risk_parity",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_tool_2025-09-30_tactical_overlay",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-30"
+    },
+    {
+      "task_id": "pc_tool_2025-10-31_pension_ldi",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "hard",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_tool_2025-10-31_risk_parity",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_tool_2025-10-31_sector_constrained",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_tool_2025-10-31_tactical_overlay",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "pc_tool_2025-11-28_aggressive_growth",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_tool_2025-11-28_low_vol_defensive",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_tool_2025-11-28_risk_parity",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_tool_2025-11-28_sector_constrained",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "medium",
+      "as_of_date": "2025-11-28"
+    },
+    {
+      "task_id": "pc_tool_2025-12-31_aggressive_growth",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "easy",
+      "as_of_date": "2025-12-31"
+    },
+    {
+      "task_id": "pc_tool_2025-12-31_pension_ldi",
+      "sub_task": "tool_use_parameterization",
+      "skill": "portfolio_construction",
+      "difficulty": "hard",
+      "as_of_date": "2025-12-31"
+    },
+    {
+      "task_id": "fa_norm_AAPL_2024-03-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-05-03"
+    },
+    {
+      "task_id": "fa_norm_AAPL_2024-06-29",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-08-02"
+    },
+    {
+      "task_id": "fa_norm_AAPL_2024-09-28",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-11-01"
+    },
+    {
+      "task_id": "fa_norm_AAPL_2024-12-28",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "fa_norm_AAPL_2025-03-29",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-05-02"
+    },
+    {
+      "task_id": "fa_norm_AAPL_2025-06-28",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-08-01"
+    },
+    {
+      "task_id": "fa_norm_AAPL_2025-09-27",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "fa_norm_AAPL_2025-12-27",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2026-01-30"
+    },
+    {
+      "task_id": "fa_norm_ABBV_2024-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-05-03"
+    },
+    {
+      "task_id": "fa_norm_ABBV_2024-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-08-07"
+    },
+    {
+      "task_id": "fa_norm_ABBV_2024-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-11-04"
+    },
+    {
+      "task_id": "fa_norm_ABBV_2024-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-02-14"
+    },
+    {
+      "task_id": "fa_norm_ABBV_2025-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-05-09"
+    },
+    {
+      "task_id": "fa_norm_ABBV_2025-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-08-04"
+    },
+    {
+      "task_id": "fa_norm_ABBV_2025-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-11-04"
+    },
+    {
+      "task_id": "fa_norm_ABBV_2025-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2026-02-20"
+    },
+    {
+      "task_id": "fa_norm_ALB_2024-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-05-01"
+    },
+    {
+      "task_id": "fa_norm_ALB_2024-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-07-31"
+    },
+    {
+      "task_id": "fa_norm_ALB_2024-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-11-06"
+    },
+    {
+      "task_id": "fa_norm_ALB_2024-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-12"
+    },
+    {
+      "task_id": "fa_norm_ALB_2025-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-04-30"
+    },
+    {
+      "task_id": "fa_norm_ALB_2025-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-08-04"
+    },
+    {
+      "task_id": "fa_norm_ALB_2025-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2025-11-05"
+    },
+    {
+      "task_id": "fa_norm_ALB_2025-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2026-02-11"
+    },
+    {
+      "task_id": "fa_norm_APA_2024-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-05-02"
+    },
+    {
+      "task_id": "fa_norm_APA_2024-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-08-02"
+    },
+    {
+      "task_id": "fa_norm_APA_2024-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-11-07"
+    },
+    {
+      "task_id": "fa_norm_APA_2024-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-28"
+    },
+    {
+      "task_id": "fa_norm_APA_2025-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-08"
+    },
+    {
+      "task_id": "fa_norm_APA_2025-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2025-08-07"
+    },
+    {
+      "task_id": "fa_norm_APA_2025-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2025-11-06"
+    },
+    {
+      "task_id": "fa_norm_APA_2025-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2026-02-26"
+    },
+    {
+      "task_id": "fa_norm_BBY_2024-02-03",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-03-15"
+    },
+    {
+      "task_id": "fa_norm_BBY_2024-05-04",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-06-07"
+    },
+    {
+      "task_id": "fa_norm_BBY_2024-08-03",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-09-06"
+    },
+    {
+      "task_id": "fa_norm_BBY_2024-11-02",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-12-06"
+    },
+    {
+      "task_id": "fa_norm_BBY_2025-02-01",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-03-19"
+    },
+    {
+      "task_id": "fa_norm_BBY_2025-05-03",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-06-06"
+    },
+    {
+      "task_id": "fa_norm_BBY_2025-08-02",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-09-05"
+    },
+    {
+      "task_id": "fa_norm_BBY_2025-11-01",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-12-05"
+    },
+    {
+      "task_id": "fa_norm_BBY_2026-01-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2026-03-18"
+    },
+    {
+      "task_id": "fa_norm_BKR_2024-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-04-24"
+    },
+    {
+      "task_id": "fa_norm_BKR_2024-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-07-26"
+    },
+    {
+      "task_id": "fa_norm_BKR_2024-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-10-23"
+    },
+    {
+      "task_id": "fa_norm_BKR_2024-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-02-04"
+    },
+    {
+      "task_id": "fa_norm_BKR_2025-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-04-23"
+    },
+    {
+      "task_id": "fa_norm_BKR_2025-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-07-23"
+    },
+    {
+      "task_id": "fa_norm_BKR_2025-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-10-24"
+    },
+    {
+      "task_id": "fa_norm_BKR_2025-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2026-02-05"
+    },
+    {
+      "task_id": "fa_norm_CL_2024-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-04-26"
+    },
+    {
+      "task_id": "fa_norm_CL_2024-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-07-26"
+    },
+    {
+      "task_id": "fa_norm_CL_2024-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-10-25"
+    },
+    {
+      "task_id": "fa_norm_CL_2024-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-02-13"
+    },
+    {
+      "task_id": "fa_norm_CL_2025-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-04-25"
+    },
+    {
+      "task_id": "fa_norm_CL_2025-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-08-01"
+    },
+    {
+      "task_id": "fa_norm_CL_2025-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-10-31"
+    },
+    {
+      "task_id": "fa_norm_CL_2025-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2026-02-23"
+    },
+    {
+      "task_id": "fa_norm_COP_2024-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-05-02"
+    },
+    {
+      "task_id": "fa_norm_COP_2024-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-08-01"
+    },
+    {
+      "task_id": "fa_norm_COP_2024-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-10-31"
+    },
+    {
+      "task_id": "fa_norm_COP_2024-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-02-18"
+    },
+    {
+      "task_id": "fa_norm_COP_2025-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-05-08"
+    },
+    {
+      "task_id": "fa_norm_COP_2025-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-08-07"
+    },
+    {
+      "task_id": "fa_norm_COP_2025-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-11-06"
+    },
+    {
+      "task_id": "fa_norm_COP_2025-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2026-02-17"
+    },
+    {
+      "task_id": "fa_norm_CRH_2024-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-05-10"
+    },
+    {
+      "task_id": "fa_norm_CRH_2024-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-08-08"
+    },
+    {
+      "task_id": "fa_norm_CRH_2024-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-11-07"
+    },
+    {
+      "task_id": "fa_norm_CRH_2024-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2025-02-26"
+    },
+    {
+      "task_id": "fa_norm_CRH_2025-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2025-05-05"
+    },
+    {
+      "task_id": "fa_norm_CRH_2025-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2025-08-06"
+    },
+    {
+      "task_id": "fa_norm_CRH_2025-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-11-05"
+    },
+    {
+      "task_id": "fa_norm_CRH_2025-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2026-02-18"
+    },
+    {
+      "task_id": "fa_norm_CSCO_2024-01-27",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-02-20"
+    },
+    {
+      "task_id": "fa_norm_CSCO_2024-04-27",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-05-21"
+    },
+    {
+      "task_id": "fa_norm_CSCO_2024-07-27",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-09-05"
+    },
+    {
+      "task_id": "fa_norm_CSCO_2024-10-26",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-11-19"
+    },
+    {
+      "task_id": "fa_norm_CSCO_2025-01-25",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-02-18"
+    },
+    {
+      "task_id": "fa_norm_CSCO_2025-04-26",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-05-20"
+    },
+    {
+      "task_id": "fa_norm_CSCO_2025-07-26",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2025-09-03"
+    },
+    {
+      "task_id": "fa_norm_CSCO_2025-10-25",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-11-18"
+    },
+    {
+      "task_id": "fa_norm_CSCO_2026-01-24",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2026-02-17"
+    },
+    {
+      "task_id": "fa_norm_CSGP_2024-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-04-24"
+    },
+    {
+      "task_id": "fa_norm_CSGP_2024-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-07-25"
+    },
+    {
+      "task_id": "fa_norm_CSGP_2024-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-10-23"
+    },
+    {
+      "task_id": "fa_norm_CSGP_2024-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-02-20"
+    },
+    {
+      "task_id": "fa_norm_CSGP_2025-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-05-01"
+    },
+    {
+      "task_id": "fa_norm_CSGP_2025-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-07-23"
+    },
+    {
+      "task_id": "fa_norm_CSGP_2025-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-10-29"
+    },
+    {
+      "task_id": "fa_norm_CSGP_2025-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2026-02-26"
+    },
+    {
+      "task_id": "fa_norm_ERIE_2024-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-04-25"
+    },
+    {
+      "task_id": "fa_norm_ERIE_2024-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-07-25"
+    },
+    {
+      "task_id": "fa_norm_ERIE_2024-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-10-31"
+    },
+    {
+      "task_id": "fa_norm_ERIE_2024-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-02-27"
+    },
+    {
+      "task_id": "fa_norm_ERIE_2025-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2025-04-24"
+    },
+    {
+      "task_id": "fa_norm_ERIE_2025-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-08-07"
+    },
+    {
+      "task_id": "fa_norm_ERIE_2025-09-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2025-10-30"
+    },
+    {
+      "task_id": "fa_norm_ERIE_2025-12-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2026-02-23"
+    },
+    {
+      "task_id": "fa_norm_FCX_2024-03-31",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-05-08"
+    },
+    {
+      "task_id": "fa_norm_FCX_2024-06-30",
+      "sub_task": "normalization",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-08-07"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2017-04-01",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2017-05-03"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2017-07-01",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2017-08-02"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2017-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2017-11-03"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2017-12-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2018-02-02"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2018-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2018-05-02"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2018-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2018-08-01"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2018-09-29",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2018-11-05"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2018-12-29",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2019-01-30"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2019-03-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2019-05-01"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2019-06-29",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2019-07-31"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2019-09-28",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2019-10-31"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2019-12-28",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2020-01-29"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2020-03-28",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2020-05-01"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2020-06-27",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2020-07-31"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2020-09-26",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2020-10-30"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2020-12-26",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2021-01-28"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2021-03-27",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2021-04-29"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2021-06-26",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2021-07-28"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2021-09-25",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2021-10-29"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2021-12-25",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2022-01-28"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2022-03-26",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2022-04-29"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2022-06-25",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2022-07-29"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2022-09-24",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2022-10-28"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2022-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2023-02-03"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2023-04-01",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2023-05-05"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2023-07-01",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2023-08-04"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2023-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2023-11-03"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2023-12-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-02-02"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2024-03-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-05-03"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2024-06-29",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-08-02"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2024-09-28",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-11-01"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2024-12-28",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2025-03-29",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-05-02"
+    },
+    {
+      "task_id": "fa_eq_AAPL_2025-06-28",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-08-01"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2017-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2017-05-05"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2017-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2017-08-07"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2017-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2017-11-07"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2017-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2018-02-16"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2018-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2018-05-04"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2018-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2018-08-07"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2018-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2018-11-07"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2018-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2019-02-27"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2019-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2019-05-03"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2019-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2019-08-05"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2019-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2019-11-06"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2019-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2020-02-21"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2020-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2020-05-08"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2020-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2020-08-04"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2020-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2020-11-04"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2020-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2021-02-19"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2021-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2021-05-07"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2021-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2021-08-02"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2021-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2021-11-02"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2021-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2022-02-18"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2022-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2022-05-06"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2022-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2022-08-04"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2022-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2022-11-04"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2022-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2023-02-17"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2023-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2023-05-05"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2023-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2023-08-07"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2023-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2023-11-06"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2023-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-02-20"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2024-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-05-03"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2024-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-08-07"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2024-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-11-04"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2024-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-02-14"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2025-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-05-09"
+    },
+    {
+      "task_id": "fa_eq_ABBV_2025-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-08-04"
+    },
+    {
+      "task_id": "fa_eq_ALB_2017-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2017-05-04"
+    },
+    {
+      "task_id": "fa_eq_ALB_2017-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2017-08-08"
+    },
+    {
+      "task_id": "fa_eq_ALB_2017-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2017-11-09"
+    },
+    {
+      "task_id": "fa_eq_ALB_2017-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2018-02-28"
+    },
+    {
+      "task_id": "fa_eq_ALB_2018-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2018-05-10"
+    },
+    {
+      "task_id": "fa_eq_ALB_2018-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2018-08-07"
+    },
+    {
+      "task_id": "fa_eq_ALB_2018-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2018-11-07"
+    },
+    {
+      "task_id": "fa_eq_ALB_2018-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2019-02-27"
+    },
+    {
+      "task_id": "fa_eq_ALB_2019-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2019-05-08"
+    },
+    {
+      "task_id": "fa_eq_ALB_2019-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2019-08-07"
+    },
+    {
+      "task_id": "fa_eq_ALB_2019-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2019-11-06"
+    },
+    {
+      "task_id": "fa_eq_ALB_2019-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2020-02-26"
+    },
+    {
+      "task_id": "fa_eq_ALB_2020-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2020-05-11"
+    },
+    {
+      "task_id": "fa_eq_ALB_2020-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2020-08-05"
+    },
+    {
+      "task_id": "fa_eq_ALB_2020-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2020-11-04"
+    },
+    {
+      "task_id": "fa_eq_ALB_2020-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2021-02-19"
+    },
+    {
+      "task_id": "fa_eq_ALB_2021-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2021-05-05"
+    },
+    {
+      "task_id": "fa_eq_ALB_2021-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2021-08-04"
+    },
+    {
+      "task_id": "fa_eq_ALB_2021-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2021-11-04"
+    },
+    {
+      "task_id": "fa_eq_ALB_2021-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2022-02-22"
+    },
+    {
+      "task_id": "fa_eq_ALB_2022-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2022-05-04"
+    },
+    {
+      "task_id": "fa_eq_ALB_2022-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2022-08-03"
+    },
+    {
+      "task_id": "fa_eq_ALB_2022-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2022-11-02"
+    },
+    {
+      "task_id": "fa_eq_ALB_2022-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2023-04-21"
+    },
+    {
+      "task_id": "fa_eq_ALB_2023-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2023-05-03"
+    },
+    {
+      "task_id": "fa_eq_ALB_2023-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2023-08-02"
+    },
+    {
+      "task_id": "fa_eq_ALB_2023-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2023-11-01"
+    },
+    {
+      "task_id": "fa_eq_ALB_2023-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-03-28"
+    },
+    {
+      "task_id": "fa_eq_ALB_2024-03-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-05-01"
+    },
+    {
+      "task_id": "fa_eq_ALB_2024-06-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2024-07-31"
+    },
+    {
+      "task_id": "fa_eq_ALB_2024-09-30",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2024-11-06"
+    },
+    {
+      "task_id": "fa_eq_ALB_2024-12-31",
+      "sub_task": "earnings_quality",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2025-03-31"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2016-12-31_to_2017-04-01",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2017-05-03"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2017-04-01_to_2017-07-01",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2017-08-02"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2017-07-01_to_2017-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2017-11-03"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2017-09-30_to_2017-12-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2018-02-02"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2017-12-30_to_2018-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2018-05-02"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2018-03-31_to_2018-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2018-08-01"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2018-06-30_to_2018-09-29",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2018-11-05"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2018-09-29_to_2018-12-29",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2019-01-30"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2018-12-29_to_2019-03-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2019-05-01"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2019-03-30_to_2019-06-29",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2019-07-31"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2019-06-29_to_2019-09-28",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2019-10-31"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2019-09-28_to_2019-12-28",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2020-01-29"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2019-12-28_to_2020-03-28",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2020-05-01"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2020-03-28_to_2020-06-27",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2020-07-31"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2020-06-27_to_2020-09-26",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2020-10-30"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2020-09-26_to_2020-12-26",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2021-01-28"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2020-12-26_to_2021-03-27",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2021-04-29"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2021-03-27_to_2021-06-26",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2021-07-28"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2021-06-26_to_2021-09-25",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2021-10-29"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2021-09-25_to_2021-12-25",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2022-01-28"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2021-12-25_to_2022-03-26",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2022-04-29"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2022-03-26_to_2022-06-25",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2022-07-29"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2022-06-25_to_2022-09-24",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2022-10-28"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2022-09-24_to_2022-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2023-02-03"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2022-12-31_to_2023-04-01",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2023-05-05"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2023-04-01_to_2023-07-01",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2023-08-04"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2023-07-01_to_2023-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2023-11-03"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2023-09-30_to_2023-12-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2024-02-02"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2023-12-30_to_2024-03-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2024-05-03"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2024-03-30_to_2024-06-29",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2024-08-02"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2024-06-29_to_2024-09-28",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2024-11-01"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2024-09-28_to_2024-12-28",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2025-01-31"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2024-12-28_to_2025-03-29",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2025-05-02"
+    },
+    {
+      "task_id": "fa_dd_AAPL_2025-03-29_to_2025-06-28",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2025-08-01"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2016-12-31_to_2017-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2017-05-05"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2017-03-31_to_2017-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2017-08-07"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2017-06-30_to_2017-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2017-11-07"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2017-09-30_to_2017-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2018-02-16"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2017-12-31_to_2018-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2018-05-04"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2018-03-31_to_2018-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2018-08-07"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2018-06-30_to_2018-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2018-11-07"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2018-09-30_to_2018-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2019-02-27"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2018-12-31_to_2019-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2019-05-03"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2019-03-31_to_2019-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2019-08-05"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2019-06-30_to_2019-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2019-11-06"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2019-09-30_to_2019-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2020-02-21"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2019-12-31_to_2020-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2020-05-08"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2020-03-31_to_2020-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2020-08-04"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2020-06-30_to_2020-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2020-11-04"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2020-09-30_to_2020-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2021-02-19"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2020-12-31_to_2021-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2021-05-07"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2021-03-31_to_2021-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2021-08-02"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2021-06-30_to_2021-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2021-11-02"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2021-09-30_to_2021-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2022-02-18"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2021-12-31_to_2022-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2022-05-06"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2022-03-31_to_2022-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2022-08-04"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2022-06-30_to_2022-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2022-11-04"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2022-09-30_to_2022-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2023-02-17"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2022-12-31_to_2023-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2023-05-05"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2023-03-31_to_2023-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2023-08-07"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2023-06-30_to_2023-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2023-11-06"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2023-09-30_to_2023-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2024-02-20"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2023-12-31_to_2024-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2024-05-03"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2024-03-31_to_2024-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2024-08-07"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2024-06-30_to_2024-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2024-11-04"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2024-09-30_to_2024-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2025-02-14"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2024-12-31_to_2025-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2025-05-09"
+    },
+    {
+      "task_id": "fa_dd_ABBV_2025-03-31_to_2025-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "hard",
+      "as_of_date": "2025-08-04"
+    },
+    {
+      "task_id": "fa_dd_ALB_2016-12-31_to_2017-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2017-05-04"
+    },
+    {
+      "task_id": "fa_dd_ALB_2017-03-31_to_2017-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2017-08-08"
+    },
+    {
+      "task_id": "fa_dd_ALB_2017-06-30_to_2017-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2017-11-09"
+    },
+    {
+      "task_id": "fa_dd_ALB_2017-09-30_to_2017-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2018-02-28"
+    },
+    {
+      "task_id": "fa_dd_ALB_2017-12-31_to_2018-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2018-05-10"
+    },
+    {
+      "task_id": "fa_dd_ALB_2018-03-31_to_2018-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2018-08-07"
+    },
+    {
+      "task_id": "fa_dd_ALB_2018-06-30_to_2018-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2018-11-07"
+    },
+    {
+      "task_id": "fa_dd_ALB_2018-09-30_to_2018-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2019-02-27"
+    },
+    {
+      "task_id": "fa_dd_ALB_2018-12-31_to_2019-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2019-05-08"
+    },
+    {
+      "task_id": "fa_dd_ALB_2019-03-31_to_2019-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2019-08-07"
+    },
+    {
+      "task_id": "fa_dd_ALB_2019-06-30_to_2019-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2019-11-06"
+    },
+    {
+      "task_id": "fa_dd_ALB_2019-09-30_to_2019-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2020-02-26"
+    },
+    {
+      "task_id": "fa_dd_ALB_2019-12-31_to_2020-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2020-05-11"
+    },
+    {
+      "task_id": "fa_dd_ALB_2020-03-31_to_2020-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2020-08-05"
+    },
+    {
+      "task_id": "fa_dd_ALB_2020-06-30_to_2020-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2020-11-04"
+    },
+    {
+      "task_id": "fa_dd_ALB_2020-09-30_to_2020-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2021-02-19"
+    },
+    {
+      "task_id": "fa_dd_ALB_2020-12-31_to_2021-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2021-05-05"
+    },
+    {
+      "task_id": "fa_dd_ALB_2021-03-31_to_2021-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2021-08-04"
+    },
+    {
+      "task_id": "fa_dd_ALB_2021-06-30_to_2021-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2021-11-04"
+    },
+    {
+      "task_id": "fa_dd_ALB_2021-09-30_to_2021-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2022-02-22"
+    },
+    {
+      "task_id": "fa_dd_ALB_2021-12-31_to_2022-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2022-05-04"
+    },
+    {
+      "task_id": "fa_dd_ALB_2022-03-31_to_2022-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2022-08-03"
+    },
+    {
+      "task_id": "fa_dd_ALB_2022-06-30_to_2022-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2022-11-02"
+    },
+    {
+      "task_id": "fa_dd_ALB_2022-09-30_to_2022-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2023-04-21"
+    },
+    {
+      "task_id": "fa_dd_ALB_2022-12-31_to_2023-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2023-05-03"
+    },
+    {
+      "task_id": "fa_dd_ALB_2023-03-31_to_2023-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2023-08-02"
+    },
+    {
+      "task_id": "fa_dd_ALB_2023-06-30_to_2023-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2023-11-01"
+    },
+    {
+      "task_id": "fa_dd_ALB_2023-09-30_to_2023-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-03-28"
+    },
+    {
+      "task_id": "fa_dd_ALB_2023-12-31_to_2024-03-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "easy",
+      "as_of_date": "2024-05-01"
+    },
+    {
+      "task_id": "fa_dd_ALB_2024-03-31_to_2024-06-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-07-31"
+    },
+    {
+      "task_id": "fa_dd_ALB_2024-06-30_to_2024-09-30",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2024-11-06"
+    },
+    {
+      "task_id": "fa_dd_ALB_2024-09-30_to_2024-12-31",
+      "sub_task": "driver_decomposition",
+      "skill": "fundamental_analysis",
+      "difficulty": "medium",
+      "as_of_date": "2025-03-31"
+    }
+  ]
+}

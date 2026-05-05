@@ -1,0 +1,124 @@
+{
+  "task_id": "fa_dd_APA_2019-12-31_to_2020-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2020-05-07",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "APA",
+    "current_period_end": "2020-03-31",
+    "prior_period_end": "2019-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -281000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Oil And Gas, Excluding Purchased",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1236000000,
+        "contribution_pct": -439.86
+      },
+      {
+        "driver": "North Sea",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -761000000,
+        "contribution_pct": 270.82
+      },
+      {
+        "driver": "Segment United States",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -758000000,
+        "contribution_pct": 269.75
+      },
+      {
+        "driver": "Oil and Gas, Purchased",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 4000000,
+        "contribution_pct": -1.42
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": -16.49,
+        "current_pct": 7.51,
+        "delta_pp": 24.01
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 13.05,
+        "current_pct": 4.17,
+        "delta_pp": -8.88
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 29.85,
+        "current_pct": 21.28,
+        "delta_pp": -8.57
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 70.15,
+        "current_pct": 78.72,
+        "delta_pp": 8.57
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 44.37,
+        "current_pct": 42.11,
+        "delta_pp": -2.26
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 6.03,
+        "current_pct": 7.81,
+        "delta_pp": 1.78
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2020_covid",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze APA's financial performance change between the quarter ending 2019-12-31 and the quarter ending 2020-03-31. Revenue decreased by $281,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2020-05-07.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

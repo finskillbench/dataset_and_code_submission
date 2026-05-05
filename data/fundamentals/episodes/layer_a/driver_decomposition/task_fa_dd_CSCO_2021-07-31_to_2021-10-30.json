@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_CSCO_2021-07-31_to_2021-10-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2021-11-23",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "CSCO",
+    "current_period_end": "2021-10-30",
+    "prior_period_end": "2021-07-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -226000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Infrastructure Platforms",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -7545000000,
+        "contribution_pct": 3338.5
+      },
+      {
+        "driver": "Secure, Agile Networks",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 5967000000,
+        "contribution_pct": -2640.27
+      },
+      {
+        "driver": "Internet for the Future",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1374000000,
+        "contribution_pct": -607.96
+      },
+      {
+        "driver": "Applications",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1344000000,
+        "contribution_pct": 594.69
+      },
+      {
+        "driver": "Collaboration",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1109000000,
+        "contribution_pct": -490.71
+      },
+      {
+        "driver": "End-to-End Security",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 895000000,
+        "contribution_pct": -396.02
+      },
+      {
+        "driver": "Security",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -822000000,
+        "contribution_pct": 363.72
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 63.57,
+        "current_pct": 62.43,
+        "delta_pp": -1.14
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 36.43,
+        "current_pct": 37.57,
+        "delta_pp": 1.14
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 22.62,
+        "current_pct": 21.8,
+        "delta_pp": -0.82
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 27.24,
+        "current_pct": 26.65,
+        "delta_pp": -0.58
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.73,
+        "current_pct": 4.13,
+        "delta_pp": 0.41
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 5.53,
+        "current_pct": 5.25,
+        "delta_pp": -0.28
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 13.05,
+        "current_pct": 13.29,
+        "delta_pp": 0.24
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 10,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze CSCO's financial performance change between the quarter ending 2021-07-31 and the quarter ending 2021-10-30. Revenue decreased by $226,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2021-11-23.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

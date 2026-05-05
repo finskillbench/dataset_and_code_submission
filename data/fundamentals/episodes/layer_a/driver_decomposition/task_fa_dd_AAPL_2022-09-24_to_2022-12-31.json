@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_AAPL_2022-09-24_to_2022-12-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-02-03",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "AAPL",
+    "current_period_end": "2022-12-31",
+    "prior_period_end": "2022-09-24",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 27008000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "iPhone",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 23149000000,
+        "contribution_pct": 85.71
+      },
+      {
+        "driver": "Americas Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 9470000000,
+        "contribution_pct": 35.06
+      },
+      {
+        "driver": "Greater China Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 8435000000,
+        "contribution_pct": 31.23
+      },
+      {
+        "driver": "Europe Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 4886000000,
+        "contribution_pct": 18.09
+      },
+      {
+        "driver": "Wearables, Home and Accessories",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 3832000000,
+        "contribution_pct": 14.19
+      },
+      {
+        "driver": "Mac",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -3773000000,
+        "contribution_pct": -13.97
+      },
+      {
+        "driver": "Rest of Asia Pacific Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 3162000000,
+        "contribution_pct": 11.71
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 27.62,
+        "current_pct": 30.74,
+        "delta_pp": 3.13
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 7.14,
+        "current_pct": 5.64,
+        "delta_pp": -1.5
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 7.5,
+        "current_pct": 6.58,
+        "delta_pp": -0.92
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 42.26,
+        "current_pct": 42.96,
+        "delta_pp": 0.7
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 57.74,
+        "current_pct": 57.04,
+        "delta_pp": -0.7
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.18,
+        "current_pct": 2.49,
+        "delta_pp": -0.69
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.37,
+        "current_pct": 4.8,
+        "delta_pp": 0.44
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze AAPL's financial performance change between the quarter ending 2022-09-24 and the quarter ending 2022-12-31. Revenue increased by $27,008,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-02-03.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

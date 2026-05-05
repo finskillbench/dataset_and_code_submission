@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_COP_2020-03-31_to_2020-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2020-08-04",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "COP",
+    "current_period_end": "2020-06-30",
+    "prior_period_end": "2020-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -3312000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Lower 48",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2373000000,
+        "contribution_pct": 71.65
+      },
+      {
+        "driver": "Crude oil product line",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2228000000,
+        "contribution_pct": 67.27
+      },
+      {
+        "driver": "Other Products",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -649000000,
+        "contribution_pct": 19.6
+      },
+      {
+        "driver": "Natural Gas Product Line",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -465000000,
+        "contribution_pct": 14.04
+      },
+      {
+        "driver": "Australia",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -269000000,
+        "contribution_pct": 8.12
+      },
+      {
+        "driver": "NORWAY",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -204000000,
+        "contribution_pct": 6.16
+      },
+      {
+        "driver": "CANADA",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -168000000,
+        "contribution_pct": 5.07
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 7.49,
+        "current_pct": -34.08,
+        "delta_pp": -41.58
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 11.54,
+        "current_pct": -23.47,
+        "delta_pp": -35.01
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 88.46,
+        "current_pct": 123.47,
+        "delta_pp": 35.01
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 24.19,
+        "current_pct": 41.48,
+        "delta_pp": 17.29
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 2.42,
+        "current_pct": -9.18,
+        "delta_pp": -11.6
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": -0.05,
+        "current_pct": 5.57,
+        "delta_pp": 5.62
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.4,
+        "current_pct": 9.57,
+        "delta_pp": 5.17
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 11,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze COP's financial performance change between the quarter ending 2020-03-31 and the quarter ending 2020-06-30. Revenue decreased by $3,312,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2020-08-04.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

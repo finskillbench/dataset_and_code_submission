@@ -1,0 +1,96 @@
+{
+  "portfolio_id": "portfolio_mandate_violating_2023_24_rebound_035",
+  "portfolio_type": "mandate_violating",
+  "as_of_date": "2024-01-01",
+  "holdings": [
+    {
+      "symbol": "BR",
+      "weight": 0.133164
+    },
+    {
+      "symbol": "BF-B",
+      "weight": 0.065185
+    },
+    {
+      "symbol": "CMG",
+      "weight": 0.147164
+    },
+    {
+      "symbol": "AIG",
+      "weight": 0.015645
+    },
+    {
+      "symbol": "VMC",
+      "weight": 0.069729
+    },
+    {
+      "symbol": "L",
+      "weight": 0.020269
+    },
+    {
+      "symbol": "LHX",
+      "weight": 0.075206
+    },
+    {
+      "symbol": "TTWO",
+      "weight": 0.034489
+    },
+    {
+      "symbol": "CPAY",
+      "weight": 0.109688
+    },
+    {
+      "symbol": "REG",
+      "weight": 0.062108
+    },
+    {
+      "symbol": "HUM",
+      "weight": 0.025388
+    },
+    {
+      "symbol": "ARE",
+      "weight": 0.015814
+    },
+    {
+      "symbol": "KHC",
+      "weight": 0.012666
+    },
+    {
+      "symbol": "CPRT",
+      "weight": 0.082694
+    },
+    {
+      "symbol": "LNT",
+      "weight": 0.017516
+    },
+    {
+      "symbol": "SRE",
+      "weight": 0.009651
+    },
+    {
+      "symbol": "C",
+      "weight": 0.032413
+    },
+    {
+      "symbol": "USB",
+      "weight": 0.032464
+    },
+    {
+      "symbol": "DHR",
+      "weight": 0.001231
+    },
+    {
+      "symbol": "LYV",
+      "weight": 0.037517
+    }
+  ],
+  "planted_risks": [
+    "position_limit_breach",
+    "concentration_risk",
+    "potential_tracking_error_drift"
+  ],
+  "metadata": {
+    "max_position": 0.1472,
+    "num_holdings": 20
+  }
+}

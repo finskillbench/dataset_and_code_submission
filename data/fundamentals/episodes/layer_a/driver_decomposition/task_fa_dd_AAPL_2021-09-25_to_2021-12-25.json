@@ -1,0 +1,161 @@
+{
+  "task_id": "fa_dd_AAPL_2021-09-25_to_2021-12-25",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2022-01-28",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "AAPL",
+    "current_period_end": "2021-12-25",
+    "prior_period_end": "2021-09-25",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 40585000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "iPhone",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 32760000000,
+        "contribution_pct": 80.72
+      },
+      {
+        "driver": "Americas Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 14676000000,
+        "contribution_pct": 36.16
+      },
+      {
+        "driver": "Greater China Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 11220000000,
+        "contribution_pct": 27.65
+      },
+      {
+        "driver": "Europe Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 8955000000,
+        "contribution_pct": 22.06
+      },
+      {
+        "driver": "Wearables, Home and Accessories",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 5916000000,
+        "contribution_pct": 14.58
+      },
+      {
+        "driver": "Rest of Asia Pacific Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 4618000000,
+        "contribution_pct": 11.38
+      },
+      {
+        "driver": "Mac",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1674000000,
+        "contribution_pct": 4.12
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 28.53,
+        "current_pct": 33.47,
+        "delta_pp": 4.94
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.24,
+        "current_pct": 5.33,
+        "delta_pp": 2.1
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.92,
+        "current_pct": 5.09,
+        "delta_pp": -1.84
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 42.2,
+        "current_pct": 43.76,
+        "delta_pp": 1.57
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 57.8,
+        "current_pct": 56.24,
+        "delta_pp": -1.57
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.74,
+        "current_pct": 5.2,
+        "delta_pp": -1.53
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.59,
+        "current_pct": 2.18,
+        "delta_pp": -1.41
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 0.81,
+        "current_pct": 0.56,
+        "delta_pp": -0.25
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze AAPL's financial performance change between the quarter ending 2021-09-25 and the quarter ending 2021-12-25. Revenue increased by $40,585,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2022-01-28.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "long_only": true,
+  "max_weight": 0.0767,
+  "min_weight": 0.0,
+  "sector_limits": {
+    "Consumer Staples": 0.15,
+    "Materials": 0.15,
+    "Consumer Discretionary": 0.15,
+    "Industrials": 0.15,
+    "Health Care": 0.15,
+    "Real Estate": 0.15,
+    "Financials": 0.15,
+    "Utilities": 0.15,
+    "Communication Services": 0.15,
+    "Information Technology": 0.15,
+    "Energy": 0.15
+  },
+  "min_names": 15,
+  "max_names": 30,
+  "max_turnover": 0.15,
+  "max_tracking_error": 0.02,
+  "factor_neutrality": true,
+  "neutral_factors": [
+    "Mkt-RF",
+    "SMB",
+    "HML"
+  ],
+  "description": "Max 7.7%/name, max 15%/sector, 15-30 names, turnover<=15%, TE<=2%, factor-neutral"
+}

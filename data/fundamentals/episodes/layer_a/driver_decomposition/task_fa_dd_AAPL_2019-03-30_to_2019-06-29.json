@@ -1,0 +1,137 @@
+{
+  "task_id": "fa_dd_AAPL_2019-03-30_to_2019-06-29",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-07-31",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "AAPL",
+    "current_period_end": "2019-06-29",
+    "prior_period_end": "2019-03-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -4206000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "iPhone",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -5065000000,
+        "contribution_pct": 120.42
+      },
+      {
+        "driver": "Japan Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1450000000,
+        "contribution_pct": 34.47
+      },
+      {
+        "driver": "Europe Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1129000000,
+        "contribution_pct": 26.84
+      },
+      {
+        "driver": "Greater China Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1061000000,
+        "contribution_pct": 25.23
+      },
+      {
+        "driver": "Americas Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -540000000,
+        "contribution_pct": 12.84
+      },
+      {
+        "driver": "Wearables, Home and Accessories",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 396000000,
+        "contribution_pct": -9.42
+      },
+      {
+        "driver": "Mac",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 307000000,
+        "contribution_pct": -7.3
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 23.12,
+        "current_pct": 21.45,
+        "delta_pp": -1.67
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 6.81,
+        "current_pct": 7.91,
+        "delta_pp": 1.11
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 7.68,
+        "current_pct": 8.23,
+        "delta_pp": 0.54
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.85,
+        "current_pct": 3.47,
+        "delta_pp": -0.38
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.24,
+        "current_pct": 5.45,
+        "delta_pp": 0.21
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze AAPL's financial performance change between the quarter ending 2019-03-30 and the quarter ending 2019-06-29. Revenue decreased by $4,206,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-07-31.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

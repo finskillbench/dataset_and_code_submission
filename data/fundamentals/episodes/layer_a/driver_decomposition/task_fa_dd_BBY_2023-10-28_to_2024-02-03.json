@@ -1,0 +1,137 @@
+{
+  "task_id": "fa_dd_BBY_2023-10-28_to_2024-02-03",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2024-03-15",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "BBY",
+    "current_period_end": "2024-02-03",
+    "prior_period_end": "2023-10-28",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 4890000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Domestic Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 4414000000,
+        "contribution_pct": 90.27
+      },
+      {
+        "driver": "Computing And Mobile Phones",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1863000000,
+        "contribution_pct": 38.1
+      },
+      {
+        "driver": "Consumer Electronics",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1763000000,
+        "contribution_pct": 36.05
+      },
+      {
+        "driver": "Entertainment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 822000000,
+        "contribution_pct": 16.81
+      },
+      {
+        "driver": "International Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 476000000,
+        "contribution_pct": 9.73
+      },
+      {
+        "driver": "Appliances",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 306000000,
+        "contribution_pct": 6.26
+      },
+      {
+        "driver": "Services",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 153000000,
+        "contribution_pct": 3.13
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 19.25,
+        "current_pct": 15.51,
+        "delta_pp": -3.74
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 22.88,
+        "current_pct": 20.49,
+        "delta_pp": -2.39
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 77.12,
+        "current_pct": 79.51,
+        "delta_pp": 2.39
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 2.35,
+        "current_pct": 1.51,
+        "delta_pp": -0.84
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 3.63,
+        "current_pct": 3.83,
+        "delta_pp": 0.2
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 6,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze BBY's financial performance change between the quarter ending 2023-10-28 and the quarter ending 2024-02-03. Revenue increased by $4,890,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2024-03-15.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

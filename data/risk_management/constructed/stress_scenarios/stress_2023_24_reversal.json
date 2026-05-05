@@ -1,0 +1,17 @@
+{
+  "scenario_id": "stress_2023_24_reversal",
+  "type": "historical_replay",
+  "name": "AI Rally Reversal (Hypothetical 2024 Tech Unwind)",
+  "regime_slice": "2023_24_rebound",
+  "replay_window": {
+    "start": "2023-01-01",
+    "end": "2024-12-31"
+  },
+  "description": "What if the AI-driven tech rally reverses? Concentrated tech exposure unwind.",
+  "market_shocks": {
+    "equity_drawdown_pct": -15.0,
+    "vix_peak": 30.0,
+    "credit_spread_widening_bp": 100,
+    "rate_change_bp": 0
+  }
+}

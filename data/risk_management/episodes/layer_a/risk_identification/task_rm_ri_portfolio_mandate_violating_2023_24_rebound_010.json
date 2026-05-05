@@ -1,0 +1,140 @@
+{
+  "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_010",
+  "skill": "risk_management",
+  "sub_task": "risk_identification",
+  "as_of_date": "2024-01-01",
+  "input": {
+    "portfolio": {
+      "portfolio_id": "portfolio_mandate_violating_2023_24_rebound_010",
+      "holdings": [
+        {
+          "symbol": "DHR",
+          "weight": 0.11754
+        },
+        {
+          "symbol": "EQT",
+          "weight": 0.085405
+        },
+        {
+          "symbol": "HUM",
+          "weight": 0.083881
+        },
+        {
+          "symbol": "CARR",
+          "weight": 0.003349
+        },
+        {
+          "symbol": "LHX",
+          "weight": 0.081704
+        },
+        {
+          "symbol": "LNT",
+          "weight": 0.014897
+        },
+        {
+          "symbol": "TTWO",
+          "weight": 0.024158
+        },
+        {
+          "symbol": "C",
+          "weight": 0.110245
+        },
+        {
+          "symbol": "AIG",
+          "weight": 0.024485
+        },
+        {
+          "symbol": "TT",
+          "weight": 0.034343
+        },
+        {
+          "symbol": "CTRA",
+          "weight": 0.004751
+        },
+        {
+          "symbol": "SRE",
+          "weight": 0.086028
+        },
+        {
+          "symbol": "VMC",
+          "weight": 0.060223
+        },
+        {
+          "symbol": "ARE",
+          "weight": 0.001037
+        },
+        {
+          "symbol": "BAX",
+          "weight": 0.007985
+        },
+        {
+          "symbol": "LYV",
+          "weight": 0.076841
+        },
+        {
+          "symbol": "ON",
+          "weight": 0.019132
+        },
+        {
+          "symbol": "EFX",
+          "weight": 0.041174
+        },
+        {
+          "symbol": "CPRT",
+          "weight": 0.056009
+        },
+        {
+          "symbol": "ZBRA",
+          "weight": 0.066812
+        }
+      ],
+      "total_nav": 10000000
+    },
+    "market_data": {
+      "factor_exposures": "data/risk_management/processed/factor_exposures.parquet",
+      "returns": "data/risk_management/processed/returns/daily_returns.parquet"
+    }
+  },
+  "expected_output": {
+    "top_risk_exposures": [
+      {
+        "rank": 1,
+        "type": "factor_tilt",
+        "detail": "mkt_rf beta +0.950",
+        "magnitude": 0.9505
+      },
+      {
+        "rank": 2,
+        "type": "single_name",
+        "detail": "DHR at 11.8%",
+        "magnitude": 0.1175
+      },
+      {
+        "rank": 3,
+        "type": "concentration",
+        "detail": "HHI=0.0763, top-5=48.3%",
+        "magnitude": 0.0763
+      }
+    ]
+  },
+  "verification": {
+    "method": "ranked_list_recall",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "recall_at_5",
+      "precision_at_5",
+      "ndcg_at_5"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "difficulty": "hard",
+    "portfolio_type": "mandate_violating",
+    "planted_risks": [
+      "position_limit_breach",
+      "concentration_risk",
+      "potential_tracking_error_drift"
+    ]
+  }
+}

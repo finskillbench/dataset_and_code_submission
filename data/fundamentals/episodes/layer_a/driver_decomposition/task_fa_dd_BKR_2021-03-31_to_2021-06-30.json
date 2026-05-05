@@ -1,0 +1,146 @@
+{
+  "task_id": "fa_dd_BKR_2021-03-31_to_2021-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2021-07-23",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "BKR",
+    "current_period_end": "2021-06-30",
+    "prior_period_end": "2021-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 360000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Non-US",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 327000000,
+        "contribution_pct": 90.83
+      },
+      {
+        "driver": "Oilfield Services And Equipment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 158000000,
+        "contribution_pct": 43.89
+      },
+      {
+        "driver": "Turbomachinery and Process Solutions",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 143000000,
+        "contribution_pct": 39.72
+      },
+      {
+        "driver": "Digital Solutions",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 50000000,
+        "contribution_pct": 13.89
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 33000000,
+        "contribution_pct": 9.17
+      },
+      {
+        "driver": "Oilfield Equipment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 9000000,
+        "contribution_pct": 2.5
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 1.44,
+        "current_pct": 2.78,
+        "delta_pp": 1.34
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 17.94,
+        "current_pct": 18.98,
+        "delta_pp": 1.04
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 82.06,
+        "current_pct": 81.02,
+        "delta_pp": -1.04
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.11,
+        "current_pct": 5.41,
+        "delta_pp": -0.7
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 3.43,
+        "current_pct": 3.77,
+        "delta_pp": 0.34
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 1.55,
+        "current_pct": 1.26,
+        "delta_pp": -0.28
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 12.28,
+        "current_pct": 12.49,
+        "delta_pp": 0.21
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 4,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze BKR's financial performance change between the quarter ending 2021-03-31 and the quarter ending 2021-06-30. Revenue increased by $360,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2021-07-23.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

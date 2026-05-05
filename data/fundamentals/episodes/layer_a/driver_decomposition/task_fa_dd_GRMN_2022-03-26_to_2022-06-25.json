@@ -1,0 +1,145 @@
+{
+  "task_id": "fa_dd_GRMN_2022-03-26_to_2022-06-25",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2022-07-27",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "GRMN",
+    "current_period_end": "2022-06-25",
+    "prior_period_end": "2022-03-26",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 68171000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Americas",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 75538000,
+        "contribution_pct": 110.81
+      },
+      {
+        "driver": "Fitness",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 51199000,
+        "contribution_pct": 75.1
+      },
+      {
+        "driver": "Aviation",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 29973000,
+        "contribution_pct": 43.97
+      },
+      {
+        "driver": "Asia Pacific",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -22440000,
+        "contribution_pct": -32.92
+      },
+      {
+        "driver": "EMEA",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 15073000,
+        "contribution_pct": 22.11
+      },
+      {
+        "driver": "Marine Segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -11275000,
+        "contribution_pct": -16.54
+      },
+      {
+        "driver": "Outdoor",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2689000,
+        "contribution_pct": -3.94
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 19.49,
+        "current_pct": 23.59,
+        "delta_pp": 4.1
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 56.49,
+        "current_pct": 58.74,
+        "delta_pp": 2.24
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 43.51,
+        "current_pct": 41.26,
+        "delta_pp": -2.24
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 17.82,
+        "current_pct": 16.24,
+        "delta_pp": -1.58
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 2.07,
+        "current_pct": 1.7,
+        "delta_pp": -0.37
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 19.18,
+        "current_pct": 18.9,
+        "delta_pp": -0.28
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2022_tightening",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze GRMN's financial performance change between the quarter ending 2022-03-26 and the quarter ending 2022-06-25. Revenue increased by $68,171,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2022-07-27.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

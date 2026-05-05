@@ -1,0 +1,132 @@
+{
+  "task_id": "fa_dd_FCX_2022-12-31_to_2023-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-05-04",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "FCX",
+    "current_period_end": "2023-03-31",
+    "prior_period_end": "2022-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -337000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Rod and Refining Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1523000000,
+        "contribution_pct": -451.93
+      },
+      {
+        "driver": "Grasberg Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1199000000,
+        "contribution_pct": -355.79
+      },
+      {
+        "driver": "Molybdenum",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -794000000,
+        "contribution_pct": 235.61
+      },
+      {
+        "driver": "Morenci",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 593000000,
+        "contribution_pct": -175.96
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 25.49,
+        "current_pct": 29.66,
+        "delta_pp": 4.17
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 74.51,
+        "current_pct": 70.34,
+        "delta_pp": -4.17
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 22.24,
+        "current_pct": 25.88,
+        "delta_pp": 3.64
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 9.46,
+        "current_pct": 7.81,
+        "delta_pp": -1.65
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 1.97,
+        "current_pct": 2.47,
+        "delta_pp": 0.5
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 10.23,
+        "current_pct": 9.77,
+        "delta_pp": -0.46
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.52,
+        "current_pct": 2.96,
+        "delta_pp": 0.44
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 4,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze FCX's financial performance change between the quarter ending 2022-12-31 and the quarter ending 2023-03-31. Revenue decreased by $337,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-05-04.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

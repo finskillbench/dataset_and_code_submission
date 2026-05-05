@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_LLY_2022-12-31_to_2023-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-04-27",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "LLY",
+    "current_period_end": "2023-03-31",
+    "prior_period_end": "2022-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -341800000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Product",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -6339800000,
+        "contribution_pct": 1854.83
+      },
+      {
+        "driver": "Diabetes",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 4190400000,
+        "contribution_pct": -1225.98
+      },
+      {
+        "driver": "Oncology",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1356000000,
+        "contribution_pct": -396.72
+      },
+      {
+        "driver": "Collaboration and Other Revenue",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -962000000,
+        "contribution_pct": 281.45
+      },
+      {
+        "driver": "Immunology",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 777800000,
+        "contribution_pct": -227.56
+      },
+      {
+        "driver": "Neuroscience",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 360500000,
+        "contribution_pct": -105.47
+      },
+      {
+        "driver": "Other Product, Total",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 275300000,
+        "contribution_pct": -80.54
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 30.23,
+        "current_pct": 24.64,
+        "delta_pp": -5.59
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 21.23,
+        "current_pct": 23.47,
+        "delta_pp": 2.24
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 78.8,
+        "current_pct": 76.63,
+        "delta_pp": -2.17
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 21.2,
+        "current_pct": 23.37,
+        "delta_pp": 2.17
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 27.33,
+        "current_pct": 28.52,
+        "delta_pp": 1.19
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.17,
+        "current_pct": 2.66,
+        "delta_pp": 0.48
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 1.15,
+        "current_pct": 1.48,
+        "delta_pp": 0.33
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 9,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze LLY's financial performance change between the quarter ending 2022-12-31 and the quarter ending 2023-03-31. Revenue decreased by $341,800,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-04-27.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

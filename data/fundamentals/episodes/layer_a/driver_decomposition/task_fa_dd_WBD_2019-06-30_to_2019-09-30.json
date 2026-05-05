@@ -1,0 +1,117 @@
+{
+  "task_id": "fa_dd_WBD_2019-06-30_to_2019-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-11-07",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "WBD",
+    "current_period_end": "2019-09-30",
+    "prior_period_end": "2019-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -207000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Advertising",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -206000000,
+        "contribution_pct": 99.52
+      },
+      {
+        "driver": "Distribution Revenue",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -5000000,
+        "contribution_pct": 2.42
+      },
+      {
+        "driver": "Service, Other",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 4000000,
+        "contribution_pct": -1.93
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": -9.39,
+        "current_pct": 5.49,
+        "delta_pp": 14.88
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 31.58,
+        "current_pct": 23.11,
+        "delta_pp": -8.46
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 34.7,
+        "current_pct": 38.16,
+        "delta_pp": 3.47
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 67.49,
+        "current_pct": 65.87,
+        "delta_pp": -1.62
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 32.51,
+        "current_pct": 34.13,
+        "delta_pp": 1.62
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.58,
+        "current_pct": 6.09,
+        "delta_pp": 0.51
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze WBD's financial performance change between the quarter ending 2019-06-30 and the quarter ending 2019-09-30. Revenue decreased by $207,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-11-07.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

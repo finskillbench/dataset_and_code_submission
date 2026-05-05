@@ -1,0 +1,138 @@
+{
+  "task_id": "fa_dd_PH_2023-03-31_to_2023-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-08-24",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "PH",
+    "current_period_end": "2023-06-30",
+    "prior_period_end": "2023-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 34278000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Aerospace Systems Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 87952000,
+        "contribution_pct": 256.58
+      },
+      {
+        "driver": "Diversified Industrial Segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -53674000,
+        "contribution_pct": -156.58
+      },
+      {
+        "driver": "North America",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 46747000,
+        "contribution_pct": 136.38
+      },
+      {
+        "driver": "Europe",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -26809000,
+        "contribution_pct": -78.21
+      },
+      {
+        "driver": "Asia Pacific",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 12224000,
+        "contribution_pct": 35.66
+      },
+      {
+        "driver": "Latin America",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 2116000,
+        "contribution_pct": 6.17
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 17.16,
+        "current_pct": 20.1,
+        "delta_pp": 2.94
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 34.1,
+        "current_pct": 36.07,
+        "delta_pp": 1.98
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 65.9,
+        "current_pct": 63.93,
+        "delta_pp": -1.98
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 16.93,
+        "current_pct": 15.97,
+        "delta_pp": -0.96
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.27,
+        "current_pct": 3.81,
+        "delta_pp": 0.54
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.45,
+        "current_pct": 4.1,
+        "delta_pp": -0.35
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 4,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze PH's financial performance change between the quarter ending 2023-03-31 and the quarter ending 2023-06-30. Revenue increased by $34,278,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-08-24.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

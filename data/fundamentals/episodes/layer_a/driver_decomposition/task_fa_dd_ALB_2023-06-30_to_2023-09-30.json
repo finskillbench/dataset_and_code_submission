@@ -1,0 +1,102 @@
+{
+  "task_id": "fa_dd_ALB_2023-06-30_to_2023-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-11-01",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "ALB",
+    "current_period_end": "2023-09-30",
+    "prior_period_end": "2023-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -59594000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Energy Storage",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -65902000,
+        "contribution_pct": 110.58
+      },
+      {
+        "driver": "Specialties",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -18580000,
+        "contribution_pct": 31.18
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 15.74,
+        "current_pct": -5.4,
+        "delta_pp": -21.14
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 23.56,
+        "current_pct": 2.49,
+        "delta_pp": -21.07
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 76.44,
+        "current_pct": 97.51,
+        "delta_pp": 21.07
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 1.81,
+        "current_pct": -0.37,
+        "delta_pp": -2.18
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.93,
+        "current_pct": 4.56,
+        "delta_pp": 0.64
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze ALB's financial performance change between the quarter ending 2023-06-30 and the quarter ending 2023-09-30. Revenue decreased by $59,594,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-11-01.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

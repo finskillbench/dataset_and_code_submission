@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_MRK_2021-03-31_to_2021-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2021-08-09",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "MRK",
+    "current_period_end": "2021-06-30",
+    "prior_period_end": "2021-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 775000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Pharmaceutical segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -695000000,
+        "contribution_pct": -89.68
+      },
+      {
+        "driver": "EMEA",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -396000000,
+        "contribution_pct": -51.1
+      },
+      {
+        "driver": "Asia Pacific",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -157000000,
+        "contribution_pct": -20.26
+      },
+      {
+        "driver": "JAPAN",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -69000000,
+        "contribution_pct": -8.9
+      },
+      {
+        "driver": "Animal Health segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 54000000,
+        "contribution_pct": 6.97
+      },
+      {
+        "driver": "Other Segments",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -50000000,
+        "contribution_pct": -6.45
+      },
+      {
+        "driver": "CHINA",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 48000000,
+        "contribution_pct": 6.19
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 22.7,
+        "current_pct": 37.9,
+        "delta_pp": 15.2
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 26.62,
+        "current_pct": 14.87,
+        "delta_pp": -11.75
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 69.9,
+        "current_pct": 72.78,
+        "delta_pp": 2.88
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 30.1,
+        "current_pct": 27.22,
+        "delta_pp": -2.88
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.24,
+        "current_pct": 4.41,
+        "delta_pp": 2.17
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 8.39,
+        "current_pct": 6.38,
+        "delta_pp": -2.01
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 20.58,
+        "current_pct": 20.01,
+        "delta_pp": -0.57
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 7,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze MRK's financial performance change between the quarter ending 2021-03-31 and the quarter ending 2021-06-30. Revenue increased by $775,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2021-08-09.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "task_id": "fa_dd_TSLA_2022-12-31_to_2023-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-04-24",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "TSLA",
+    "current_period_end": "2023-03-31",
+    "prior_period_end": "2022-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -989000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Automotive",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1344000000,
+        "contribution_pct": 135.89
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -722000000,
+        "contribution_pct": 73.0
+      },
+      {
+        "driver": "Other Countries",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -581000000,
+        "contribution_pct": 58.75
+      },
+      {
+        "driver": "CHINA",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 314000000,
+        "contribution_pct": -31.75
+      },
+      {
+        "driver": "Energy Generation And Storage Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 219000000,
+        "contribution_pct": -22.14
+      },
+      {
+        "driver": "Services And Other",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 136000000,
+        "contribution_pct": -13.75
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 16.04,
+        "current_pct": 11.42,
+        "delta_pp": -4.62
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 23.76,
+        "current_pct": 19.34,
+        "delta_pp": -4.42
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 76.24,
+        "current_pct": 80.66,
+        "delta_pp": 4.42
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.07,
+        "current_pct": 4.48,
+        "delta_pp": 0.42
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.24,
+        "current_pct": 4.61,
+        "delta_pp": 0.37
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze TSLA's financial performance change between the quarter ending 2022-12-31 and the quarter ending 2023-03-31. Revenue decreased by $989,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-04-24.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

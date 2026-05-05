@@ -1,0 +1,14 @@
+{
+  "normalization": {
+    "count": 244,
+    "description": "normalization"
+  },
+  "earnings_quality": {
+    "count": 1002,
+    "description": "earnings_quality"
+  },
+  "driver_decomposition": {
+    "count": 997,
+    "description": "driver_decomposition"
+  }
+}

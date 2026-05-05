@@ -1,0 +1,335 @@
+{
+  "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_003_mandate_balanced_01",
+  "skill": "risk_management",
+  "sub_task": "risk_remediation",
+  "as_of_date": "2024-01-01",
+  "input": {
+    "portfolio": {
+      "portfolio_id": "portfolio_concentrated_2023_24_rebound_003",
+      "holdings": [
+        {
+          "symbol": "CARR",
+          "weight": 0.149999
+        },
+        {
+          "symbol": "EFX",
+          "weight": 0.149999
+        },
+        {
+          "symbol": "LHX",
+          "weight": 0.149999
+        },
+        {
+          "symbol": "TT",
+          "weight": 0.149999
+        },
+        {
+          "symbol": "AIG",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "ARE",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "BAX",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "BF-B",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "BR",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "C",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "CMG",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "CPAY",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "CPRT",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "CTRA",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "DD",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "DHR",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "EQT",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "HUM",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "KHC",
+          "weight": 0.026667
+        }
+      ],
+      "total_nav": 25000000
+    },
+    "mandate": {
+      "mandate_id": "mandate_balanced_01"
+    },
+    "violations": [
+      "sector_concentration",
+      "single_name_risk",
+      "low_diversification"
+    ],
+    "market_data": {
+      "covariance": "data/risk_management/processed/covariance/",
+      "transaction_cost_bps": 5
+    }
+  },
+  "expected_output": {
+    "trades": [
+      {
+        "symbol": "AIG",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "ARE",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "BAX",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "BF-B",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "BR",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "C",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "CARR",
+        "action": "sell",
+        "current_weight": 0.149999,
+        "target_weight": 0.0625,
+        "trade_pct": -0.087499
+      },
+      {
+        "symbol": "CMG",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "CPAY",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "CPRT",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "CTRA",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "DD",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "DHR",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "EFX",
+        "action": "sell",
+        "current_weight": 0.149999,
+        "target_weight": 0.0625,
+        "trade_pct": -0.087499
+      },
+      {
+        "symbol": "EQT",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "HUM",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "KHC",
+        "action": "buy",
+        "current_weight": 0.026667,
+        "target_weight": 0.040128,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "L",
+        "action": "buy",
+        "current_weight": 0.0,
+        "target_weight": 0.013461,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "LHX",
+        "action": "sell",
+        "current_weight": 0.149999,
+        "target_weight": 0.0625,
+        "trade_pct": -0.087499
+      },
+      {
+        "symbol": "LNT",
+        "action": "buy",
+        "current_weight": 0.0,
+        "target_weight": 0.013461,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "LYV",
+        "action": "buy",
+        "current_weight": 0.0,
+        "target_weight": 0.013461,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "ON",
+        "action": "buy",
+        "current_weight": 0.0,
+        "target_weight": 0.013461,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "REG",
+        "action": "buy",
+        "current_weight": 0.0,
+        "target_weight": 0.013461,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "SBUX",
+        "action": "buy",
+        "current_weight": 0.0,
+        "target_weight": 0.013461,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "SRE",
+        "action": "buy",
+        "current_weight": 0.0,
+        "target_weight": 0.013461,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "TT",
+        "action": "sell",
+        "current_weight": 0.149999,
+        "target_weight": 0.0625,
+        "trade_pct": -0.087499
+      },
+      {
+        "symbol": "TTWO",
+        "action": "buy",
+        "current_weight": 0.0,
+        "target_weight": 0.013461,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "USB",
+        "action": "buy",
+        "current_weight": 0.0,
+        "target_weight": 0.013461,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "VMC",
+        "action": "buy",
+        "current_weight": 0.0,
+        "target_weight": 0.013461,
+        "trade_pct": 0.013461
+      },
+      {
+        "symbol": "ZBRA",
+        "action": "buy",
+        "current_weight": 0.0,
+        "target_weight": 0.013461,
+        "trade_pct": 0.013461
+      }
+    ],
+    "total_turnover": 0.349995,
+    "post_trade_compliant": false
+  },
+  "verification": {
+    "method": "constraint_satisfaction_plus_cost",
+    "metrics": [
+      "post_trade_compliant",
+      "turnover_vs_optimal"
+    ],
+    "tolerance": {
+      "turnover_excess_pct": 50
+    }
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "difficulty": "hard",
+    "portfolio_type": "concentrated",
+    "num_violations": 3,
+    "requires_tool_use": true
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "mandate_id": "mandate_tactical",
+  "name": "Tactical Equity",
+  "difficulty": "easy",
+  "benchmark": "SPY",
+  "constraints": [
+    {
+      "type": "position_limit_max",
+      "value": 0.1,
+      "description": "No single name > 10%"
+    },
+    {
+      "type": "long_only",
+      "value": true,
+      "description": "No short positions"
+    },
+    {
+      "type": "cash_max",
+      "value": 0.1,
+      "description": "Cash < 10%"
+    }
+  ]
+}

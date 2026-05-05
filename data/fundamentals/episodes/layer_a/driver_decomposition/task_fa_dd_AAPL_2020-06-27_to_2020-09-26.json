@@ -1,0 +1,145 @@
+{
+  "task_id": "fa_dd_AAPL_2020-06-27_to_2020-09-26",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2020-10-30",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "AAPL",
+    "current_period_end": "2020-09-26",
+    "prior_period_end": "2020-06-27",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 5013000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Americas Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 3680000000,
+        "contribution_pct": 73.41
+      },
+      {
+        "driver": "Europe Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 2727000000,
+        "contribution_pct": 54.4
+      },
+      {
+        "driver": "Mac",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1953000000,
+        "contribution_pct": 38.96
+      },
+      {
+        "driver": "Wearables, Home and Accessories",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1426000000,
+        "contribution_pct": 28.45
+      },
+      {
+        "driver": "Service",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1393000000,
+        "contribution_pct": 27.79
+      },
+      {
+        "driver": "Greater China Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1383000000,
+        "contribution_pct": -27.59
+      },
+      {
+        "driver": "iPad",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 215000000,
+        "contribution_pct": 4.29
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 21.93,
+        "current_pct": 22.84,
+        "delta_pp": 0.9
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 8.09,
+        "current_pct": 7.63,
+        "delta_pp": -0.46
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.61,
+        "current_pct": 4.18,
+        "delta_pp": -0.43
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.16,
+        "current_pct": 3.44,
+        "delta_pp": 0.29
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 7.97,
+        "current_pct": 7.69,
+        "delta_pp": -0.28
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 38.0,
+        "current_pct": 38.16,
+        "delta_pp": 0.16
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze AAPL's financial performance change between the quarter ending 2020-06-27 and the quarter ending 2020-09-26. Revenue increased by $5,013,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2020-10-30.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

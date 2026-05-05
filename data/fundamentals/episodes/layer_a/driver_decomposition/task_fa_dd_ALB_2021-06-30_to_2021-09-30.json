@@ -1,0 +1,140 @@
+{
+  "task_id": "fa_dd_ALB_2021-06-30_to_2021-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2021-11-04",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "ALB",
+    "current_period_end": "2021-09-30",
+    "prior_period_end": "2021-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 56670000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Catalysts",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 45210000,
+        "contribution_pct": 79.78
+      },
+      {
+        "driver": "Lithium",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 38895000,
+        "contribution_pct": 68.63
+      },
+      {
+        "driver": "Other Segments",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -25470000,
+        "contribution_pct": -44.94
+      },
+      {
+        "driver": "Bromine Specialties",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1965000,
+        "contribution_pct": -3.47
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 13.82,
+        "current_pct": -13.81,
+        "delta_pp": -27.63
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 14.84,
+        "current_pct": 12.18,
+        "delta_pp": -2.66
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 32.1,
+        "current_pct": 30.0,
+        "delta_pp": -2.1
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 67.9,
+        "current_pct": 70.0,
+        "delta_pp": 2.1
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 15.46,
+        "current_pct": 16.22,
+        "delta_pp": 0.76
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 7.94,
+        "current_pct": 7.49,
+        "delta_pp": -0.45
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 0.92,
+        "current_pct": 0.62,
+        "delta_pp": -0.31
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 1.81,
+        "current_pct": 1.6,
+        "delta_pp": -0.21
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 4,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze ALB's financial performance change between the quarter ending 2021-06-30 and the quarter ending 2021-09-30. Revenue increased by $56,670,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2021-11-04.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

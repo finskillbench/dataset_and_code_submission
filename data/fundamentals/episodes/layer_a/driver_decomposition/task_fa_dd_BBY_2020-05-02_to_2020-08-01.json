@@ -1,0 +1,129 @@
+{
+  "task_id": "fa_dd_BBY_2020-05-02_to_2020-08-01",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2020-08-31",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "BBY",
+    "current_period_end": "2020-08-01",
+    "prior_period_end": "2020-05-02",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 1348000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Domestic Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 1213000000,
+        "contribution_pct": 89.99
+      },
+      {
+        "driver": "Computing And Mobile Phones",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 574000000,
+        "contribution_pct": 42.58
+      },
+      {
+        "driver": "Consumer Electronics",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 450000000,
+        "contribution_pct": 33.38
+      },
+      {
+        "driver": "Appliances",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 388000000,
+        "contribution_pct": 28.78
+      },
+      {
+        "driver": "International Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 135000000,
+        "contribution_pct": 10.01
+      },
+      {
+        "driver": "Entertainment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -107000000,
+        "contribution_pct": -7.94
+      },
+      {
+        "driver": "Services",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 44000000,
+        "contribution_pct": 3.26
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 20.26,
+        "current_pct": 17.17,
+        "delta_pp": -3.09
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 2.67,
+        "current_pct": 5.73,
+        "delta_pp": 3.06
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 0.69,
+        "current_pct": 1.3,
+        "delta_pp": 0.61
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 2.42,
+        "current_pct": 2.09,
+        "delta_pp": -0.33
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 6,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 4,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze BBY's financial performance change between the quarter ending 2020-05-02 and the quarter ending 2020-08-01. Revenue increased by $1,348,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2020-08-31.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "task_id": "pc_bl_2025-06-30_v0",
+  "skill": "portfolio_construction",
+  "sub_task": "black_litterman",
+  "as_of_date": "2025-06-30",
+  "difficulty": "medium",
+  "input": {
+    "market_cap_weights": {},
+    "covariance_matrix": {
+      "ref": "data/portfolio_construction/processed/covariance/2025-06-30.npz"
+    },
+    "risk_free_rate": 0.045,
+    "analyst_views": [
+      {
+        "view": {
+          "type": "relative",
+          "symbols": [
+            "LNT",
+            "BAX"
+          ],
+          "return": -0.043430723305053806,
+          "confidence": 0.5893573083254209
+        },
+        "prior_return": -0.04790725215660822,
+        "posterior_return": -0.0412325814140364
+      },
+      {
+        "view": {
+          "type": "relative",
+          "symbols": [
+            "SBUX",
+            "ZBRA"
+          ],
+          "return": 0.04966991161389384,
+          "confidence": 0.6278943963784978
+        },
+        "prior_return": -0.03864539970942438,
+        "posterior_return": 0.025316578100004414
+      }
+    ],
+    "tools_available": [
+      "black_litterman",
+      "optimize_portfolio"
+    ],
+    "instruction": "Translate the analyst views into Black-Litterman inputs, compute posterior returns, and construct an optimal portfolio."
+  },
+  "expected_output": {
+    "posterior_returns": {
+      "AIG": 0.06623586970494301,
+      "ARE": 0.08327588733099156,
+      "BAX": 0.07953027780866245,
+      "BF-B": 0.06429907061288997,
+      "BR": 0.059748256716425016,
+      "C": 0.09984220835160272,
+      "CARR": 0.09313451904752225,
+      "CMG": 0.06707700668389377,
+      "CPAY": 0.11567601297038714,
+      "CPRT": 0.059397517157952405,
+      "CTRA": 0.06483022829607826,
+      "DD": 0.10575093476619316,
+      "DHR": 0.07533786007824787,
+      "EFX": 0.09340706106500368,
+      "EQT": 0.06833399043636494,
+      "HUM": 0.04981907427941098,
+      "KHC": 0.043094962189860885,
+      "L": 0.0632442590214119,
+      "LHX": 0.04044048560670342,
+      "LNT": 0.03829769639462605,
+      "LYV": 0.07958029760929107,
+      "ON": 0.1571851267274421,
+      "REG": 0.05326162104562,
+      "SBUX": 0.1290679806235356,
+      "SRE": 0.06258482085193393,
+      "TT": 0.0715641036719481,
+      "TTWO": 0.05423099462151557,
+      "USB": 0.09255339534733752,
+      "VMC": 0.06202735995678301,
+      "ZBRA": 0.1037514025235312
+    },
+    "optimal_weights": {
+      "AIG": 0.02986715815525345,
+      "ARE": 0.02986715815525327,
+      "BAX": 0.04639775835727575,
+      "BF-B": 0.02986715815525337,
+      "BR": 0.029867158155253346,
+      "C": 0.02986715815525326,
+      "CARR": 0.02986715815525314,
+      "CMG": 0.0298671581552534,
+      "CPAY": 0.029867158155253388,
+      "CPRT": 0.029867158155253433,
+      "CTRA": 0.02986715815525324,
+      "DD": 0.029867158155253325,
+      "DHR": 0.029867158155253145,
+      "EFX": 0.029867158155253246,
+      "EQT": 0.029867158155253364,
+      "HUM": 0.0298671581552533,
+      "KHC": 0.02986715815525337,
+      "L": 0.029867158155253065,
+      "LHX": 0.029867158155253364,
+      "LNT": 0.013336557953230434,
+      "LYV": 0.02986715815525352,
+      "ON": 0.029867158155253228,
+      "REG": 0.02986715815525341,
+      "SBUX": 0.16371957165290685,
+      "SRE": 0.02986715815525327,
+      "TT": 0.0298671581552536,
+      "TTWO": 0.029867158155253377,
+      "USB": 0.02986715815525356,
+      "VMC": 0.029867158155253426,
+      "ZBRA": 0.0
+    }
+  },
+  "verification": {
+    "method": "view_specification_and_weights",
+    "view_direction_must_match": true,
+    "view_magnitude_tolerance_pct": 20.0,
+    "weight_l2_threshold": 0.1,
+    "ground_truth_source": "bl_optimizer"
+  },
+  "metadata": {
+    "regime_slice": "unknown",
+    "n_assets": 30
+  },
+  "prompt": {
+    "task_description": "Apply the Black-Litterman model to a 0-asset universe. Combine the market-implied equilibrium returns (derived from market-cap weights and the covariance matrix) with the provided analyst views. Compute the posterior expected returns and construct the optimal portfolio under the posterior. Use data as of 2025-06-30.",
+    "output_instructions": "Respond with a JSON object containing: posterior_returns (object mapping ticker \u2192 posterior expected return) and optimal_weights (object mapping ticker \u2192 portfolio weight)."
+  }
+}

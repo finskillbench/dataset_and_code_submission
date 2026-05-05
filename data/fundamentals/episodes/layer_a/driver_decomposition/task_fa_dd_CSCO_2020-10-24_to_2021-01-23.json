@@ -1,0 +1,137 @@
+{
+  "task_id": "fa_dd_CSCO_2020-10-24_to_2021-01-23",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2021-02-16",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "CSCO",
+    "current_period_end": "2021-01-23",
+    "prior_period_end": "2020-10-24",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 31000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Europe Middle East And Africa",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 243000000,
+        "contribution_pct": 783.87
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -229000000,
+        "contribution_pct": -738.71
+      },
+      {
+        "driver": "Infrastructure Platforms",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 50000000,
+        "contribution_pct": 161.29
+      },
+      {
+        "driver": "Service",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 46000000,
+        "contribution_pct": 148.39
+      },
+      {
+        "driver": "Security",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -38000000,
+        "contribution_pct": -122.58
+      },
+      {
+        "driver": "Applications",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -26000000,
+        "contribution_pct": -83.87
+      },
+      {
+        "driver": "Asia Pacific Japan And China",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 17000000,
+        "contribution_pct": 54.84
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 21.54,
+        "current_pct": 26.95,
+        "delta_pp": 5.4
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.25,
+        "current_pct": 5.94,
+        "delta_pp": 1.69
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 63.55,
+        "current_pct": 65.08,
+        "delta_pp": 1.53
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 36.45,
+        "current_pct": 34.92,
+        "delta_pp": -1.53
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 13.51,
+        "current_pct": 12.77,
+        "delta_pp": -0.75
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze CSCO's financial performance change between the quarter ending 2020-10-24 and the quarter ending 2021-01-23. Revenue increased by $31,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2021-02-16.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "task_id": "fa_dd_ALB_2017-12-31_to_2018-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2018-05-10",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "ALB",
+    "current_period_end": "2018-03-31",
+    "prior_period_end": "2017-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -36160000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Lithium and Advanced Materials",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -362362000,
+        "contribution_pct": 1002.11
+      },
+      {
+        "driver": "Lithium",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 298032000,
+        "contribution_pct": -824.2
+      },
+      {
+        "driver": "Catalysts",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 260717000,
+        "contribution_pct": -721.01
+      },
+      {
+        "driver": "Refining Solutions",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -238400000,
+        "contribution_pct": 659.29
+      },
+      {
+        "driver": "Bromine Specialties",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 6555000,
+        "contribution_pct": -18.13
+      },
+      {
+        "driver": "Other Segments",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -605000,
+        "contribution_pct": 1.67
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 44.09,
+        "current_pct": 2.48,
+        "delta_pp": -41.61
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 35.95,
+        "current_pct": 37.24,
+        "delta_pp": 1.29
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 64.05,
+        "current_pct": 62.76,
+        "delta_pp": -1.29
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 21.37,
+        "current_pct": 22.49,
+        "delta_pp": 1.13
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 1.92,
+        "current_pct": 1.65,
+        "delta_pp": -0.27
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 6,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze ALB's financial performance change between the quarter ending 2017-12-31 and the quarter ending 2018-03-31. Revenue decreased by $36,160,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2018-05-10.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

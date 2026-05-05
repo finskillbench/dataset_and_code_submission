@@ -1,0 +1,132 @@
+{
+  "task_id": "fa_dd_URI_2019-12-31_to_2020-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2020-04-29",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "URI",
+    "current_period_end": "2020-03-31",
+    "prior_period_end": "2019-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -331000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Ancillary and Other Rental Revenue",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -27000000,
+        "contribution_pct": 8.16
+      },
+      {
+        "driver": "New Equipment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -17000000,
+        "contribution_pct": 5.14
+      },
+      {
+        "driver": "Service and Other Revenues",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 2000000,
+        "contribution_pct": -0.6
+      },
+      {
+        "driver": "Contractor Supplies",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1000000,
+        "contribution_pct": 0.3
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 24.47,
+        "current_pct": 16.94,
+        "delta_pp": -7.53
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 35.38,
+        "current_pct": 29.51,
+        "delta_pp": -5.88
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 64.62,
+        "current_pct": 70.49,
+        "delta_pp": 5.88
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 21.01,
+        "current_pct": 24.75,
+        "delta_pp": 3.74
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 10.91,
+        "current_pct": 12.56,
+        "delta_pp": 1.65
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.87,
+        "current_pct": 2.49,
+        "delta_pp": -1.37
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.92,
+        "current_pct": 6.4,
+        "delta_pp": -0.52
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2020_covid",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 4,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze URI's financial performance change between the quarter ending 2019-12-31 and the quarter ending 2020-03-31. Revenue decreased by $331,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2020-04-29.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

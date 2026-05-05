@@ -1,0 +1,55 @@
+{
+  "mandate_id": "mandate_institutional",
+  "name": "Institutional Core Equity",
+  "difficulty": "hard",
+  "benchmark": "SPY",
+  "constraints": [
+    {
+      "type": "position_limit_max",
+      "value": 0.04,
+      "description": "No single name > 4%"
+    },
+    {
+      "type": "position_limit_min",
+      "value": 0.001,
+      "description": "Min position 10bp"
+    },
+    {
+      "type": "sector_limit_max",
+      "value": 0.22,
+      "description": "No sector > 22%"
+    },
+    {
+      "type": "tracking_error_max",
+      "value": 0.025,
+      "description": "TE < 2.5%"
+    },
+    {
+      "type": "beta_range",
+      "min": 0.9,
+      "max": 1.1,
+      "description": "Beta 0.9-1.1"
+    },
+    {
+      "type": "turnover_max_monthly",
+      "value": 0.1,
+      "description": "Monthly turnover < 10%"
+    },
+    {
+      "type": "cash_max",
+      "value": 0.02,
+      "description": "Cash < 2%"
+    },
+    {
+      "type": "long_only",
+      "value": true,
+      "description": "No short positions"
+    },
+    {
+      "type": "factor_exposure_max",
+      "factor": "mkt_rf",
+      "value": 1.1,
+      "description": "Market beta < 1.1"
+    }
+  ]
+}

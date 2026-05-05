@@ -1,0 +1,132 @@
+{
+  "task_id": "fa_dd_ALB_2021-03-31_to_2021-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2021-08-04",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "ALB",
+    "current_period_end": "2021-06-30",
+    "prior_period_end": "2021-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -55395000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Catalysts",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -71899000,
+        "contribution_pct": 129.79
+      },
+      {
+        "driver": "Lithium",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 41358000,
+        "contribution_pct": -74.66
+      },
+      {
+        "driver": "Other Segments",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -24155000,
+        "contribution_pct": 43.61
+      },
+      {
+        "driver": "Bromine Specialties",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -699000,
+        "contribution_pct": 1.26
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.67,
+        "current_pct": 13.82,
+        "delta_pp": 11.16
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 10.31,
+        "current_pct": 14.84,
+        "delta_pp": 4.53
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 5.29,
+        "current_pct": 0.92,
+        "delta_pp": -4.37
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 19.72,
+        "current_pct": 15.46,
+        "delta_pp": -4.26
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 7.51,
+        "current_pct": 7.94,
+        "delta_pp": 0.43
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 31.8,
+        "current_pct": 32.1,
+        "delta_pp": 0.3
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 68.2,
+        "current_pct": 67.9,
+        "delta_pp": -0.3
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 4,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze ALB's financial performance change between the quarter ending 2021-03-31 and the quarter ending 2021-06-30. Revenue decreased by $55,395,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2021-08-04.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

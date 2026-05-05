@@ -1,0 +1,103 @@
+{
+  "task_id": "fa_dd_FITB_2019-03-31_to_2019-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-08-08",
+  "difficulty": "easy",
+  "input": {
+    "symbol": "FITB",
+    "current_period_end": "2019-06-30",
+    "prior_period_end": "2019-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 297000000,
+    "top_revenue_drivers": [],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 51.55,
+        "current_pct": 25.89,
+        "delta_pp": -25.67
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 11.44,
+        "current_pct": 5.56,
+        "delta_pp": -5.88
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 36.18,
+        "current_pct": 33.65,
+        "delta_pp": -2.53
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 77.17,
+        "current_pct": 78.65,
+        "delta_pp": 1.47
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 22.83,
+        "current_pct": 21.35,
+        "delta_pp": -1.47
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 18.17,
+        "current_pct": 17.54,
+        "delta_pp": -0.63
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.61,
+        "current_pct": 4.89,
+        "delta_pp": 0.28
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": false,
+    "has_geographic_segments": false,
+    "n_product_drivers": 0,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze FITB's financial performance change between the quarter ending 2019-03-31 and the quarter ending 2019-06-30. Revenue increased by $297,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-08-08.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

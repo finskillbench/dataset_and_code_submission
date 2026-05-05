@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_LLY_2024-03-31_to_2024-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2024-08-08",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "LLY",
+    "current_period_end": "2024-06-30",
+    "prior_period_end": "2024-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 2534800000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Cardiometabolic Health",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 7514600000,
+        "contribution_pct": 296.46
+      },
+      {
+        "driver": "Diabetes",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -5493000000,
+        "contribution_pct": -216.7
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 2140800000,
+        "contribution_pct": 84.46
+      },
+      {
+        "driver": "Oncology",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 379300000,
+        "contribution_pct": 14.96
+      },
+      {
+        "driver": "Non-US",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 313200000,
+        "contribution_pct": 12.36
+      },
+      {
+        "driver": "Immunology",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 248400000,
+        "contribution_pct": 9.8
+      },
+      {
+        "driver": "JAPAN",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 98800000,
+        "contribution_pct": 3.9
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 31.2,
+        "current_pct": 39.09,
+        "delta_pp": 7.89
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 28.77,
+        "current_pct": 23.99,
+        "delta_pp": -4.79
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 20.94,
+        "current_pct": 17.72,
+        "delta_pp": -3.22
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.34,
+        "current_pct": 4.87,
+        "delta_pp": 1.52
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.57,
+        "current_pct": 3.67,
+        "delta_pp": -0.9
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 2.05,
+        "current_pct": 1.62,
+        "delta_pp": -0.42
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 80.91,
+        "current_pct": 80.8,
+        "delta_pp": -0.11
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 6,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze LLY's financial performance change between the quarter ending 2024-03-31 and the quarter ending 2024-06-30. Revenue increased by $2,534,800,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2024-08-08.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

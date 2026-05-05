@@ -1,0 +1,93 @@
+{
+  "portfolio_id": "portfolio_stress_vulnerable_2023_24_rebound_023",
+  "portfolio_type": "stress_vulnerable",
+  "as_of_date": "2024-01-01",
+  "holdings": [
+    {
+      "symbol": "AIG",
+      "weight": 0.075
+    },
+    {
+      "symbol": "ARE",
+      "weight": 0.075
+    },
+    {
+      "symbol": "C",
+      "weight": 0.075
+    },
+    {
+      "symbol": "CTRA",
+      "weight": 0.075
+    },
+    {
+      "symbol": "EQT",
+      "weight": 0.075
+    },
+    {
+      "symbol": "L",
+      "weight": 0.075
+    },
+    {
+      "symbol": "REG",
+      "weight": 0.075
+    },
+    {
+      "symbol": "USB",
+      "weight": 0.075
+    },
+    {
+      "symbol": "BAX",
+      "weight": 0.04
+    },
+    {
+      "symbol": "BF-B",
+      "weight": 0.04
+    },
+    {
+      "symbol": "BR",
+      "weight": 0.04
+    },
+    {
+      "symbol": "CARR",
+      "weight": 0.04
+    },
+    {
+      "symbol": "CMG",
+      "weight": 0.04
+    },
+    {
+      "symbol": "CPAY",
+      "weight": 0.04
+    },
+    {
+      "symbol": "CPRT",
+      "weight": 0.04
+    },
+    {
+      "symbol": "DD",
+      "weight": 0.04
+    },
+    {
+      "symbol": "DHR",
+      "weight": 0.04
+    },
+    {
+      "symbol": "EFX",
+      "weight": 0.04
+    }
+  ],
+  "planted_risks": [
+    "stress_vulnerability_covid_replay",
+    "sector_concentration"
+  ],
+  "metadata": {
+    "vulnerability_type": "covid_replay",
+    "vulnerable_sectors": [
+      "Consumer Discretionary",
+      "Energy",
+      "Financial Services",
+      "Real Estate"
+    ],
+    "num_holdings": 18
+  }
+}

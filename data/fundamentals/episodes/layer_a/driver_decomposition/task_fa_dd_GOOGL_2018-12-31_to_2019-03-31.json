@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_GOOGL_2018-12-31_to_2019-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-04-30",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "GOOGL",
+    "current_period_end": "2019-03-31",
+    "prior_period_end": "2018-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -2937000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Google Properties",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -27022000000,
+        "contribution_pct": 920.05
+      },
+      {
+        "driver": "Google Search & Other",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 22547000000,
+        "contribution_pct": -767.69
+      },
+      {
+        "driver": "Google Other Revenues",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -6487000000,
+        "contribution_pct": 220.87
+      },
+      {
+        "driver": "Google Network Members' Properties",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -5613000000,
+        "contribution_pct": 191.11
+      },
+      {
+        "driver": "Google Network",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 5015000000,
+        "contribution_pct": -170.75
+      },
+      {
+        "driver": "Google Subscriptions, Platforms, And Devices",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 3620000000,
+        "contribution_pct": -123.26
+      },
+      {
+        "driver": "YouTube Ads",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 3025000000,
+        "contribution_pct": -103.0
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 20.89,
+        "current_pct": 18.18,
+        "delta_pp": -2.7
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 18.13,
+        "current_pct": 16.49,
+        "delta_pp": -1.64
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 54.38,
+        "current_pct": 55.94,
+        "delta_pp": 1.56
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 45.62,
+        "current_pct": 44.06,
+        "delta_pp": -1.56
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.86,
+        "current_pct": 4.1,
+        "delta_pp": 1.24
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 15.36,
+        "current_pct": 16.59,
+        "delta_pp": 1.23
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 6.57,
+        "current_pct": 7.19,
+        "delta_pp": 0.62
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 9,
+    "n_geographic_drivers": 4,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze GOOGL's financial performance change between the quarter ending 2018-12-31 and the quarter ending 2019-03-31. Revenue decreased by $2,937,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-04-30.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

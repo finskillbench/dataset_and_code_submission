@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_TSLA_2018-06-30_to_2018-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2018-11-02",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "TSLA",
+    "current_period_end": "2018-09-30",
+    "prior_period_end": "2018-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 2821769000,
+    "top_revenue_drivers": [
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 2886311000,
+        "contribution_pct": 102.29
+      },
+      {
+        "driver": "Automotive",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 2711085000,
+        "contribution_pct": 96.08
+      },
+      {
+        "driver": "NETHERLANDS",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 273750000,
+        "contribution_pct": 9.7
+      },
+      {
+        "driver": "Other Countries",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -220009000,
+        "contribution_pct": -7.8
+      },
+      {
+        "driver": "CHINA",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -117930000,
+        "contribution_pct": -4.18
+      },
+      {
+        "driver": "Services And Other",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 56188000,
+        "contribution_pct": 1.99
+      },
+      {
+        "driver": "Energy Generation And Storage Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 24909000,
+        "contribution_pct": 0.88
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": -15.53,
+        "current_pct": 6.1,
+        "delta_pp": 21.62
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 18.76,
+        "current_pct": 10.7,
+        "delta_pp": -8.06
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 15.46,
+        "current_pct": 22.33,
+        "delta_pp": 6.87
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 84.54,
+        "current_pct": 77.67,
+        "delta_pp": -6.87
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 12.12,
+        "current_pct": 7.36,
+        "delta_pp": -4.76
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 9.65,
+        "current_pct": 5.14,
+        "delta_pp": -4.5
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.09,
+        "current_pct": 2.56,
+        "delta_pp": -1.52
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze TSLA's financial performance change between the quarter ending 2018-06-30 and the quarter ending 2018-09-30. Revenue increased by $2,821,769,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2018-11-02.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

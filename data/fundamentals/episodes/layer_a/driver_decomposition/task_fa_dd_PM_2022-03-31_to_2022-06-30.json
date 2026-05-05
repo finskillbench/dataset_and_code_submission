@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_PM_2022-03-31_to_2022-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2022-07-29",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "PM",
+    "current_period_end": "2022-06-30",
+    "prior_period_end": "2022-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 86000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "European Union",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 303000000,
+        "contribution_pct": 352.33
+      },
+      {
+        "driver": "East Asia And Australia",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -198000000,
+        "contribution_pct": -230.23
+      },
+      {
+        "driver": "Combustible Products",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 159000000,
+        "contribution_pct": 184.88
+      },
+      {
+        "driver": "South And Southeast Asia",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -89000000,
+        "contribution_pct": -103.49
+      },
+      {
+        "driver": "Reduced-Risk Products",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -83000000,
+        "contribution_pct": -96.51
+      },
+      {
+        "driver": "Americas Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 45000000,
+        "contribution_pct": 52.33
+      },
+      {
+        "driver": "Eastern Europe Middle East And Africa",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 15000000,
+        "contribution_pct": 17.44
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 42.58,
+        "current_pct": 39.02,
+        "delta_pp": -3.56
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 23.81,
+        "current_pct": 27.23,
+        "delta_pp": 3.43
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 66.67,
+        "current_pct": 66.19,
+        "delta_pp": -0.48
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 33.33,
+        "current_pct": 33.81,
+        "delta_pp": 0.48
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 7.99,
+        "current_pct": 7.58,
+        "delta_pp": -0.41
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.27,
+        "current_pct": 3.66,
+        "delta_pp": 0.4
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 1.99,
+        "current_pct": 1.61,
+        "delta_pp": -0.38
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2022_tightening",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze PM's financial performance change between the quarter ending 2022-03-31 and the quarter ending 2022-06-30. Revenue increased by $86,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2022-07-29.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

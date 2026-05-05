@@ -1,0 +1,130 @@
+{
+  "task_id": "fa_dd_PH_2019-03-31_to_2019-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-08-23",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "PH",
+    "current_period_end": "2019-06-30",
+    "prior_period_end": "2019-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -6051000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Europe",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -44135000,
+        "contribution_pct": 729.38
+      },
+      {
+        "driver": "Diversified Industrial Segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -31841000,
+        "contribution_pct": 526.21
+      },
+      {
+        "driver": "Aerospace Systems Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 25790000,
+        "contribution_pct": -426.21
+      },
+      {
+        "driver": "North America",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 25348000,
+        "contribution_pct": -418.91
+      },
+      {
+        "driver": "Asia Pacific",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 11973000,
+        "contribution_pct": -197.87
+      },
+      {
+        "driver": "Latin America",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 763000,
+        "contribution_pct": -12.61
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 25.05,
+        "current_pct": 26.15,
+        "delta_pp": 1.11
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 74.95,
+        "current_pct": 73.85,
+        "delta_pp": -1.11
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 9.74,
+        "current_pct": 10.54,
+        "delta_pp": 0.8
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.2,
+        "current_pct": 2.71,
+        "delta_pp": -0.49
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 15.31,
+        "current_pct": 15.61,
+        "delta_pp": 0.31
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 4,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze PH's financial performance change between the quarter ending 2019-03-31 and the quarter ending 2019-06-30. Revenue decreased by $6,051,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-08-23.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "task_id": "fa_dd_TSLA_2020-06-30_to_2020-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2020-10-26",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "TSLA",
+    "current_period_end": "2020-09-30",
+    "prior_period_end": "2020-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 2735000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Automotive",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 2432000000,
+        "contribution_pct": 88.92
+      },
+      {
+        "driver": "Other Countries",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 1266000000,
+        "contribution_pct": 46.29
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 1125000000,
+        "contribution_pct": 41.13
+      },
+      {
+        "driver": "CHINA",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 344000000,
+        "contribution_pct": 12.58
+      },
+      {
+        "driver": "Energy Generation And Storage Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 209000000,
+        "contribution_pct": 7.64
+      },
+      {
+        "driver": "Services And Other",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 94000000,
+        "contribution_pct": 3.44
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 5.42,
+        "current_pct": 9.22,
+        "delta_pp": 3.81
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 9.39,
+        "current_pct": 6.66,
+        "delta_pp": -2.74
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 20.99,
+        "current_pct": 23.52,
+        "delta_pp": 2.53
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 79.01,
+        "current_pct": 76.48,
+        "delta_pp": -2.53
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 0.35,
+        "current_pct": 2.12,
+        "delta_pp": 1.77
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 2.82,
+        "current_pct": 1.86,
+        "delta_pp": -0.96
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 10.95,
+        "current_pct": 10.12,
+        "delta_pp": -0.83
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.62,
+        "current_pct": 4.17,
+        "delta_pp": -0.45
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze TSLA's financial performance change between the quarter ending 2020-06-30 and the quarter ending 2020-09-30. Revenue increased by $2,735,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2020-10-26.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

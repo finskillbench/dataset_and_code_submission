@@ -1,0 +1,133 @@
+{
+  "task_id": "fa_dd_TSLA_2016-12-31_to_2017-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2017-05-10",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "TSLA",
+    "current_period_end": "2017-03-31",
+    "prior_period_end": "2016-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 411639000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Energy Generation And Storage Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 213944000,
+        "contribution_pct": 51.97
+      },
+      {
+        "driver": "Services And Other",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 192726000,
+        "contribution_pct": 46.82
+      },
+      {
+        "driver": "Automotive",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -172495000,
+        "contribution_pct": -41.9
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 19.05,
+        "current_pct": 24.77,
+        "delta_pp": 5.72
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 80.95,
+        "current_pct": 75.23,
+        "delta_pp": -5.72
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 19.96,
+        "current_pct": 22.38,
+        "delta_pp": 2.42
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": -11.67,
+        "current_pct": -9.55,
+        "delta_pp": 2.12
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 10.77,
+        "current_pct": 11.94,
+        "delta_pp": 1.18
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.85,
+        "current_pct": 3.68,
+        "delta_pp": 0.83
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 0.48,
+        "current_pct": 0.94,
+        "delta_pp": 0.45
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 14.31,
+        "current_pct": 13.97,
+        "delta_pp": -0.34
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze TSLA's financial performance change between the quarter ending 2016-12-31 and the quarter ending 2017-03-31. Revenue increased by $411,639,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2017-05-10.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "portfolio_id": "portfolio_liquidity_stressed_2023_24_rebound_013",
+  "portfolio_type": "liquidity_stressed",
+  "as_of_date": "2024-01-01",
+  "holdings": [
+    {
+      "symbol": "AIG",
+      "weight": 0.152612
+    },
+    {
+      "symbol": "ARE",
+      "weight": 0.138093
+    },
+    {
+      "symbol": "LHX",
+      "weight": 0.197527
+    },
+    {
+      "symbol": "DD",
+      "weight": 0.037338
+    },
+    {
+      "symbol": "USB",
+      "weight": 0.01834
+    },
+    {
+      "symbol": "DHR",
+      "weight": 0.0263
+    },
+    {
+      "symbol": "BAX",
+      "weight": 0.068571
+    },
+    {
+      "symbol": "EFX",
+      "weight": 0.06325
+    },
+    {
+      "symbol": "EQT",
+      "weight": 0.016779
+    },
+    {
+      "symbol": "BR",
+      "weight": 0.032861
+    },
+    {
+      "symbol": "ON",
+      "weight": 0.04629
+    },
+    {
+      "symbol": "TTWO",
+      "weight": 0.054107
+    },
+    {
+      "symbol": "VMC",
+      "weight": 0.05347
+    },
+    {
+      "symbol": "REG",
+      "weight": 0.024395
+    },
+    {
+      "symbol": "CPAY",
+      "weight": 0.070067
+    }
+  ],
+  "planted_risks": [
+    "liquidity_risk",
+    "large_position_risk",
+    "potential_days_to_liquidate_excess"
+  ],
+  "metadata": {
+    "max_position": 0.1975,
+    "num_holdings": 15
+  }
+}

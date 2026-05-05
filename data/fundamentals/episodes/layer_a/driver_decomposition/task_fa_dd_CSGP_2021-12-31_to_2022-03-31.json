@@ -1,0 +1,145 @@
+{
+  "task_id": "fa_dd_CSGP_2021-12-31_to_2022-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2022-04-28",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "CSGP",
+    "current_period_end": "2022-03-31",
+    "prior_period_end": "2021-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 9039000,
+    "top_revenue_drivers": [
+      {
+        "driver": "CoStar Suite",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -340907000,
+        "contribution_pct": -3771.51
+      },
+      {
+        "driver": "Multifamily Online Marketplace",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -332078000,
+        "contribution_pct": -3673.84
+      },
+      {
+        "driver": "LoopNet",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -100537000,
+        "contribution_pct": -1112.26
+      },
+      {
+        "driver": "Information services",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -68514000,
+        "contribution_pct": -757.98
+      },
+      {
+        "driver": "Residential",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -31776000,
+        "contribution_pct": -351.54
+      },
+      {
+        "driver": "North America",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 8431000,
+        "contribution_pct": 93.27
+      },
+      {
+        "driver": "Non-US",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 608000,
+        "contribution_pct": 6.73
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 27.7,
+        "current_pct": 24.87,
+        "delta_pp": -2.83
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 41.16,
+        "current_pct": 43.03,
+        "delta_pp": 1.86
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 7.99,
+        "current_pct": 6.22,
+        "delta_pp": -1.76
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 82.97,
+        "current_pct": 81.49,
+        "delta_pp": -1.48
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 17.03,
+        "current_pct": 18.51,
+        "delta_pp": 1.48
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 7.33,
+        "current_pct": 6.24,
+        "delta_pp": -1.09
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2022_tightening",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze CSGP's financial performance change between the quarter ending 2021-12-31 and the quarter ending 2022-03-31. Revenue increased by $9,039,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2022-04-28.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

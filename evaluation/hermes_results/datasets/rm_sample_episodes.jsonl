@@ -1,0 +1,3572 @@
+{
+  "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_000",
+  "sub_task": "risk_identification",
+  "as_of_date": "2024-01-01",
+  "episode": {
+    "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_000",
+    "skill": "risk_management",
+    "sub_task": "risk_identification",
+    "as_of_date": "2024-01-01",
+    "input": {
+      "portfolio": {
+        "portfolio_id": "portfolio_concentrated_2023_24_rebound_000",
+        "holdings": [
+          {
+            "symbol": "AIG",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "C",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "L",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "USB",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "ARE",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BAX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BF-B",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CARR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CMG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPAY",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPRT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CTRA",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DD",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DHR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EFX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EQT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "HUM",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "KHC",
+            "weight": 0.026667
+          }
+        ],
+        "total_nav": 10000000
+      },
+      "market_data": {
+        "factor_exposures": "data/risk_management/processed/factor_exposures.parquet",
+        "returns": "data/risk_management/processed/returns/daily_returns.parquet"
+      }
+    },
+    "expected_output": {
+      "top_risk_exposures": [
+        {
+          "rank": 1,
+          "type": "factor_tilt",
+          "detail": "mkt_rf beta +0.997",
+          "magnitude": 0.9971
+        },
+        {
+          "rank": 2,
+          "type": "factor_tilt",
+          "detail": "hml beta +0.799",
+          "magnitude": 0.7992
+        },
+        {
+          "rank": 3,
+          "type": "sector_concentration",
+          "detail": "Financial Services sector 60.0%",
+          "magnitude": 0.6
+        },
+        {
+          "rank": 4,
+          "type": "single_name",
+          "detail": "AIG at 15.0%",
+          "magnitude": 0.15
+        },
+        {
+          "rank": 5,
+          "type": "concentration",
+          "detail": "HHI=0.1007, top-5=62.7%",
+          "magnitude": 0.1007
+        }
+      ]
+    },
+    "verification": {
+      "method": "ranked_list_recall",
+      "top_k": 5,
+      "partial_credit": true,
+      "metrics": [
+        "recall_at_5",
+        "precision_at_5",
+        "ndcg_at_5"
+      ]
+    },
+    "metadata": {
+      "regime_slice": "2023_24_rebound",
+      "difficulty": "easy",
+      "portfolio_type": "concentrated",
+      "planted_risks": [
+        "sector_concentration",
+        "single_name_risk",
+        "low_diversification"
+      ]
+    },
+    "_source_file": "/home/jerm-xps/github_dev/finskillbench/data/risk_management/episodes/layer_a/risk_identification/task_rm_ri_portfolio_concentrated_2023_24_rebound_000.json"
+  },
+  "context_summary": {
+    "n_symbols": 19,
+    "symbols": [
+      "AIG",
+      "C",
+      "L",
+      "USB",
+      "ARE",
+      "BAX",
+      "BF-B",
+      "BR",
+      "CARR",
+      "CMG",
+      "CPAY",
+      "CPRT",
+      "CTRA",
+      "DD",
+      "DHR",
+      "EFX",
+      "EQT",
+      "HUM",
+      "KHC"
+    ],
+    "weights": {
+      "AIG": 0.149999,
+      "C": 0.149999,
+      "L": 0.149999,
+      "USB": 0.149999,
+      "ARE": 0.026667,
+      "BAX": 0.026667,
+      "BF-B": 0.026667,
+      "BR": 0.026667,
+      "CARR": 0.026667,
+      "CMG": 0.026667,
+      "CPAY": 0.026667,
+      "CPRT": 0.026667,
+      "CTRA": 0.026667,
+      "DD": 0.026667,
+      "DHR": 0.026667,
+      "EFX": 0.026667,
+      "EQT": 0.026667,
+      "HUM": 0.026667,
+      "KHC": 0.026667
+    },
+    "returns_shape": [
+      250,
+      19
+    ],
+    "returns_date_range": [
+      "2023-01-03",
+      "2023-12-29"
+    ],
+    "factor_betas_count": 19,
+    "factor_names": [
+      "cma",
+      "hml",
+      "mkt_rf",
+      "mom",
+      "rmw",
+      "smb"
+    ],
+    "has_mandate": false,
+    "has_scenario": false,
+    "transaction_cost_bps": null,
+    "mandate": null,
+    "scenario": null
+  },
+  "prompt": "## Task: risk_identification\ntask_id: rm_ri_portfolio_concentrated_2023_24_rebound_000\nas_of_date: 2024-01-01\ndifficulty: easy\n\n## Portfolio\nNAV: $10,000,000\nSymbols (19): AIG, C, L, USB, ARE, BAX, BF-B, BR, CARR, CMG, CPAY, CPRT, CTRA, DD, DHR, EFX, EQT, HUM, KHC\nWeights: AIG: 15.00%, C: 15.00%, L: 15.00%, USB: 15.00%, ARE: 2.67%, BAX: 2.67%, BF-B: 2.67%, BR: 2.67%, CARR: 2.67%, CMG: 2.67%, CPAY: 2.67%, CPRT: 2.67%, CTRA: 2.67%, DD: 2.67%, DHR: 2.67%, EFX: 2.67%, EQT: 2.67%, HUM: 2.67%, KHC: 2.67%\n\n## Available Reference Data (auto-injected into tool calls)\nreturns:      250 trading days ending \u2264 2024-01-01, 19 symbols\nfactor_betas: Fama-French 5+mom factor exposures for 19 symbols\nsector_map:   GICS sectors for 19 symbols\nYou do NOT need to pass returns / factor_betas / sector_map / mandate / scenario into tools \u2014 handlers read them from the task context. Pass only the portfolio weights (and any what-if parameters).\n\n## Expected Output Schema\nYour final answer must be a JSON object matching this shape:\n{\n  \"top_risk_exposures\": [\n    {\n      \"rank\": \"<number>\",\n      \"type\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"magnitude\": \"<number>\"\n    }\n  ]\n}\n\n## Instructions\n1. Analyze the task using the provided tools.\n2. Point-in-time discipline: do not use information after as_of_date.\n3. When ready, call submit_answer with a JSON STRING matching the schema. Submit exactly once."
+}
+{
+  "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_001",
+  "sub_task": "risk_identification",
+  "as_of_date": "2024-01-01",
+  "episode": {
+    "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_001",
+    "skill": "risk_management",
+    "sub_task": "risk_identification",
+    "as_of_date": "2024-01-01",
+    "input": {
+      "portfolio": {
+        "portfolio_id": "portfolio_concentrated_2023_24_rebound_001",
+        "holdings": [
+          {
+            "symbol": "BAX",
+            "weight": 0.199999
+          },
+          {
+            "symbol": "DHR",
+            "weight": 0.199999
+          },
+          {
+            "symbol": "HUM",
+            "weight": 0.199999
+          },
+          {
+            "symbol": "AIG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "ARE",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BF-B",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "C",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CARR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CMG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPAY",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPRT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CTRA",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DD",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EFX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EQT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "KHC",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "L",
+            "weight": 0.026667
+          }
+        ],
+        "total_nav": 10000000
+      },
+      "market_data": {
+        "factor_exposures": "data/risk_management/processed/factor_exposures.parquet",
+        "returns": "data/risk_management/processed/returns/daily_returns.parquet"
+      }
+    },
+    "expected_output": {
+      "top_risk_exposures": [
+        {
+          "rank": 1,
+          "type": "factor_tilt",
+          "detail": "mkt_rf beta +0.807",
+          "magnitude": 0.8066
+        },
+        {
+          "rank": 2,
+          "type": "sector_concentration",
+          "detail": "Healthcare sector 60.0%",
+          "magnitude": 0.6
+        },
+        {
+          "rank": 3,
+          "type": "factor_tilt",
+          "detail": "cma beta +0.575",
+          "magnitude": 0.5749
+        },
+        {
+          "rank": 4,
+          "type": "single_name",
+          "detail": "BAX at 20.0%",
+          "magnitude": 0.2
+        },
+        {
+          "rank": 5,
+          "type": "concentration",
+          "detail": "HHI=0.1307, top-5=65.3%",
+          "magnitude": 0.1307
+        }
+      ]
+    },
+    "verification": {
+      "method": "ranked_list_recall",
+      "top_k": 5,
+      "partial_credit": true,
+      "metrics": [
+        "recall_at_5",
+        "precision_at_5",
+        "ndcg_at_5"
+      ]
+    },
+    "metadata": {
+      "regime_slice": "2023_24_rebound",
+      "difficulty": "easy",
+      "portfolio_type": "concentrated",
+      "planted_risks": [
+        "sector_concentration",
+        "single_name_risk",
+        "low_diversification"
+      ]
+    },
+    "_source_file": "/home/jerm-xps/github_dev/finskillbench/data/risk_management/episodes/layer_a/risk_identification/task_rm_ri_portfolio_concentrated_2023_24_rebound_001.json"
+  },
+  "context_summary": {
+    "n_symbols": 18,
+    "symbols": [
+      "BAX",
+      "DHR",
+      "HUM",
+      "AIG",
+      "ARE",
+      "BF-B",
+      "BR",
+      "C",
+      "CARR",
+      "CMG",
+      "CPAY",
+      "CPRT",
+      "CTRA",
+      "DD",
+      "EFX",
+      "EQT",
+      "KHC",
+      "L"
+    ],
+    "weights": {
+      "BAX": 0.199999,
+      "DHR": 0.199999,
+      "HUM": 0.199999,
+      "AIG": 0.026667,
+      "ARE": 0.026667,
+      "BF-B": 0.026667,
+      "BR": 0.026667,
+      "C": 0.026667,
+      "CARR": 0.026667,
+      "CMG": 0.026667,
+      "CPAY": 0.026667,
+      "CPRT": 0.026667,
+      "CTRA": 0.026667,
+      "DD": 0.026667,
+      "EFX": 0.026667,
+      "EQT": 0.026667,
+      "KHC": 0.026667,
+      "L": 0.026667
+    },
+    "returns_shape": [
+      250,
+      18
+    ],
+    "returns_date_range": [
+      "2023-01-03",
+      "2023-12-29"
+    ],
+    "factor_betas_count": 18,
+    "factor_names": [
+      "cma",
+      "hml",
+      "mkt_rf",
+      "mom",
+      "rmw",
+      "smb"
+    ],
+    "has_mandate": false,
+    "has_scenario": false,
+    "transaction_cost_bps": null,
+    "mandate": null,
+    "scenario": null
+  },
+  "prompt": "## Task: risk_identification\ntask_id: rm_ri_portfolio_concentrated_2023_24_rebound_001\nas_of_date: 2024-01-01\ndifficulty: easy\n\n## Portfolio\nNAV: $10,000,000\nSymbols (18): BAX, DHR, HUM, AIG, ARE, BF-B, BR, C, CARR, CMG, CPAY, CPRT, CTRA, DD, EFX, EQT, KHC, L\nWeights: BAX: 20.00%, DHR: 20.00%, HUM: 20.00%, AIG: 2.67%, ARE: 2.67%, BF-B: 2.67%, BR: 2.67%, C: 2.67%, CARR: 2.67%, CMG: 2.67%, CPAY: 2.67%, CPRT: 2.67%, CTRA: 2.67%, DD: 2.67%, EFX: 2.67%, EQT: 2.67%, KHC: 2.67%, L: 2.67%\n\n## Available Reference Data (auto-injected into tool calls)\nreturns:      250 trading days ending \u2264 2024-01-01, 18 symbols\nfactor_betas: Fama-French 5+mom factor exposures for 18 symbols\nsector_map:   GICS sectors for 18 symbols\nYou do NOT need to pass returns / factor_betas / sector_map / mandate / scenario into tools \u2014 handlers read them from the task context. Pass only the portfolio weights (and any what-if parameters).\n\n## Expected Output Schema\nYour final answer must be a JSON object matching this shape:\n{\n  \"top_risk_exposures\": [\n    {\n      \"rank\": \"<number>\",\n      \"type\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"magnitude\": \"<number>\"\n    }\n  ]\n}\n\n## Instructions\n1. Analyze the task using the provided tools.\n2. Point-in-time discipline: do not use information after as_of_date.\n3. When ready, call submit_answer with a JSON STRING matching the schema. Submit exactly once."
+}
+{
+  "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_002",
+  "sub_task": "risk_identification",
+  "as_of_date": "2024-01-01",
+  "episode": {
+    "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_002",
+    "skill": "risk_management",
+    "sub_task": "risk_identification",
+    "as_of_date": "2024-01-01",
+    "input": {
+      "portfolio": {
+        "portfolio_id": "portfolio_concentrated_2023_24_rebound_002",
+        "holdings": [
+          {
+            "symbol": "BR",
+            "weight": 0.119999
+          },
+          {
+            "symbol": "CPAY",
+            "weight": 0.119999
+          },
+          {
+            "symbol": "ON",
+            "weight": 0.119999
+          },
+          {
+            "symbol": "TTWO",
+            "weight": 0.119999
+          },
+          {
+            "symbol": "ZBRA",
+            "weight": 0.119999
+          },
+          {
+            "symbol": "AIG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "ARE",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BAX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BF-B",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "C",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CARR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CMG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPRT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CTRA",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DD",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DHR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EFX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EQT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "HUM",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "KHC",
+            "weight": 0.026667
+          }
+        ],
+        "total_nav": 10000000
+      },
+      "market_data": {
+        "factor_exposures": "data/risk_management/processed/factor_exposures.parquet",
+        "returns": "data/risk_management/processed/returns/daily_returns.parquet"
+      }
+    },
+    "expected_output": {
+      "top_risk_exposures": [
+        {
+          "rank": 1,
+          "type": "factor_tilt",
+          "detail": "mkt_rf beta +1.088",
+          "magnitude": 1.0876
+        },
+        {
+          "rank": 2,
+          "type": "sector_concentration",
+          "detail": "Technology sector 60.0%",
+          "magnitude": 0.6
+        },
+        {
+          "rank": 3,
+          "type": "factor_tilt",
+          "detail": "smb beta +0.323",
+          "magnitude": 0.3232
+        },
+        {
+          "rank": 4,
+          "type": "single_name",
+          "detail": "BR at 12.0%",
+          "magnitude": 0.12
+        },
+        {
+          "rank": 5,
+          "type": "concentration",
+          "detail": "HHI=0.0827, top-5=60.0%",
+          "magnitude": 0.0827
+        }
+      ]
+    },
+    "verification": {
+      "method": "ranked_list_recall",
+      "top_k": 5,
+      "partial_credit": true,
+      "metrics": [
+        "recall_at_5",
+        "precision_at_5",
+        "ndcg_at_5"
+      ]
+    },
+    "metadata": {
+      "regime_slice": "2023_24_rebound",
+      "difficulty": "easy",
+      "portfolio_type": "concentrated",
+      "planted_risks": [
+        "sector_concentration",
+        "single_name_risk",
+        "low_diversification"
+      ]
+    },
+    "_source_file": "/home/jerm-xps/github_dev/finskillbench/data/risk_management/episodes/layer_a/risk_identification/task_rm_ri_portfolio_concentrated_2023_24_rebound_002.json"
+  },
+  "context_summary": {
+    "n_symbols": 20,
+    "symbols": [
+      "BR",
+      "CPAY",
+      "ON",
+      "TTWO",
+      "ZBRA",
+      "AIG",
+      "ARE",
+      "BAX",
+      "BF-B",
+      "C",
+      "CARR",
+      "CMG",
+      "CPRT",
+      "CTRA",
+      "DD",
+      "DHR",
+      "EFX",
+      "EQT",
+      "HUM",
+      "KHC"
+    ],
+    "weights": {
+      "BR": 0.119999,
+      "CPAY": 0.119999,
+      "ON": 0.119999,
+      "TTWO": 0.119999,
+      "ZBRA": 0.119999,
+      "AIG": 0.026667,
+      "ARE": 0.026667,
+      "BAX": 0.026667,
+      "BF-B": 0.026667,
+      "C": 0.026667,
+      "CARR": 0.026667,
+      "CMG": 0.026667,
+      "CPRT": 0.026667,
+      "CTRA": 0.026667,
+      "DD": 0.026667,
+      "DHR": 0.026667,
+      "EFX": 0.026667,
+      "EQT": 0.026667,
+      "HUM": 0.026667,
+      "KHC": 0.026667
+    },
+    "returns_shape": [
+      250,
+      20
+    ],
+    "returns_date_range": [
+      "2023-01-03",
+      "2023-12-29"
+    ],
+    "factor_betas_count": 20,
+    "factor_names": [
+      "cma",
+      "hml",
+      "mkt_rf",
+      "mom",
+      "rmw",
+      "smb"
+    ],
+    "has_mandate": false,
+    "has_scenario": false,
+    "transaction_cost_bps": null,
+    "mandate": null,
+    "scenario": null
+  },
+  "prompt": "## Task: risk_identification\ntask_id: rm_ri_portfolio_concentrated_2023_24_rebound_002\nas_of_date: 2024-01-01\ndifficulty: easy\n\n## Portfolio\nNAV: $10,000,000\nSymbols (20): BR, CPAY, ON, TTWO, ZBRA, AIG, ARE, BAX, BF-B, C, CARR, CMG, CPRT, CTRA, DD, DHR, EFX, EQT, HUM, KHC\nWeights: BR: 12.00%, CPAY: 12.00%, ON: 12.00%, TTWO: 12.00%, ZBRA: 12.00%, AIG: 2.67%, ARE: 2.67%, BAX: 2.67%, BF-B: 2.67%, C: 2.67%, CARR: 2.67%, CMG: 2.67%, CPRT: 2.67%, CTRA: 2.67%, DD: 2.67%, DHR: 2.67%, EFX: 2.67%, EQT: 2.67%, HUM: 2.67%, KHC: 2.67%\n\n## Available Reference Data (auto-injected into tool calls)\nreturns:      250 trading days ending \u2264 2024-01-01, 20 symbols\nfactor_betas: Fama-French 5+mom factor exposures for 20 symbols\nsector_map:   GICS sectors for 20 symbols\nYou do NOT need to pass returns / factor_betas / sector_map / mandate / scenario into tools \u2014 handlers read them from the task context. Pass only the portfolio weights (and any what-if parameters).\n\n## Expected Output Schema\nYour final answer must be a JSON object matching this shape:\n{\n  \"top_risk_exposures\": [\n    {\n      \"rank\": \"<number>\",\n      \"type\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"magnitude\": \"<number>\"\n    }\n  ]\n}\n\n## Instructions\n1. Analyze the task using the provided tools.\n2. Point-in-time discipline: do not use information after as_of_date.\n3. When ready, call submit_answer with a JSON STRING matching the schema. Submit exactly once."
+}
+{
+  "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_aggressive_growth",
+  "sub_task": "constraint_monitoring",
+  "as_of_date": "2024-01-01",
+  "episode": {
+    "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_aggressive_growth",
+    "skill": "risk_management",
+    "sub_task": "constraint_monitoring",
+    "as_of_date": "2024-01-01",
+    "input": {
+      "portfolio": {
+        "portfolio_id": "portfolio_concentrated_2023_24_rebound_000",
+        "holdings": [
+          {
+            "symbol": "AIG",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "C",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "L",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "USB",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "ARE",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BAX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BF-B",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CARR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CMG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPAY",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPRT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CTRA",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DD",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DHR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EFX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EQT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "HUM",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "KHC",
+            "weight": 0.026667
+          }
+        ],
+        "total_nav": 10000000
+      },
+      "mandate": {
+        "mandate_id": "mandate_aggressive_growth"
+      },
+      "market_data": {
+        "covariance": "data/risk_management/processed/covariance/"
+      }
+    },
+    "expected_output": {
+      "overall_compliant": false,
+      "violations_count": 2,
+      "constraints": [
+        {
+          "type": "position_limit_max",
+          "status": "FAIL",
+          "worst_symbol": "AIG",
+          "value": 0.149999,
+          "limit": 0.1,
+          "violation_magnitude": 0.049999
+        },
+        {
+          "type": "sector_limit_max",
+          "status": "FAIL",
+          "worst_sector": "Financial Services",
+          "value": 0.599996,
+          "limit": 0.35,
+          "violation_magnitude": 0.249996
+        },
+        {
+          "type": "beta_range",
+          "status": "PASS",
+          "value": 0.9971,
+          "min": 0.9,
+          "max": 1.4
+        },
+        {
+          "type": "long_only",
+          "status": "PASS",
+          "value": true,
+          "limit": true
+        },
+        {
+          "type": "turnover_max_monthly",
+          "status": "PASS",
+          "value": 0.0,
+          "limit": 0.2
+        }
+      ]
+    },
+    "verification": {
+      "method": "exact_match",
+      "metrics": [
+        "constraint_accuracy",
+        "violation_detection_recall"
+      ]
+    },
+    "metadata": {
+      "regime_slice": "2023_24_rebound",
+      "difficulty": "medium",
+      "portfolio_type": "concentrated",
+      "num_constraints": 5,
+      "num_violations": 2
+    },
+    "_source_file": "/home/jerm-xps/github_dev/finskillbench/data/risk_management/episodes/layer_a/constraint_monitoring/task_rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_aggressive_growth.json"
+  },
+  "context_summary": {
+    "n_symbols": 19,
+    "symbols": [
+      "AIG",
+      "C",
+      "L",
+      "USB",
+      "ARE",
+      "BAX",
+      "BF-B",
+      "BR",
+      "CARR",
+      "CMG",
+      "CPAY",
+      "CPRT",
+      "CTRA",
+      "DD",
+      "DHR",
+      "EFX",
+      "EQT",
+      "HUM",
+      "KHC"
+    ],
+    "weights": {
+      "AIG": 0.149999,
+      "C": 0.149999,
+      "L": 0.149999,
+      "USB": 0.149999,
+      "ARE": 0.026667,
+      "BAX": 0.026667,
+      "BF-B": 0.026667,
+      "BR": 0.026667,
+      "CARR": 0.026667,
+      "CMG": 0.026667,
+      "CPAY": 0.026667,
+      "CPRT": 0.026667,
+      "CTRA": 0.026667,
+      "DD": 0.026667,
+      "DHR": 0.026667,
+      "EFX": 0.026667,
+      "EQT": 0.026667,
+      "HUM": 0.026667,
+      "KHC": 0.026667
+    },
+    "returns_shape": [
+      250,
+      19
+    ],
+    "returns_date_range": [
+      "2023-01-03",
+      "2023-12-29"
+    ],
+    "factor_betas_count": 19,
+    "factor_names": [
+      "cma",
+      "hml",
+      "mkt_rf",
+      "mom",
+      "rmw",
+      "smb"
+    ],
+    "has_mandate": true,
+    "has_scenario": false,
+    "transaction_cost_bps": null,
+    "mandate": {
+      "mandate_id": "mandate_aggressive_growth",
+      "name": "Aggressive Growth Equity",
+      "difficulty": "medium",
+      "benchmark": "SPY",
+      "constraints": [
+        {
+          "type": "position_limit_max",
+          "value": 0.1,
+          "description": "No single name > 10%"
+        },
+        {
+          "type": "sector_limit_max",
+          "value": 0.35,
+          "description": "No sector > 35%"
+        },
+        {
+          "type": "beta_range",
+          "min": 0.9,
+          "max": 1.4,
+          "description": "Beta 0.9-1.4"
+        },
+        {
+          "type": "long_only",
+          "value": true,
+          "description": "No short positions"
+        },
+        {
+          "type": "turnover_max_monthly",
+          "value": 0.2,
+          "description": "Monthly turnover < 20%"
+        }
+      ]
+    },
+    "scenario": null
+  },
+  "prompt": "## Task: constraint_monitoring\ntask_id: rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_aggressive_growth\nas_of_date: 2024-01-01\ndifficulty: medium\n\n## Portfolio\nNAV: $10,000,000\nSymbols (19): AIG, C, L, USB, ARE, BAX, BF-B, BR, CARR, CMG, CPAY, CPRT, CTRA, DD, DHR, EFX, EQT, HUM, KHC\nWeights: AIG: 15.00%, C: 15.00%, L: 15.00%, USB: 15.00%, ARE: 2.67%, BAX: 2.67%, BF-B: 2.67%, BR: 2.67%, CARR: 2.67%, CMG: 2.67%, CPAY: 2.67%, CPRT: 2.67%, CTRA: 2.67%, DD: 2.67%, DHR: 2.67%, EFX: 2.67%, EQT: 2.67%, HUM: 2.67%, KHC: 2.67%\n\n## Mandate\nname: Aggressive Growth Equity\nbenchmark: SPY\nconstraints:\n  - position_limit_max: 0.1 \u2014 No single name > 10%\n  - sector_limit_max: 0.35 \u2014 No sector > 35%\n  - beta_range: [0.9, 1.4] \u2014 Beta 0.9-1.4\n  - long_only: True \u2014 No short positions\n  - turnover_max_monthly: 0.2 \u2014 Monthly turnover < 20%\n\n## Available Reference Data (auto-injected into tool calls)\nreturns:      250 trading days ending \u2264 2024-01-01, 19 symbols\nfactor_betas: Fama-French 5+mom factor exposures for 19 symbols\nsector_map:   GICS sectors for 19 symbols\nYou do NOT need to pass returns / factor_betas / sector_map / mandate / scenario into tools \u2014 handlers read them from the task context. Pass only the portfolio weights (and any what-if parameters).\n\n## Expected Output Schema\nYour final answer must be a JSON object matching this shape:\n{\n  \"overall_compliant\": \"<boolean>\",\n  \"violations_count\": \"<number>\",\n  \"constraints\": [\n    {\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"worst_symbol\": \"<string>\",\n      \"value\": \"<number>\",\n      \"limit\": \"<number>\",\n      \"violation_magnitude\": \"<number>\"\n    }\n  ]\n}\n\n## Instructions\n1. Analyze the task using the provided tools.\n2. Point-in-time discipline: do not use information after as_of_date.\n3. When ready, call submit_answer with a JSON STRING matching the schema. Submit exactly once."
+}
+{
+  "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_01",
+  "sub_task": "constraint_monitoring",
+  "as_of_date": "2024-01-01",
+  "episode": {
+    "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_01",
+    "skill": "risk_management",
+    "sub_task": "constraint_monitoring",
+    "as_of_date": "2024-01-01",
+    "input": {
+      "portfolio": {
+        "portfolio_id": "portfolio_concentrated_2023_24_rebound_000",
+        "holdings": [
+          {
+            "symbol": "AIG",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "C",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "L",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "USB",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "ARE",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BAX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BF-B",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CARR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CMG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPAY",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPRT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CTRA",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DD",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DHR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EFX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EQT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "HUM",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "KHC",
+            "weight": 0.026667
+          }
+        ],
+        "total_nav": 10000000
+      },
+      "mandate": {
+        "mandate_id": "mandate_balanced_01"
+      },
+      "market_data": {
+        "covariance": "data/risk_management/processed/covariance/"
+      }
+    },
+    "expected_output": {
+      "overall_compliant": false,
+      "violations_count": 3,
+      "constraints": [
+        {
+          "type": "position_limit_max",
+          "status": "FAIL",
+          "worst_symbol": "AIG",
+          "value": 0.149999,
+          "limit": 0.05,
+          "violation_magnitude": 0.099999
+        },
+        {
+          "type": "position_limit_min",
+          "status": "PASS",
+          "worst_symbol": "ARE",
+          "value": 0.026667,
+          "limit": 0.001
+        },
+        {
+          "type": "sector_limit_max",
+          "status": "FAIL",
+          "worst_sector": "Financial Services",
+          "value": 0.599996,
+          "limit": 0.25,
+          "violation_magnitude": 0.349996
+        },
+        {
+          "type": "tracking_error_max",
+          "status": "FAIL",
+          "value": 0.079616,
+          "limit": 0.03,
+          "violation_magnitude": 0.049616
+        },
+        {
+          "type": "beta_range",
+          "status": "PASS",
+          "value": 0.9971,
+          "min": 0.8,
+          "max": 1.2
+        },
+        {
+          "type": "long_only",
+          "status": "PASS",
+          "value": true,
+          "limit": true
+        }
+      ]
+    },
+    "verification": {
+      "method": "exact_match",
+      "metrics": [
+        "constraint_accuracy",
+        "violation_detection_recall"
+      ]
+    },
+    "metadata": {
+      "regime_slice": "2023_24_rebound",
+      "difficulty": "hard",
+      "portfolio_type": "concentrated",
+      "num_constraints": 6,
+      "num_violations": 3
+    },
+    "_source_file": "/home/jerm-xps/github_dev/finskillbench/data/risk_management/episodes/layer_a/constraint_monitoring/task_rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_01.json"
+  },
+  "context_summary": {
+    "n_symbols": 19,
+    "symbols": [
+      "AIG",
+      "C",
+      "L",
+      "USB",
+      "ARE",
+      "BAX",
+      "BF-B",
+      "BR",
+      "CARR",
+      "CMG",
+      "CPAY",
+      "CPRT",
+      "CTRA",
+      "DD",
+      "DHR",
+      "EFX",
+      "EQT",
+      "HUM",
+      "KHC"
+    ],
+    "weights": {
+      "AIG": 0.149999,
+      "C": 0.149999,
+      "L": 0.149999,
+      "USB": 0.149999,
+      "ARE": 0.026667,
+      "BAX": 0.026667,
+      "BF-B": 0.026667,
+      "BR": 0.026667,
+      "CARR": 0.026667,
+      "CMG": 0.026667,
+      "CPAY": 0.026667,
+      "CPRT": 0.026667,
+      "CTRA": 0.026667,
+      "DD": 0.026667,
+      "DHR": 0.026667,
+      "EFX": 0.026667,
+      "EQT": 0.026667,
+      "HUM": 0.026667,
+      "KHC": 0.026667
+    },
+    "returns_shape": [
+      250,
+      19
+    ],
+    "returns_date_range": [
+      "2023-01-03",
+      "2023-12-29"
+    ],
+    "factor_betas_count": 19,
+    "factor_names": [
+      "cma",
+      "hml",
+      "mkt_rf",
+      "mom",
+      "rmw",
+      "smb"
+    ],
+    "has_mandate": true,
+    "has_scenario": false,
+    "transaction_cost_bps": null,
+    "mandate": {
+      "mandate_id": "mandate_balanced_01",
+      "name": "Balanced Long-Only Equity",
+      "difficulty": "medium",
+      "benchmark": "SPY",
+      "constraints": [
+        {
+          "type": "position_limit_max",
+          "value": 0.05,
+          "description": "No single name > 5%"
+        },
+        {
+          "type": "position_limit_min",
+          "value": 0.001,
+          "description": "Min position 10bp if held"
+        },
+        {
+          "type": "sector_limit_max",
+          "value": 0.25,
+          "description": "No sector > 25%"
+        },
+        {
+          "type": "tracking_error_max",
+          "value": 0.03,
+          "description": "TE vs S&P 500 < 3%"
+        },
+        {
+          "type": "beta_range",
+          "min": 0.8,
+          "max": 1.2,
+          "description": "Portfolio beta 0.8-1.2"
+        },
+        {
+          "type": "long_only",
+          "value": true,
+          "description": "No short positions"
+        }
+      ]
+    },
+    "scenario": null
+  },
+  "prompt": "## Task: constraint_monitoring\ntask_id: rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_01\nas_of_date: 2024-01-01\ndifficulty: hard\n\n## Portfolio\nNAV: $10,000,000\nSymbols (19): AIG, C, L, USB, ARE, BAX, BF-B, BR, CARR, CMG, CPAY, CPRT, CTRA, DD, DHR, EFX, EQT, HUM, KHC\nWeights: AIG: 15.00%, C: 15.00%, L: 15.00%, USB: 15.00%, ARE: 2.67%, BAX: 2.67%, BF-B: 2.67%, BR: 2.67%, CARR: 2.67%, CMG: 2.67%, CPAY: 2.67%, CPRT: 2.67%, CTRA: 2.67%, DD: 2.67%, DHR: 2.67%, EFX: 2.67%, EQT: 2.67%, HUM: 2.67%, KHC: 2.67%\n\n## Mandate\nname: Balanced Long-Only Equity\nbenchmark: SPY\nconstraints:\n  - position_limit_max: 0.05 \u2014 No single name > 5%\n  - position_limit_min: 0.001 \u2014 Min position 10bp if held\n  - sector_limit_max: 0.25 \u2014 No sector > 25%\n  - tracking_error_max: 0.03 \u2014 TE vs S&P 500 < 3%\n  - beta_range: [0.8, 1.2] \u2014 Portfolio beta 0.8-1.2\n  - long_only: True \u2014 No short positions\n\n## Available Reference Data (auto-injected into tool calls)\nreturns:      250 trading days ending \u2264 2024-01-01, 19 symbols\nfactor_betas: Fama-French 5+mom factor exposures for 19 symbols\nsector_map:   GICS sectors for 19 symbols\nYou do NOT need to pass returns / factor_betas / sector_map / mandate / scenario into tools \u2014 handlers read them from the task context. Pass only the portfolio weights (and any what-if parameters).\n\n## Expected Output Schema\nYour final answer must be a JSON object matching this shape:\n{\n  \"overall_compliant\": \"<boolean>\",\n  \"violations_count\": \"<number>\",\n  \"constraints\": [\n    {\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"worst_symbol\": \"<string>\",\n      \"value\": \"<number>\",\n      \"limit\": \"<number>\",\n      \"violation_magnitude\": \"<number>\"\n    }\n  ]\n}\n\n## Instructions\n1. Analyze the task using the provided tools.\n2. Point-in-time discipline: do not use information after as_of_date.\n3. When ready, call submit_answer with a JSON STRING matching the schema. Submit exactly once."
+}
+{
+  "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_02",
+  "sub_task": "constraint_monitoring",
+  "as_of_date": "2024-01-01",
+  "episode": {
+    "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_02",
+    "skill": "risk_management",
+    "sub_task": "constraint_monitoring",
+    "as_of_date": "2024-01-01",
+    "input": {
+      "portfolio": {
+        "portfolio_id": "portfolio_concentrated_2023_24_rebound_000",
+        "holdings": [
+          {
+            "symbol": "AIG",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "C",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "L",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "USB",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "ARE",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BAX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BF-B",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CARR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CMG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPAY",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPRT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CTRA",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DD",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DHR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EFX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EQT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "HUM",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "KHC",
+            "weight": 0.026667
+          }
+        ],
+        "total_nav": 10000000
+      },
+      "mandate": {
+        "mandate_id": "mandate_balanced_02"
+      },
+      "market_data": {
+        "covariance": "data/risk_management/processed/covariance/"
+      }
+    },
+    "expected_output": {
+      "overall_compliant": false,
+      "violations_count": 3,
+      "constraints": [
+        {
+          "type": "position_limit_max",
+          "status": "FAIL",
+          "worst_symbol": "AIG",
+          "value": 0.149999,
+          "limit": 0.06,
+          "violation_magnitude": 0.089999
+        },
+        {
+          "type": "sector_limit_max",
+          "status": "FAIL",
+          "worst_sector": "Financial Services",
+          "value": 0.599996,
+          "limit": 0.25,
+          "violation_magnitude": 0.349996
+        },
+        {
+          "type": "tracking_error_max",
+          "status": "FAIL",
+          "value": 0.079616,
+          "limit": 0.04,
+          "violation_magnitude": 0.039616
+        },
+        {
+          "type": "beta_range",
+          "status": "PASS",
+          "value": 0.9971,
+          "min": 0.85,
+          "max": 1.15
+        },
+        {
+          "type": "turnover_max_monthly",
+          "status": "PASS",
+          "value": 0.0,
+          "limit": 0.15
+        },
+        {
+          "type": "cash_max",
+          "status": "PASS",
+          "value": 0.0,
+          "limit": 0.03
+        },
+        {
+          "type": "long_only",
+          "status": "PASS",
+          "value": true,
+          "limit": true
+        }
+      ]
+    },
+    "verification": {
+      "method": "exact_match",
+      "metrics": [
+        "constraint_accuracy",
+        "violation_detection_recall"
+      ]
+    },
+    "metadata": {
+      "regime_slice": "2023_24_rebound",
+      "difficulty": "hard",
+      "portfolio_type": "concentrated",
+      "num_constraints": 7,
+      "num_violations": 3
+    },
+    "_source_file": "/home/jerm-xps/github_dev/finskillbench/data/risk_management/episodes/layer_a/constraint_monitoring/task_rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_02.json"
+  },
+  "context_summary": {
+    "n_symbols": 19,
+    "symbols": [
+      "AIG",
+      "C",
+      "L",
+      "USB",
+      "ARE",
+      "BAX",
+      "BF-B",
+      "BR",
+      "CARR",
+      "CMG",
+      "CPAY",
+      "CPRT",
+      "CTRA",
+      "DD",
+      "DHR",
+      "EFX",
+      "EQT",
+      "HUM",
+      "KHC"
+    ],
+    "weights": {
+      "AIG": 0.149999,
+      "C": 0.149999,
+      "L": 0.149999,
+      "USB": 0.149999,
+      "ARE": 0.026667,
+      "BAX": 0.026667,
+      "BF-B": 0.026667,
+      "BR": 0.026667,
+      "CARR": 0.026667,
+      "CMG": 0.026667,
+      "CPAY": 0.026667,
+      "CPRT": 0.026667,
+      "CTRA": 0.026667,
+      "DD": 0.026667,
+      "DHR": 0.026667,
+      "EFX": 0.026667,
+      "EQT": 0.026667,
+      "HUM": 0.026667,
+      "KHC": 0.026667
+    },
+    "returns_shape": [
+      250,
+      19
+    ],
+    "returns_date_range": [
+      "2023-01-03",
+      "2023-12-29"
+    ],
+    "factor_betas_count": 19,
+    "factor_names": [
+      "cma",
+      "hml",
+      "mkt_rf",
+      "mom",
+      "rmw",
+      "smb"
+    ],
+    "has_mandate": true,
+    "has_scenario": false,
+    "transaction_cost_bps": null,
+    "mandate": {
+      "mandate_id": "mandate_balanced_02",
+      "name": "Balanced Equity with Turnover Control",
+      "difficulty": "medium",
+      "benchmark": "SPY",
+      "constraints": [
+        {
+          "type": "position_limit_max",
+          "value": 0.06,
+          "description": "No single name > 6%"
+        },
+        {
+          "type": "sector_limit_max",
+          "value": 0.25,
+          "description": "No sector > 25%"
+        },
+        {
+          "type": "tracking_error_max",
+          "value": 0.04,
+          "description": "TE < 4%"
+        },
+        {
+          "type": "beta_range",
+          "min": 0.85,
+          "max": 1.15,
+          "description": "Beta 0.85-1.15"
+        },
+        {
+          "type": "turnover_max_monthly",
+          "value": 0.15,
+          "description": "Monthly turnover < 15%"
+        },
+        {
+          "type": "cash_max",
+          "value": 0.03,
+          "description": "Cash < 3%"
+        },
+        {
+          "type": "long_only",
+          "value": true,
+          "description": "No short positions"
+        }
+      ]
+    },
+    "scenario": null
+  },
+  "prompt": "## Task: constraint_monitoring\ntask_id: rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_02\nas_of_date: 2024-01-01\ndifficulty: hard\n\n## Portfolio\nNAV: $10,000,000\nSymbols (19): AIG, C, L, USB, ARE, BAX, BF-B, BR, CARR, CMG, CPAY, CPRT, CTRA, DD, DHR, EFX, EQT, HUM, KHC\nWeights: AIG: 15.00%, C: 15.00%, L: 15.00%, USB: 15.00%, ARE: 2.67%, BAX: 2.67%, BF-B: 2.67%, BR: 2.67%, CARR: 2.67%, CMG: 2.67%, CPAY: 2.67%, CPRT: 2.67%, CTRA: 2.67%, DD: 2.67%, DHR: 2.67%, EFX: 2.67%, EQT: 2.67%, HUM: 2.67%, KHC: 2.67%\n\n## Mandate\nname: Balanced Equity with Turnover Control\nbenchmark: SPY\nconstraints:\n  - position_limit_max: 0.06 \u2014 No single name > 6%\n  - sector_limit_max: 0.25 \u2014 No sector > 25%\n  - tracking_error_max: 0.04 \u2014 TE < 4%\n  - beta_range: [0.85, 1.15] \u2014 Beta 0.85-1.15\n  - turnover_max_monthly: 0.15 \u2014 Monthly turnover < 15%\n  - cash_max: 0.03 \u2014 Cash < 3%\n  - long_only: True \u2014 No short positions\n\n## Available Reference Data (auto-injected into tool calls)\nreturns:      250 trading days ending \u2264 2024-01-01, 19 symbols\nfactor_betas: Fama-French 5+mom factor exposures for 19 symbols\nsector_map:   GICS sectors for 19 symbols\nYou do NOT need to pass returns / factor_betas / sector_map / mandate / scenario into tools \u2014 handlers read them from the task context. Pass only the portfolio weights (and any what-if parameters).\n\n## Expected Output Schema\nYour final answer must be a JSON object matching this shape:\n{\n  \"overall_compliant\": \"<boolean>\",\n  \"violations_count\": \"<number>\",\n  \"constraints\": [\n    {\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"worst_symbol\": \"<string>\",\n      \"value\": \"<number>\",\n      \"limit\": \"<number>\",\n      \"violation_magnitude\": \"<number>\"\n    }\n  ]\n}\n\n## Instructions\n1. Analyze the task using the provided tools.\n2. Point-in-time discipline: do not use information after as_of_date.\n3. When ready, call submit_answer with a JSON STRING matching the schema. Submit exactly once."
+}
+{
+  "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2018_selloff",
+  "sub_task": "stress_testing",
+  "as_of_date": "2024-01-01",
+  "episode": {
+    "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2018_selloff",
+    "skill": "risk_management",
+    "sub_task": "stress_testing",
+    "as_of_date": "2024-01-01",
+    "input": {
+      "portfolio": {
+        "portfolio_id": "portfolio_concentrated_2023_24_rebound_000",
+        "holdings": [
+          {
+            "symbol": "AIG",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "C",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "L",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "USB",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "ARE",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BAX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BF-B",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CARR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CMG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPAY",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPRT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CTRA",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DD",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DHR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EFX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EQT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "HUM",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "KHC",
+            "weight": 0.026667
+          }
+        ],
+        "total_nav": 50000000
+      },
+      "stress_scenario": {
+        "scenario_id": "stress_2018_selloff"
+      },
+      "market_data": {
+        "factor_exposures": "data/risk_management/processed/factor_exposures.parquet"
+      }
+    },
+    "expected_output": {
+      "estimated_pnl_pct": -0.167301,
+      "attribution": {
+        "by_sector": [
+          {
+            "sector": "Financial Services",
+            "contribution_pct": -0.104193
+          },
+          {
+            "sector": "Industrials",
+            "contribution_pct": -0.011341
+          },
+          {
+            "sector": "Technology",
+            "contribution_pct": -0.009695
+          },
+          {
+            "sector": "Consumer Cyclical",
+            "contribution_pct": -0.008566
+          },
+          {
+            "sector": "Healthcare",
+            "contribution_pct": -0.008527
+          },
+          {
+            "sector": "Energy",
+            "contribution_pct": -0.00819
+          },
+          {
+            "sector": "Consumer Defensive",
+            "contribution_pct": -0.006176
+          },
+          {
+            "sector": "Real Estate",
+            "contribution_pct": -0.005836
+          },
+          {
+            "sector": "Basic Materials",
+            "contribution_pct": -0.004775
+          }
+        ],
+        "by_factor": [
+          {
+            "factor": "market",
+            "contribution_pct": -0.197435
+          },
+          {
+            "factor": "interest_rate",
+            "contribution_pct": 0.001267
+          },
+          {
+            "factor": "credit",
+            "contribution_pct": 0.028868
+          }
+        ]
+      }
+    },
+    "verification": {
+      "method": "absolute_error",
+      "tolerance_pct": 1.0,
+      "metrics": [
+        "pnl_absolute_error",
+        "sector_attribution_mae"
+      ]
+    },
+    "metadata": {
+      "regime_slice": "2023_24_rebound",
+      "difficulty": "easy",
+      "portfolio_type": "concentrated",
+      "scenario_type": "historical_replay"
+    },
+    "_source_file": "/home/jerm-xps/github_dev/finskillbench/data/risk_management/episodes/layer_a/stress_testing/task_rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2018_selloff.json"
+  },
+  "context_summary": {
+    "n_symbols": 19,
+    "symbols": [
+      "AIG",
+      "C",
+      "L",
+      "USB",
+      "ARE",
+      "BAX",
+      "BF-B",
+      "BR",
+      "CARR",
+      "CMG",
+      "CPAY",
+      "CPRT",
+      "CTRA",
+      "DD",
+      "DHR",
+      "EFX",
+      "EQT",
+      "HUM",
+      "KHC"
+    ],
+    "weights": {
+      "AIG": 0.149999,
+      "C": 0.149999,
+      "L": 0.149999,
+      "USB": 0.149999,
+      "ARE": 0.026667,
+      "BAX": 0.026667,
+      "BF-B": 0.026667,
+      "BR": 0.026667,
+      "CARR": 0.026667,
+      "CMG": 0.026667,
+      "CPAY": 0.026667,
+      "CPRT": 0.026667,
+      "CTRA": 0.026667,
+      "DD": 0.026667,
+      "DHR": 0.026667,
+      "EFX": 0.026667,
+      "EQT": 0.026667,
+      "HUM": 0.026667,
+      "KHC": 0.026667
+    },
+    "returns_shape": [
+      250,
+      19
+    ],
+    "returns_date_range": [
+      "2023-01-03",
+      "2023-12-29"
+    ],
+    "factor_betas_count": 19,
+    "factor_names": [
+      "cma",
+      "hml",
+      "mkt_rf",
+      "mom",
+      "rmw",
+      "smb"
+    ],
+    "has_mandate": false,
+    "has_scenario": true,
+    "transaction_cost_bps": null,
+    "mandate": null,
+    "scenario": {
+      "scenario_id": "stress_2018_selloff",
+      "type": "historical_replay",
+      "name": "Late-2018 Selloff (Oct-Dec 2018)",
+      "regime_slice": "2018_selloff",
+      "replay_window": {
+        "start": "2018-10-01",
+        "end": "2018-12-31"
+      },
+      "description": "S&P 500 fell ~20% driven by rate hike fears and trade tensions.",
+      "market_shocks": {
+        "equity_drawdown_pct": -19.8,
+        "vix_peak": 36.2,
+        "credit_spread_widening_bp": 200,
+        "rate_change_bp": 25
+      }
+    }
+  },
+  "prompt": "## Task: stress_testing\ntask_id: rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2018_selloff\nas_of_date: 2024-01-01\ndifficulty: easy\n\n## Portfolio\nNAV: $50,000,000\nSymbols (19): AIG, C, L, USB, ARE, BAX, BF-B, BR, CARR, CMG, CPAY, CPRT, CTRA, DD, DHR, EFX, EQT, HUM, KHC\nWeights: AIG: 15.00%, C: 15.00%, L: 15.00%, USB: 15.00%, ARE: 2.67%, BAX: 2.67%, BF-B: 2.67%, BR: 2.67%, CARR: 2.67%, CMG: 2.67%, CPAY: 2.67%, CPRT: 2.67%, CTRA: 2.67%, DD: 2.67%, DHR: 2.67%, EFX: 2.67%, EQT: 2.67%, HUM: 2.67%, KHC: 2.67%\n\n## Stress Scenario\nscenario_id: stress_2018_selloff\nname: Late-2018 Selloff (Oct-Dec 2018)\ndescription: S&P 500 fell ~20% driven by rate hike fears and trade tensions.\nmarket_shocks: {\"equity_drawdown_pct\": -19.8, \"vix_peak\": 36.2, \"credit_spread_widening_bp\": 200, \"rate_change_bp\": 25}\n\n## Available Reference Data (auto-injected into tool calls)\nreturns:      250 trading days ending \u2264 2024-01-01, 19 symbols\nfactor_betas: Fama-French 5+mom factor exposures for 19 symbols\nsector_map:   GICS sectors for 19 symbols\nYou do NOT need to pass returns / factor_betas / sector_map / mandate / scenario into tools \u2014 handlers read them from the task context. Pass only the portfolio weights (and any what-if parameters).\n\n## Expected Output Schema\nYour final answer must be a JSON object matching this shape:\n{\n  \"estimated_pnl_pct\": \"<number>\",\n  \"attribution\": {\n    \"by_sector\": [\n      {\n        \"sector\": \"<string>\",\n        \"contribution_pct\": \"<number>\"\n      }\n    ],\n    \"by_factor\": [\n      {\n        \"factor\": \"<string>\",\n        \"contribution_pct\": \"<number>\"\n      }\n    ]\n  }\n}\n\n## Instructions\n1. Analyze the task using the provided tools.\n2. Point-in-time discipline: do not use information after as_of_date.\n3. When ready, call submit_answer with a JSON STRING matching the schema. Submit exactly once."
+}
+{
+  "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2022_tightening",
+  "sub_task": "stress_testing",
+  "as_of_date": "2024-01-01",
+  "episode": {
+    "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2022_tightening",
+    "skill": "risk_management",
+    "sub_task": "stress_testing",
+    "as_of_date": "2024-01-01",
+    "input": {
+      "portfolio": {
+        "portfolio_id": "portfolio_concentrated_2023_24_rebound_000",
+        "holdings": [
+          {
+            "symbol": "AIG",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "C",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "L",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "USB",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "ARE",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BAX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BF-B",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CARR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CMG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPAY",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPRT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CTRA",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DD",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DHR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EFX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EQT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "HUM",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "KHC",
+            "weight": 0.026667
+          }
+        ],
+        "total_nav": 50000000
+      },
+      "stress_scenario": {
+        "scenario_id": "stress_2022_tightening"
+      },
+      "market_data": {
+        "factor_exposures": "data/risk_management/processed/factor_exposures.parquet"
+      }
+    },
+    "expected_output": {
+      "estimated_pnl_pct": -0.198192,
+      "attribution": {
+        "by_sector": [
+          {
+            "sector": "Financial Services",
+            "contribution_pct": -0.093075
+          },
+          {
+            "sector": "Technology",
+            "contribution_pct": -0.01797
+          },
+          {
+            "sector": "Healthcare",
+            "contribution_pct": -0.016521
+          },
+          {
+            "sector": "Industrials",
+            "contribution_pct": -0.016417
+          },
+          {
+            "sector": "Real Estate",
+            "contribution_pct": -0.014836
+          },
+          {
+            "sector": "Consumer Cyclical",
+            "contribution_pct": -0.012856
+          },
+          {
+            "sector": "Consumer Defensive",
+            "contribution_pct": -0.009823
+          },
+          {
+            "sector": "Energy",
+            "contribution_pct": -0.009634
+          },
+          {
+            "sector": "Basic Materials",
+            "contribution_pct": -0.00706
+          }
+        ],
+        "by_factor": [
+          {
+            "factor": "market",
+            "contribution_pct": -0.253276
+          },
+          {
+            "factor": "interest_rate",
+            "contribution_pct": 0.018999
+          },
+          {
+            "factor": "credit",
+            "contribution_pct": 0.036085
+          }
+        ]
+      }
+    },
+    "verification": {
+      "method": "absolute_error",
+      "tolerance_pct": 1.0,
+      "metrics": [
+        "pnl_absolute_error",
+        "sector_attribution_mae"
+      ]
+    },
+    "metadata": {
+      "regime_slice": "2023_24_rebound",
+      "difficulty": "easy",
+      "portfolio_type": "concentrated",
+      "scenario_type": "historical_replay"
+    },
+    "_source_file": "/home/jerm-xps/github_dev/finskillbench/data/risk_management/episodes/layer_a/stress_testing/task_rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2022_tightening.json"
+  },
+  "context_summary": {
+    "n_symbols": 19,
+    "symbols": [
+      "AIG",
+      "C",
+      "L",
+      "USB",
+      "ARE",
+      "BAX",
+      "BF-B",
+      "BR",
+      "CARR",
+      "CMG",
+      "CPAY",
+      "CPRT",
+      "CTRA",
+      "DD",
+      "DHR",
+      "EFX",
+      "EQT",
+      "HUM",
+      "KHC"
+    ],
+    "weights": {
+      "AIG": 0.149999,
+      "C": 0.149999,
+      "L": 0.149999,
+      "USB": 0.149999,
+      "ARE": 0.026667,
+      "BAX": 0.026667,
+      "BF-B": 0.026667,
+      "BR": 0.026667,
+      "CARR": 0.026667,
+      "CMG": 0.026667,
+      "CPAY": 0.026667,
+      "CPRT": 0.026667,
+      "CTRA": 0.026667,
+      "DD": 0.026667,
+      "DHR": 0.026667,
+      "EFX": 0.026667,
+      "EQT": 0.026667,
+      "HUM": 0.026667,
+      "KHC": 0.026667
+    },
+    "returns_shape": [
+      250,
+      19
+    ],
+    "returns_date_range": [
+      "2023-01-03",
+      "2023-12-29"
+    ],
+    "factor_betas_count": 19,
+    "factor_names": [
+      "cma",
+      "hml",
+      "mkt_rf",
+      "mom",
+      "rmw",
+      "smb"
+    ],
+    "has_mandate": false,
+    "has_scenario": true,
+    "transaction_cost_bps": null,
+    "mandate": null,
+    "scenario": {
+      "scenario_id": "stress_2022_tightening",
+      "type": "historical_replay",
+      "name": "2022 Rate-Driven Tightening (Jan-Oct 2022)",
+      "regime_slice": "2022_tightening",
+      "replay_window": {
+        "start": "2022-01-01",
+        "end": "2022-10-31"
+      },
+      "description": "S&P 500 down ~25%. Aggressive Fed hiking, growth-to-value rotation.",
+      "market_shocks": {
+        "equity_drawdown_pct": -25.4,
+        "vix_peak": 35.5,
+        "credit_spread_widening_bp": 250,
+        "rate_change_bp": 375
+      }
+    }
+  },
+  "prompt": "## Task: stress_testing\ntask_id: rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2022_tightening\nas_of_date: 2024-01-01\ndifficulty: easy\n\n## Portfolio\nNAV: $50,000,000\nSymbols (19): AIG, C, L, USB, ARE, BAX, BF-B, BR, CARR, CMG, CPAY, CPRT, CTRA, DD, DHR, EFX, EQT, HUM, KHC\nWeights: AIG: 15.00%, C: 15.00%, L: 15.00%, USB: 15.00%, ARE: 2.67%, BAX: 2.67%, BF-B: 2.67%, BR: 2.67%, CARR: 2.67%, CMG: 2.67%, CPAY: 2.67%, CPRT: 2.67%, CTRA: 2.67%, DD: 2.67%, DHR: 2.67%, EFX: 2.67%, EQT: 2.67%, HUM: 2.67%, KHC: 2.67%\n\n## Stress Scenario\nscenario_id: stress_2022_tightening\nname: 2022 Rate-Driven Tightening (Jan-Oct 2022)\ndescription: S&P 500 down ~25%. Aggressive Fed hiking, growth-to-value rotation.\nmarket_shocks: {\"equity_drawdown_pct\": -25.4, \"vix_peak\": 35.5, \"credit_spread_widening_bp\": 250, \"rate_change_bp\": 375}\n\n## Available Reference Data (auto-injected into tool calls)\nreturns:      250 trading days ending \u2264 2024-01-01, 19 symbols\nfactor_betas: Fama-French 5+mom factor exposures for 19 symbols\nsector_map:   GICS sectors for 19 symbols\nYou do NOT need to pass returns / factor_betas / sector_map / mandate / scenario into tools \u2014 handlers read them from the task context. Pass only the portfolio weights (and any what-if parameters).\n\n## Expected Output Schema\nYour final answer must be a JSON object matching this shape:\n{\n  \"estimated_pnl_pct\": \"<number>\",\n  \"attribution\": {\n    \"by_sector\": [\n      {\n        \"sector\": \"<string>\",\n        \"contribution_pct\": \"<number>\"\n      }\n    ],\n    \"by_factor\": [\n      {\n        \"factor\": \"<string>\",\n        \"contribution_pct\": \"<number>\"\n      }\n    ]\n  }\n}\n\n## Instructions\n1. Analyze the task using the provided tools.\n2. Point-in-time discipline: do not use information after as_of_date.\n3. When ready, call submit_answer with a JSON STRING matching the schema. Submit exactly once."
+}
+{
+  "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2023_24_reversal",
+  "sub_task": "stress_testing",
+  "as_of_date": "2024-01-01",
+  "episode": {
+    "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2023_24_reversal",
+    "skill": "risk_management",
+    "sub_task": "stress_testing",
+    "as_of_date": "2024-01-01",
+    "input": {
+      "portfolio": {
+        "portfolio_id": "portfolio_concentrated_2023_24_rebound_000",
+        "holdings": [
+          {
+            "symbol": "AIG",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "C",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "L",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "USB",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "ARE",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BAX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BF-B",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CARR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CMG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPAY",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPRT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CTRA",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DD",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DHR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EFX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EQT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "HUM",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "KHC",
+            "weight": 0.026667
+          }
+        ],
+        "total_nav": 50000000
+      },
+      "stress_scenario": {
+        "scenario_id": "stress_2023_24_reversal"
+      },
+      "market_data": {
+        "factor_exposures": "data/risk_management/processed/factor_exposures.parquet"
+      }
+    },
+    "expected_output": {
+      "estimated_pnl_pct": -0.135138,
+      "attribution": {
+        "by_sector": [
+          {
+            "sector": "Financial Services",
+            "contribution_pct": -0.085632
+          },
+          {
+            "sector": "Industrials",
+            "contribution_pct": -0.0088
+          },
+          {
+            "sector": "Technology",
+            "contribution_pct": -0.007403
+          },
+          {
+            "sector": "Healthcare",
+            "contribution_pct": -0.006901
+          },
+          {
+            "sector": "Consumer Cyclical",
+            "contribution_pct": -0.006688
+          },
+          {
+            "sector": "Energy",
+            "contribution_pct": -0.00658
+          },
+          {
+            "sector": "Consumer Defensive",
+            "contribution_pct": -0.005135
+          },
+          {
+            "sector": "Real Estate",
+            "contribution_pct": -0.004281
+          },
+          {
+            "sector": "Basic Materials",
+            "contribution_pct": -0.003719
+          }
+        ],
+        "by_factor": [
+          {
+            "factor": "market",
+            "contribution_pct": -0.149572
+          },
+          {
+            "factor": "interest_rate",
+            "contribution_pct": 0.0
+          },
+          {
+            "factor": "credit",
+            "contribution_pct": 0.014434
+          }
+        ]
+      }
+    },
+    "verification": {
+      "method": "absolute_error",
+      "tolerance_pct": 1.0,
+      "metrics": [
+        "pnl_absolute_error",
+        "sector_attribution_mae"
+      ]
+    },
+    "metadata": {
+      "regime_slice": "2023_24_rebound",
+      "difficulty": "easy",
+      "portfolio_type": "concentrated",
+      "scenario_type": "historical_replay"
+    },
+    "_source_file": "/home/jerm-xps/github_dev/finskillbench/data/risk_management/episodes/layer_a/stress_testing/task_rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2023_24_reversal.json"
+  },
+  "context_summary": {
+    "n_symbols": 19,
+    "symbols": [
+      "AIG",
+      "C",
+      "L",
+      "USB",
+      "ARE",
+      "BAX",
+      "BF-B",
+      "BR",
+      "CARR",
+      "CMG",
+      "CPAY",
+      "CPRT",
+      "CTRA",
+      "DD",
+      "DHR",
+      "EFX",
+      "EQT",
+      "HUM",
+      "KHC"
+    ],
+    "weights": {
+      "AIG": 0.149999,
+      "C": 0.149999,
+      "L": 0.149999,
+      "USB": 0.149999,
+      "ARE": 0.026667,
+      "BAX": 0.026667,
+      "BF-B": 0.026667,
+      "BR": 0.026667,
+      "CARR": 0.026667,
+      "CMG": 0.026667,
+      "CPAY": 0.026667,
+      "CPRT": 0.026667,
+      "CTRA": 0.026667,
+      "DD": 0.026667,
+      "DHR": 0.026667,
+      "EFX": 0.026667,
+      "EQT": 0.026667,
+      "HUM": 0.026667,
+      "KHC": 0.026667
+    },
+    "returns_shape": [
+      250,
+      19
+    ],
+    "returns_date_range": [
+      "2023-01-03",
+      "2023-12-29"
+    ],
+    "factor_betas_count": 19,
+    "factor_names": [
+      "cma",
+      "hml",
+      "mkt_rf",
+      "mom",
+      "rmw",
+      "smb"
+    ],
+    "has_mandate": false,
+    "has_scenario": true,
+    "transaction_cost_bps": null,
+    "mandate": null,
+    "scenario": {
+      "scenario_id": "stress_2023_24_reversal",
+      "type": "historical_replay",
+      "name": "AI Rally Reversal (Hypothetical 2024 Tech Unwind)",
+      "regime_slice": "2023_24_rebound",
+      "replay_window": {
+        "start": "2023-01-01",
+        "end": "2024-12-31"
+      },
+      "description": "What if the AI-driven tech rally reverses? Concentrated tech exposure unwind.",
+      "market_shocks": {
+        "equity_drawdown_pct": -15.0,
+        "vix_peak": 30.0,
+        "credit_spread_widening_bp": 100,
+        "rate_change_bp": 0
+      }
+    }
+  },
+  "prompt": "## Task: stress_testing\ntask_id: rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2023_24_reversal\nas_of_date: 2024-01-01\ndifficulty: easy\n\n## Portfolio\nNAV: $50,000,000\nSymbols (19): AIG, C, L, USB, ARE, BAX, BF-B, BR, CARR, CMG, CPAY, CPRT, CTRA, DD, DHR, EFX, EQT, HUM, KHC\nWeights: AIG: 15.00%, C: 15.00%, L: 15.00%, USB: 15.00%, ARE: 2.67%, BAX: 2.67%, BF-B: 2.67%, BR: 2.67%, CARR: 2.67%, CMG: 2.67%, CPAY: 2.67%, CPRT: 2.67%, CTRA: 2.67%, DD: 2.67%, DHR: 2.67%, EFX: 2.67%, EQT: 2.67%, HUM: 2.67%, KHC: 2.67%\n\n## Stress Scenario\nscenario_id: stress_2023_24_reversal\nname: AI Rally Reversal (Hypothetical 2024 Tech Unwind)\ndescription: What if the AI-driven tech rally reverses? Concentrated tech exposure unwind.\nmarket_shocks: {\"equity_drawdown_pct\": -15.0, \"vix_peak\": 30.0, \"credit_spread_widening_bp\": 100, \"rate_change_bp\": 0}\n\n## Available Reference Data (auto-injected into tool calls)\nreturns:      250 trading days ending \u2264 2024-01-01, 19 symbols\nfactor_betas: Fama-French 5+mom factor exposures for 19 symbols\nsector_map:   GICS sectors for 19 symbols\nYou do NOT need to pass returns / factor_betas / sector_map / mandate / scenario into tools \u2014 handlers read them from the task context. Pass only the portfolio weights (and any what-if parameters).\n\n## Expected Output Schema\nYour final answer must be a JSON object matching this shape:\n{\n  \"estimated_pnl_pct\": \"<number>\",\n  \"attribution\": {\n    \"by_sector\": [\n      {\n        \"sector\": \"<string>\",\n        \"contribution_pct\": \"<number>\"\n      }\n    ],\n    \"by_factor\": [\n      {\n        \"factor\": \"<string>\",\n        \"contribution_pct\": \"<number>\"\n      }\n    ]\n  }\n}\n\n## Instructions\n1. Analyze the task using the provided tools.\n2. Point-in-time discipline: do not use information after as_of_date.\n3. When ready, call submit_answer with a JSON STRING matching the schema. Submit exactly once."
+}
+{
+  "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_000_mandate_aggressive_growth",
+  "sub_task": "risk_remediation",
+  "as_of_date": "2024-01-01",
+  "episode": {
+    "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_000_mandate_aggressive_growth",
+    "skill": "risk_management",
+    "sub_task": "risk_remediation",
+    "as_of_date": "2024-01-01",
+    "input": {
+      "portfolio": {
+        "portfolio_id": "portfolio_concentrated_2023_24_rebound_000",
+        "holdings": [
+          {
+            "symbol": "AIG",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "C",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "L",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "USB",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "ARE",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BAX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BF-B",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CARR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CMG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPAY",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPRT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CTRA",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DD",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DHR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EFX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EQT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "HUM",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "KHC",
+            "weight": 0.026667
+          }
+        ],
+        "total_nav": 25000000
+      },
+      "mandate": {
+        "mandate_id": "mandate_aggressive_growth"
+      },
+      "violations": [
+        "sector_concentration",
+        "single_name_risk",
+        "low_diversification"
+      ],
+      "market_data": {
+        "covariance": "data/risk_management/processed/covariance/",
+        "transaction_cost_bps": 5
+      }
+    },
+    "expected_output": {
+      "trades": [
+        {
+          "symbol": "AIG",
+          "action": "sell",
+          "current_weight": 0.149999,
+          "target_weight": 0.0875,
+          "trade_pct": -0.062499
+        },
+        {
+          "symbol": "ARE",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "BAX",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "BF-B",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "BR",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "C",
+          "action": "sell",
+          "current_weight": 0.149999,
+          "target_weight": 0.0875,
+          "trade_pct": -0.062499
+        },
+        {
+          "symbol": "CARR",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "CMG",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "CPAY",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "CPRT",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "CTRA",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "DD",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "DHR",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "EFX",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "EQT",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "HUM",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "KHC",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036282,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "L",
+          "action": "sell",
+          "current_weight": 0.149999,
+          "target_weight": 0.0875,
+          "trade_pct": -0.062499
+        },
+        {
+          "symbol": "LHX",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009615,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "LNT",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009615,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "LYV",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009615,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "ON",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009615,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "REG",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009615,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "SBUX",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009615,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "SRE",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009615,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "TT",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009615,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "TTWO",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009615,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "USB",
+          "action": "sell",
+          "current_weight": 0.149999,
+          "target_weight": 0.0875,
+          "trade_pct": -0.062499
+        },
+        {
+          "symbol": "VMC",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009615,
+          "trade_pct": 0.009615
+        },
+        {
+          "symbol": "ZBRA",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009615,
+          "trade_pct": 0.009615
+        }
+      ],
+      "total_turnover": 0.249996,
+      "post_trade_compliant": true
+    },
+    "verification": {
+      "method": "constraint_satisfaction_plus_cost",
+      "metrics": [
+        "post_trade_compliant",
+        "turnover_vs_optimal"
+      ],
+      "tolerance": {
+        "turnover_excess_pct": 50
+      }
+    },
+    "metadata": {
+      "regime_slice": "2023_24_rebound",
+      "difficulty": "hard",
+      "portfolio_type": "concentrated",
+      "num_violations": 3,
+      "requires_tool_use": true
+    },
+    "_source_file": "/home/jerm-xps/github_dev/finskillbench/data/risk_management/episodes/layer_a/risk_remediation/task_rm_rr_portfolio_concentrated_2023_24_rebound_000_mandate_aggressive_growth.json"
+  },
+  "context_summary": {
+    "n_symbols": 19,
+    "symbols": [
+      "AIG",
+      "C",
+      "L",
+      "USB",
+      "ARE",
+      "BAX",
+      "BF-B",
+      "BR",
+      "CARR",
+      "CMG",
+      "CPAY",
+      "CPRT",
+      "CTRA",
+      "DD",
+      "DHR",
+      "EFX",
+      "EQT",
+      "HUM",
+      "KHC"
+    ],
+    "weights": {
+      "AIG": 0.149999,
+      "C": 0.149999,
+      "L": 0.149999,
+      "USB": 0.149999,
+      "ARE": 0.026667,
+      "BAX": 0.026667,
+      "BF-B": 0.026667,
+      "BR": 0.026667,
+      "CARR": 0.026667,
+      "CMG": 0.026667,
+      "CPAY": 0.026667,
+      "CPRT": 0.026667,
+      "CTRA": 0.026667,
+      "DD": 0.026667,
+      "DHR": 0.026667,
+      "EFX": 0.026667,
+      "EQT": 0.026667,
+      "HUM": 0.026667,
+      "KHC": 0.026667
+    },
+    "returns_shape": [
+      250,
+      19
+    ],
+    "returns_date_range": [
+      "2023-01-03",
+      "2023-12-29"
+    ],
+    "factor_betas_count": 19,
+    "factor_names": [
+      "cma",
+      "hml",
+      "mkt_rf",
+      "mom",
+      "rmw",
+      "smb"
+    ],
+    "has_mandate": true,
+    "has_scenario": false,
+    "transaction_cost_bps": 5.0,
+    "mandate": {
+      "mandate_id": "mandate_aggressive_growth",
+      "name": "Aggressive Growth Equity",
+      "difficulty": "medium",
+      "benchmark": "SPY",
+      "constraints": [
+        {
+          "type": "position_limit_max",
+          "value": 0.1,
+          "description": "No single name > 10%"
+        },
+        {
+          "type": "sector_limit_max",
+          "value": 0.35,
+          "description": "No sector > 35%"
+        },
+        {
+          "type": "beta_range",
+          "min": 0.9,
+          "max": 1.4,
+          "description": "Beta 0.9-1.4"
+        },
+        {
+          "type": "long_only",
+          "value": true,
+          "description": "No short positions"
+        },
+        {
+          "type": "turnover_max_monthly",
+          "value": 0.2,
+          "description": "Monthly turnover < 20%"
+        }
+      ]
+    },
+    "scenario": null
+  },
+  "prompt": "## Task: risk_remediation\ntask_id: rm_rr_portfolio_concentrated_2023_24_rebound_000_mandate_aggressive_growth\nas_of_date: 2024-01-01\ndifficulty: hard\n\n## Portfolio\nNAV: $25,000,000\nSymbols (19): AIG, C, L, USB, ARE, BAX, BF-B, BR, CARR, CMG, CPAY, CPRT, CTRA, DD, DHR, EFX, EQT, HUM, KHC\nWeights: AIG: 15.00%, C: 15.00%, L: 15.00%, USB: 15.00%, ARE: 2.67%, BAX: 2.67%, BF-B: 2.67%, BR: 2.67%, CARR: 2.67%, CMG: 2.67%, CPAY: 2.67%, CPRT: 2.67%, CTRA: 2.67%, DD: 2.67%, DHR: 2.67%, EFX: 2.67%, EQT: 2.67%, HUM: 2.67%, KHC: 2.67%\n\n## Mandate\nname: Aggressive Growth Equity\nbenchmark: SPY\nconstraints:\n  - position_limit_max: 0.1 \u2014 No single name > 10%\n  - sector_limit_max: 0.35 \u2014 No sector > 35%\n  - beta_range: [0.9, 1.4] \u2014 Beta 0.9-1.4\n  - long_only: True \u2014 No short positions\n  - turnover_max_monthly: 0.2 \u2014 Monthly turnover < 20%\n\n## Known Violations\n- sector_concentration\n- single_name_risk\n- low_diversification\n\n## Available Reference Data (auto-injected into tool calls)\nreturns:      250 trading days ending \u2264 2024-01-01, 19 symbols\nfactor_betas: Fama-French 5+mom factor exposures for 19 symbols\nsector_map:   GICS sectors for 19 symbols\ntransaction_cost_bps: 5.0\nYou do NOT need to pass returns / factor_betas / sector_map / mandate / scenario into tools \u2014 handlers read them from the task context. Pass only the portfolio weights (and any what-if parameters).\n\n## Expected Output Schema\nYour final answer must be a JSON object matching this shape:\n{\n  \"trades\": [\n    {\n      \"symbol\": \"<string>\",\n      \"action\": \"<string>\",\n      \"current_weight\": \"<number>\",\n      \"target_weight\": \"<number>\",\n      \"trade_pct\": \"<number>\"\n    }\n  ],\n  \"total_turnover\": \"<number>\",\n  \"post_trade_compliant\": \"<boolean>\"\n}\n\n## Instructions\n1. Analyze the task using the provided tools.\n2. Point-in-time discipline: do not use information after as_of_date.\n3. When ready, call submit_answer with a JSON STRING matching the schema. Submit exactly once."
+}
+{
+  "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_01",
+  "sub_task": "risk_remediation",
+  "as_of_date": "2024-01-01",
+  "episode": {
+    "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_01",
+    "skill": "risk_management",
+    "sub_task": "risk_remediation",
+    "as_of_date": "2024-01-01",
+    "input": {
+      "portfolio": {
+        "portfolio_id": "portfolio_concentrated_2023_24_rebound_000",
+        "holdings": [
+          {
+            "symbol": "AIG",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "C",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "L",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "USB",
+            "weight": 0.149999
+          },
+          {
+            "symbol": "ARE",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BAX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BF-B",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CARR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CMG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPAY",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPRT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CTRA",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DD",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DHR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EFX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EQT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "HUM",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "KHC",
+            "weight": 0.026667
+          }
+        ],
+        "total_nav": 25000000
+      },
+      "mandate": {
+        "mandate_id": "mandate_balanced_01"
+      },
+      "violations": [
+        "sector_concentration",
+        "single_name_risk",
+        "low_diversification"
+      ],
+      "market_data": {
+        "covariance": "data/risk_management/processed/covariance/",
+        "transaction_cost_bps": 5
+      }
+    },
+    "expected_output": {
+      "trades": [
+        {
+          "symbol": "AIG",
+          "action": "sell",
+          "current_weight": 0.149999,
+          "target_weight": 0.0625,
+          "trade_pct": -0.087499
+        },
+        {
+          "symbol": "ARE",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "BAX",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "BF-B",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "BR",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "C",
+          "action": "sell",
+          "current_weight": 0.149999,
+          "target_weight": 0.0625,
+          "trade_pct": -0.087499
+        },
+        {
+          "symbol": "CARR",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "CMG",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "CPAY",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "CPRT",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "CTRA",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "DD",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "DHR",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "EFX",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "EQT",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "HUM",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "KHC",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040128,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "L",
+          "action": "sell",
+          "current_weight": 0.149999,
+          "target_weight": 0.0625,
+          "trade_pct": -0.087499
+        },
+        {
+          "symbol": "LHX",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.013461,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "LNT",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.013461,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "LYV",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.013461,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "ON",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.013461,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "REG",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.013461,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "SBUX",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.013461,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "SRE",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.013461,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "TT",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.013461,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "TTWO",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.013461,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "USB",
+          "action": "sell",
+          "current_weight": 0.149999,
+          "target_weight": 0.0625,
+          "trade_pct": -0.087499
+        },
+        {
+          "symbol": "VMC",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.013461,
+          "trade_pct": 0.013461
+        },
+        {
+          "symbol": "ZBRA",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.013461,
+          "trade_pct": 0.013461
+        }
+      ],
+      "total_turnover": 0.349995,
+      "post_trade_compliant": false
+    },
+    "verification": {
+      "method": "constraint_satisfaction_plus_cost",
+      "metrics": [
+        "post_trade_compliant",
+        "turnover_vs_optimal"
+      ],
+      "tolerance": {
+        "turnover_excess_pct": 50
+      }
+    },
+    "metadata": {
+      "regime_slice": "2023_24_rebound",
+      "difficulty": "hard",
+      "portfolio_type": "concentrated",
+      "num_violations": 3,
+      "requires_tool_use": true
+    },
+    "_source_file": "/home/jerm-xps/github_dev/finskillbench/data/risk_management/episodes/layer_a/risk_remediation/task_rm_rr_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_01.json"
+  },
+  "context_summary": {
+    "n_symbols": 19,
+    "symbols": [
+      "AIG",
+      "C",
+      "L",
+      "USB",
+      "ARE",
+      "BAX",
+      "BF-B",
+      "BR",
+      "CARR",
+      "CMG",
+      "CPAY",
+      "CPRT",
+      "CTRA",
+      "DD",
+      "DHR",
+      "EFX",
+      "EQT",
+      "HUM",
+      "KHC"
+    ],
+    "weights": {
+      "AIG": 0.149999,
+      "C": 0.149999,
+      "L": 0.149999,
+      "USB": 0.149999,
+      "ARE": 0.026667,
+      "BAX": 0.026667,
+      "BF-B": 0.026667,
+      "BR": 0.026667,
+      "CARR": 0.026667,
+      "CMG": 0.026667,
+      "CPAY": 0.026667,
+      "CPRT": 0.026667,
+      "CTRA": 0.026667,
+      "DD": 0.026667,
+      "DHR": 0.026667,
+      "EFX": 0.026667,
+      "EQT": 0.026667,
+      "HUM": 0.026667,
+      "KHC": 0.026667
+    },
+    "returns_shape": [
+      250,
+      19
+    ],
+    "returns_date_range": [
+      "2023-01-03",
+      "2023-12-29"
+    ],
+    "factor_betas_count": 19,
+    "factor_names": [
+      "cma",
+      "hml",
+      "mkt_rf",
+      "mom",
+      "rmw",
+      "smb"
+    ],
+    "has_mandate": true,
+    "has_scenario": false,
+    "transaction_cost_bps": 5.0,
+    "mandate": {
+      "mandate_id": "mandate_balanced_01",
+      "name": "Balanced Long-Only Equity",
+      "difficulty": "medium",
+      "benchmark": "SPY",
+      "constraints": [
+        {
+          "type": "position_limit_max",
+          "value": 0.05,
+          "description": "No single name > 5%"
+        },
+        {
+          "type": "position_limit_min",
+          "value": 0.001,
+          "description": "Min position 10bp if held"
+        },
+        {
+          "type": "sector_limit_max",
+          "value": 0.25,
+          "description": "No sector > 25%"
+        },
+        {
+          "type": "tracking_error_max",
+          "value": 0.03,
+          "description": "TE vs S&P 500 < 3%"
+        },
+        {
+          "type": "beta_range",
+          "min": 0.8,
+          "max": 1.2,
+          "description": "Portfolio beta 0.8-1.2"
+        },
+        {
+          "type": "long_only",
+          "value": true,
+          "description": "No short positions"
+        }
+      ]
+    },
+    "scenario": null
+  },
+  "prompt": "## Task: risk_remediation\ntask_id: rm_rr_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_01\nas_of_date: 2024-01-01\ndifficulty: hard\n\n## Portfolio\nNAV: $25,000,000\nSymbols (19): AIG, C, L, USB, ARE, BAX, BF-B, BR, CARR, CMG, CPAY, CPRT, CTRA, DD, DHR, EFX, EQT, HUM, KHC\nWeights: AIG: 15.00%, C: 15.00%, L: 15.00%, USB: 15.00%, ARE: 2.67%, BAX: 2.67%, BF-B: 2.67%, BR: 2.67%, CARR: 2.67%, CMG: 2.67%, CPAY: 2.67%, CPRT: 2.67%, CTRA: 2.67%, DD: 2.67%, DHR: 2.67%, EFX: 2.67%, EQT: 2.67%, HUM: 2.67%, KHC: 2.67%\n\n## Mandate\nname: Balanced Long-Only Equity\nbenchmark: SPY\nconstraints:\n  - position_limit_max: 0.05 \u2014 No single name > 5%\n  - position_limit_min: 0.001 \u2014 Min position 10bp if held\n  - sector_limit_max: 0.25 \u2014 No sector > 25%\n  - tracking_error_max: 0.03 \u2014 TE vs S&P 500 < 3%\n  - beta_range: [0.8, 1.2] \u2014 Portfolio beta 0.8-1.2\n  - long_only: True \u2014 No short positions\n\n## Known Violations\n- sector_concentration\n- single_name_risk\n- low_diversification\n\n## Available Reference Data (auto-injected into tool calls)\nreturns:      250 trading days ending \u2264 2024-01-01, 19 symbols\nfactor_betas: Fama-French 5+mom factor exposures for 19 symbols\nsector_map:   GICS sectors for 19 symbols\ntransaction_cost_bps: 5.0\nYou do NOT need to pass returns / factor_betas / sector_map / mandate / scenario into tools \u2014 handlers read them from the task context. Pass only the portfolio weights (and any what-if parameters).\n\n## Expected Output Schema\nYour final answer must be a JSON object matching this shape:\n{\n  \"trades\": [\n    {\n      \"symbol\": \"<string>\",\n      \"action\": \"<string>\",\n      \"current_weight\": \"<number>\",\n      \"target_weight\": \"<number>\",\n      \"trade_pct\": \"<number>\"\n    }\n  ],\n  \"total_turnover\": \"<number>\",\n  \"post_trade_compliant\": \"<boolean>\"\n}\n\n## Instructions\n1. Analyze the task using the provided tools.\n2. Point-in-time discipline: do not use information after as_of_date.\n3. When ready, call submit_answer with a JSON STRING matching the schema. Submit exactly once."
+}
+{
+  "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_001_mandate_aggressive_growth",
+  "sub_task": "risk_remediation",
+  "as_of_date": "2024-01-01",
+  "episode": {
+    "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_001_mandate_aggressive_growth",
+    "skill": "risk_management",
+    "sub_task": "risk_remediation",
+    "as_of_date": "2024-01-01",
+    "input": {
+      "portfolio": {
+        "portfolio_id": "portfolio_concentrated_2023_24_rebound_001",
+        "holdings": [
+          {
+            "symbol": "BAX",
+            "weight": 0.199999
+          },
+          {
+            "symbol": "DHR",
+            "weight": 0.199999
+          },
+          {
+            "symbol": "HUM",
+            "weight": 0.199999
+          },
+          {
+            "symbol": "AIG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "ARE",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BF-B",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "BR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "C",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CARR",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CMG",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPAY",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CPRT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "CTRA",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "DD",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EFX",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "EQT",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "KHC",
+            "weight": 0.026667
+          },
+          {
+            "symbol": "L",
+            "weight": 0.026667
+          }
+        ],
+        "total_nav": 25000000
+      },
+      "mandate": {
+        "mandate_id": "mandate_aggressive_growth"
+      },
+      "violations": [
+        "sector_concentration",
+        "single_name_risk",
+        "low_diversification"
+      ],
+      "market_data": {
+        "covariance": "data/risk_management/processed/covariance/",
+        "transaction_cost_bps": 5
+      }
+    },
+    "expected_output": {
+      "trades": [
+        {
+          "symbol": "AIG",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.037724,
+          "trade_pct": 0.011057
+        },
+        {
+          "symbol": "ARE",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.044853,
+          "trade_pct": 0.018186
+        },
+        {
+          "symbol": "BAX",
+          "action": "sell",
+          "current_weight": 0.199999,
+          "target_weight": 0.119337,
+          "trade_pct": -0.080662
+        },
+        {
+          "symbol": "BF-B",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.034429,
+          "trade_pct": 0.007762
+        },
+        {
+          "symbol": "BR",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.030313,
+          "trade_pct": 0.003646
+        },
+        {
+          "symbol": "C",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.034273,
+          "trade_pct": 0.007606
+        },
+        {
+          "symbol": "CARR",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.047251,
+          "trade_pct": 0.020584
+        },
+        {
+          "symbol": "CMG",
+          "action": "sell",
+          "current_weight": 0.026667,
+          "target_weight": 0.024925,
+          "trade_pct": -0.001742
+        },
+        {
+          "symbol": "CPAY",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.043864,
+          "trade_pct": 0.017197
+        },
+        {
+          "symbol": "CPRT",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040501,
+          "trade_pct": 0.013834
+        },
+        {
+          "symbol": "CTRA",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.029467,
+          "trade_pct": 0.0028
+        },
+        {
+          "symbol": "DD",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.036687,
+          "trade_pct": 0.01002
+        },
+        {
+          "symbol": "DHR",
+          "action": "sell",
+          "current_weight": 0.199999,
+          "target_weight": 0.121368,
+          "trade_pct": -0.078631
+        },
+        {
+          "symbol": "EFX",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.040516,
+          "trade_pct": 0.013849
+        },
+        {
+          "symbol": "EQT",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.035349,
+          "trade_pct": 0.008682
+        },
+        {
+          "symbol": "HUM",
+          "action": "sell",
+          "current_weight": 0.199999,
+          "target_weight": 0.109295,
+          "trade_pct": -0.090704
+        },
+        {
+          "symbol": "KHC",
+          "action": "sell",
+          "current_weight": 0.026667,
+          "target_weight": 0.019981,
+          "trade_pct": -0.006686
+        },
+        {
+          "symbol": "L",
+          "action": "buy",
+          "current_weight": 0.026667,
+          "target_weight": 0.031288,
+          "trade_pct": 0.004621
+        },
+        {
+          "symbol": "LHX",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009882,
+          "trade_pct": 0.009882
+        },
+        {
+          "symbol": "LNT",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009882,
+          "trade_pct": 0.009882
+        },
+        {
+          "symbol": "LYV",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009882,
+          "trade_pct": 0.009882
+        },
+        {
+          "symbol": "ON",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009882,
+          "trade_pct": 0.009882
+        },
+        {
+          "symbol": "REG",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009882,
+          "trade_pct": 0.009882
+        },
+        {
+          "symbol": "SBUX",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009882,
+          "trade_pct": 0.009882
+        },
+        {
+          "symbol": "SRE",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009882,
+          "trade_pct": 0.009882
+        },
+        {
+          "symbol": "TT",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009882,
+          "trade_pct": 0.009882
+        },
+        {
+          "symbol": "TTWO",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009882,
+          "trade_pct": 0.009882
+        },
+        {
+          "symbol": "USB",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009882,
+          "trade_pct": 0.009882
+        },
+        {
+          "symbol": "VMC",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009882,
+          "trade_pct": 0.009882
+        },
+        {
+          "symbol": "ZBRA",
+          "action": "buy",
+          "current_weight": 0.0,
+          "target_weight": 0.009882,
+          "trade_pct": 0.009882
+        }
+      ],
+      "total_turnover": 0.258425,
+      "post_trade_compliant": false
+    },
+    "verification": {
+      "method": "constraint_satisfaction_plus_cost",
+      "metrics": [
+        "post_trade_compliant",
+        "turnover_vs_optimal"
+      ],
+      "tolerance": {
+        "turnover_excess_pct": 50
+      }
+    },
+    "metadata": {
+      "regime_slice": "2023_24_rebound",
+      "difficulty": "hard",
+      "portfolio_type": "concentrated",
+      "num_violations": 3,
+      "requires_tool_use": true
+    },
+    "_source_file": "/home/jerm-xps/github_dev/finskillbench/data/risk_management/episodes/layer_a/risk_remediation/task_rm_rr_portfolio_concentrated_2023_24_rebound_001_mandate_aggressive_growth.json"
+  },
+  "context_summary": {
+    "n_symbols": 18,
+    "symbols": [
+      "BAX",
+      "DHR",
+      "HUM",
+      "AIG",
+      "ARE",
+      "BF-B",
+      "BR",
+      "C",
+      "CARR",
+      "CMG",
+      "CPAY",
+      "CPRT",
+      "CTRA",
+      "DD",
+      "EFX",
+      "EQT",
+      "KHC",
+      "L"
+    ],
+    "weights": {
+      "BAX": 0.199999,
+      "DHR": 0.199999,
+      "HUM": 0.199999,
+      "AIG": 0.026667,
+      "ARE": 0.026667,
+      "BF-B": 0.026667,
+      "BR": 0.026667,
+      "C": 0.026667,
+      "CARR": 0.026667,
+      "CMG": 0.026667,
+      "CPAY": 0.026667,
+      "CPRT": 0.026667,
+      "CTRA": 0.026667,
+      "DD": 0.026667,
+      "EFX": 0.026667,
+      "EQT": 0.026667,
+      "KHC": 0.026667,
+      "L": 0.026667
+    },
+    "returns_shape": [
+      250,
+      18
+    ],
+    "returns_date_range": [
+      "2023-01-03",
+      "2023-12-29"
+    ],
+    "factor_betas_count": 18,
+    "factor_names": [
+      "cma",
+      "hml",
+      "mkt_rf",
+      "mom",
+      "rmw",
+      "smb"
+    ],
+    "has_mandate": true,
+    "has_scenario": false,
+    "transaction_cost_bps": 5.0,
+    "mandate": {
+      "mandate_id": "mandate_aggressive_growth",
+      "name": "Aggressive Growth Equity",
+      "difficulty": "medium",
+      "benchmark": "SPY",
+      "constraints": [
+        {
+          "type": "position_limit_max",
+          "value": 0.1,
+          "description": "No single name > 10%"
+        },
+        {
+          "type": "sector_limit_max",
+          "value": 0.35,
+          "description": "No sector > 35%"
+        },
+        {
+          "type": "beta_range",
+          "min": 0.9,
+          "max": 1.4,
+          "description": "Beta 0.9-1.4"
+        },
+        {
+          "type": "long_only",
+          "value": true,
+          "description": "No short positions"
+        },
+        {
+          "type": "turnover_max_monthly",
+          "value": 0.2,
+          "description": "Monthly turnover < 20%"
+        }
+      ]
+    },
+    "scenario": null
+  },
+  "prompt": "## Task: risk_remediation\ntask_id: rm_rr_portfolio_concentrated_2023_24_rebound_001_mandate_aggressive_growth\nas_of_date: 2024-01-01\ndifficulty: hard\n\n## Portfolio\nNAV: $25,000,000\nSymbols (18): BAX, DHR, HUM, AIG, ARE, BF-B, BR, C, CARR, CMG, CPAY, CPRT, CTRA, DD, EFX, EQT, KHC, L\nWeights: BAX: 20.00%, DHR: 20.00%, HUM: 20.00%, AIG: 2.67%, ARE: 2.67%, BF-B: 2.67%, BR: 2.67%, C: 2.67%, CARR: 2.67%, CMG: 2.67%, CPAY: 2.67%, CPRT: 2.67%, CTRA: 2.67%, DD: 2.67%, EFX: 2.67%, EQT: 2.67%, KHC: 2.67%, L: 2.67%\n\n## Mandate\nname: Aggressive Growth Equity\nbenchmark: SPY\nconstraints:\n  - position_limit_max: 0.1 \u2014 No single name > 10%\n  - sector_limit_max: 0.35 \u2014 No sector > 35%\n  - beta_range: [0.9, 1.4] \u2014 Beta 0.9-1.4\n  - long_only: True \u2014 No short positions\n  - turnover_max_monthly: 0.2 \u2014 Monthly turnover < 20%\n\n## Known Violations\n- sector_concentration\n- single_name_risk\n- low_diversification\n\n## Available Reference Data (auto-injected into tool calls)\nreturns:      250 trading days ending \u2264 2024-01-01, 18 symbols\nfactor_betas: Fama-French 5+mom factor exposures for 18 symbols\nsector_map:   GICS sectors for 18 symbols\ntransaction_cost_bps: 5.0\nYou do NOT need to pass returns / factor_betas / sector_map / mandate / scenario into tools \u2014 handlers read them from the task context. Pass only the portfolio weights (and any what-if parameters).\n\n## Expected Output Schema\nYour final answer must be a JSON object matching this shape:\n{\n  \"trades\": [\n    {\n      \"symbol\": \"<string>\",\n      \"action\": \"<string>\",\n      \"current_weight\": \"<number>\",\n      \"target_weight\": \"<number>\",\n      \"trade_pct\": \"<number>\"\n    }\n  ],\n  \"total_turnover\": \"<number>\",\n  \"post_trade_compliant\": \"<boolean>\"\n}\n\n## Instructions\n1. Analyze the task using the provided tools.\n2. Point-in-time discipline: do not use information after as_of_date.\n3. When ready, call submit_answer with a JSON STRING matching the schema. Submit exactly once."
+}

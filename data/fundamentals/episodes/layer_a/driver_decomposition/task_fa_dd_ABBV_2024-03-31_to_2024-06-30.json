@@ -1,0 +1,161 @@
+{
+  "task_id": "fa_dd_ABBV_2024-03-31_to_2024-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2024-08-07",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "ABBV",
+    "current_period_end": "2024-06-30",
+    "prior_period_end": "2024-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 2152000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 2065000000,
+        "contribution_pct": 95.96
+      },
+      {
+        "driver": "SKYRIZI",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 719000000,
+        "contribution_pct": 33.41
+      },
+      {
+        "driver": "H U M I R A",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 544000000,
+        "contribution_pct": 25.28
+      },
+      {
+        "driver": "RINVOQ",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 337000000,
+        "contribution_pct": 15.66
+      },
+      {
+        "driver": "Botox Cosmetic",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 96000000,
+        "contribution_pct": 4.46
+      },
+      {
+        "driver": "Non-US",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 87000000,
+        "contribution_pct": 4.04
+      },
+      {
+        "driver": "Vraylar",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 80000000,
+        "contribution_pct": 3.72
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 22.73,
+        "current_pct": 27.64,
+        "delta_pp": 4.92
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 66.74,
+        "current_pct": 70.94,
+        "delta_pp": 4.2
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 33.26,
+        "current_pct": 29.06,
+        "delta_pp": -4.2
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 26.93,
+        "current_pct": 23.35,
+        "delta_pp": -3.58
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 15.75,
+        "current_pct": 13.47,
+        "delta_pp": -2.28
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.11,
+        "current_pct": 5.35,
+        "delta_pp": 2.23
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 16.85,
+        "current_pct": 14.74,
+        "delta_pp": -2.11
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 5.36,
+        "current_pct": 5.02,
+        "delta_pp": -0.34
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 22,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze ABBV's financial performance change between the quarter ending 2024-03-31 and the quarter ending 2024-06-30. Revenue increased by $2,152,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2024-08-07.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

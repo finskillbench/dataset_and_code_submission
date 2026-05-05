@@ -1,0 +1,145 @@
+{
+  "task_id": "fa_dd_GRMN_2023-07-01_to_2023-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-11-01",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "GRMN",
+    "current_period_end": "2023-09-30",
+    "prior_period_end": "2023-07-01",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -43264000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Marine Segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -33554000,
+        "contribution_pct": 77.56
+      },
+      {
+        "driver": "Aviation",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -19294000,
+        "contribution_pct": 44.6
+      },
+      {
+        "driver": "EMEA",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -18427000,
+        "contribution_pct": 42.59
+      },
+      {
+        "driver": "Fitness",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 18113000,
+        "contribution_pct": -41.87
+      },
+      {
+        "driver": "Outdoor",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -14117000,
+        "contribution_pct": 32.63
+      },
+      {
+        "driver": "Americas",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -13691000,
+        "contribution_pct": 31.65
+      },
+      {
+        "driver": "Asia Pacific",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -11146000,
+        "contribution_pct": 25.76
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 57.5,
+        "current_pct": 57.03,
+        "delta_pp": -0.47
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 42.5,
+        "current_pct": 42.97,
+        "delta_pp": 0.47
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 18.98,
+        "current_pct": 18.52,
+        "delta_pp": -0.46
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 21.53,
+        "current_pct": 21.16,
+        "delta_pp": -0.37
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 2.12,
+        "current_pct": 1.75,
+        "delta_pp": -0.37
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 16.99,
+        "current_pct": 17.34,
+        "delta_pp": 0.35
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze GRMN's financial performance change between the quarter ending 2023-07-01 and the quarter ending 2023-09-30. Revenue decreased by $43,264,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-11-01.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

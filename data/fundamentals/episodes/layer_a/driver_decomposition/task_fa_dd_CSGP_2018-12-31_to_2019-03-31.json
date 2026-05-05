@@ -1,0 +1,116 @@
+{
+  "task_id": "fa_dd_CSGP_2018-12-31_to_2019-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-04-24",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "CSGP",
+    "current_period_end": "2019-03-31",
+    "prior_period_end": "2018-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 12854000,
+    "top_revenue_drivers": [
+      {
+        "driver": "North America",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 11935000,
+        "contribution_pct": 92.85
+      },
+      {
+        "driver": "Non-US",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -8004000,
+        "contribution_pct": -62.27
+      },
+      {
+        "driver": "Information And Analytics",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 5763000,
+        "contribution_pct": 44.83
+      },
+      {
+        "driver": "Online Marketplaces",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 5727000,
+        "contribution_pct": 44.55
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 33.48,
+        "current_pct": 28.47,
+        "delta_pp": -5.01
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 34.27,
+        "current_pct": 39.03,
+        "delta_pp": 4.75
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 8.26,
+        "current_pct": 3.82,
+        "delta_pp": -4.44
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 8.11,
+        "current_pct": 8.5,
+        "delta_pp": 0.4
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.26,
+        "current_pct": 5.99,
+        "delta_pp": -0.27
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze CSGP's financial performance change between the quarter ending 2018-12-31 and the quarter ending 2019-03-31. Revenue increased by $12,854,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-04-24.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "task_id": "fa_dd_MRK_2021-06-30_to_2021-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2021-11-05",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "MRK",
+    "current_period_end": "2021-09-30",
+    "prior_period_end": "2021-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 1752000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Pharmaceutical segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1516000000,
+        "contribution_pct": 86.53
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 1176000000,
+        "contribution_pct": 67.12
+      },
+      {
+        "driver": "CHINA",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 332000000,
+        "contribution_pct": 18.95
+      },
+      {
+        "driver": "Other Segments",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 291000000,
+        "contribution_pct": 16.61
+      },
+      {
+        "driver": "International",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 172000000,
+        "contribution_pct": 9.82
+      },
+      {
+        "driver": "Latin America",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 67000000,
+        "contribution_pct": 3.82
+      },
+      {
+        "driver": "Animal Health segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -55000000,
+        "contribution_pct": -3.14
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 14.87,
+        "current_pct": 37.43,
+        "delta_pp": 22.55
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 37.9,
+        "current_pct": 18.59,
+        "delta_pp": -19.31
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 20.01,
+        "current_pct": 17.76,
+        "delta_pp": -2.25
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 72.78,
+        "current_pct": 73.77,
+        "delta_pp": 1.0
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 27.22,
+        "current_pct": 26.23,
+        "delta_pp": -1.0
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.41,
+        "current_pct": 5.28,
+        "delta_pp": 0.87
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.38,
+        "current_pct": 5.77,
+        "delta_pp": -0.61
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 1.77,
+        "current_pct": 1.49,
+        "delta_pp": -0.28
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 7,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze MRK's financial performance change between the quarter ending 2021-06-30 and the quarter ending 2021-09-30. Revenue increased by $1,752,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2021-11-05.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

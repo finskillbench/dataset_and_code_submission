@@ -1,0 +1,130 @@
+{
+  "task_id": "fa_dd_PH_2018-12-31_to_2019-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-05-09",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "PH",
+    "current_period_end": "2019-03-31",
+    "prior_period_end": "2018-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 215473000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Diversified Industrial Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 179682000,
+        "contribution_pct": 83.39
+      },
+      {
+        "driver": "North America",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 150169000,
+        "contribution_pct": 69.69
+      },
+      {
+        "driver": "Europe",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 71573000,
+        "contribution_pct": 33.22
+      },
+      {
+        "driver": "Aerospace Systems Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 35791000,
+        "contribution_pct": 16.61
+      },
+      {
+        "driver": "Asia Pacific",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -7852000,
+        "contribution_pct": -3.64
+      },
+      {
+        "driver": "Latin America",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 1583000,
+        "contribution_pct": 0.73
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 11.33,
+        "current_pct": 9.74,
+        "delta_pp": -1.6
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 13.82,
+        "current_pct": 15.31,
+        "delta_pp": 1.49
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.43,
+        "current_pct": 3.2,
+        "delta_pp": -0.24
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.17,
+        "current_pct": 2.94,
+        "delta_pp": -0.23
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 25.15,
+        "current_pct": 25.05,
+        "delta_pp": -0.11
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 4,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze PH's financial performance change between the quarter ending 2018-12-31 and the quarter ending 2019-03-31. Revenue increased by $215,473,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-05-09.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

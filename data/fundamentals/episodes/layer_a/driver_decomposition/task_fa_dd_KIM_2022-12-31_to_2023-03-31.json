@@ -1,0 +1,87 @@
+{
+  "task_id": "fa_dd_KIM_2022-12-31_to_2023-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-04-28",
+  "difficulty": "easy",
+  "input": {
+    "symbol": "KIM",
+    "current_period_end": "2023-03-31",
+    "prior_period_end": "2022-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 3058000,
+    "top_revenue_drivers": [],
+    "margin_drivers": [
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 13.13,
+        "current_pct": 6.96,
+        "delta_pp": -6.17
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 32.88,
+        "current_pct": 38.94,
+        "delta_pp": 6.06
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 67.57,
+        "current_pct": 69.12,
+        "delta_pp": 1.55
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 32.43,
+        "current_pct": 30.88,
+        "delta_pp": -1.55
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 7.26,
+        "current_pct": 7.85,
+        "delta_pp": 0.59
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": false,
+    "has_geographic_segments": false,
+    "n_product_drivers": 0,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze KIM's financial performance change between the quarter ending 2022-12-31 and the quarter ending 2023-03-31. Revenue increased by $3,058,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-04-28.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

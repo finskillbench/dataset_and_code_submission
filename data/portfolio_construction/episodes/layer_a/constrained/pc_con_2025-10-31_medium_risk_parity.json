@@ -1,0 +1,97 @@
+{
+  "task_id": "pc_con_2025-10-31_medium_risk_parity",
+  "skill": "portfolio_construction",
+  "sub_task": "constrained_optimization",
+  "as_of_date": "2025-10-31",
+  "difficulty": "medium",
+  "input": {
+    "expected_returns": {},
+    "covariance_matrix": {
+      "ref": "data/portfolio_construction/processed/covariance/2025-10-31.npz"
+    },
+    "constraints": {
+      "long_only": true,
+      "max_weight": 0.0656,
+      "min_weight": 0.0,
+      "sector_limits": {
+        "Consumer Staples": 0.2,
+        "Materials": 0.2,
+        "Consumer Discretionary": 0.2,
+        "Industrials": 0.2,
+        "Health Care": 0.2,
+        "Real Estate": 0.2,
+        "Financials": 0.2,
+        "Utilities": 0.2,
+        "Communication Services": 0.2,
+        "Information Technology": 0.2,
+        "Energy": 0.2
+      },
+      "min_names": 18,
+      "max_names": 30,
+      "max_turnover": 0.2,
+      "max_tracking_error": 0.03,
+      "factor_neutrality": false,
+      "description": "Max 6.6%/name, max 20%/sector, 18-30 names, turnover<=20%, TE<=3%"
+    },
+    "benchmark_weights": {},
+    "risk_free_rate": 0.045,
+    "objective": "risk_parity",
+    "tools_available": [
+      "optimize_portfolio"
+    ]
+  },
+  "expected_output": {
+    "weights": {
+      "AIG": 0.05323344469667233,
+      "ARE": 0.020606524227513166,
+      "BAX": 0.015415553235068928,
+      "BF-B": 0.021985733625523994,
+      "BR": 0.05727579404966339,
+      "C": 0.025668905855099008,
+      "CARR": 0.02490439064417979,
+      "CMG": 0.021286559124988447,
+      "CPAY": 0.015770178291960073,
+      "CPRT": 0.043363676540564784,
+      "CTRA": 0.032952820947096735,
+      "DD": 0.021321689534118744,
+      "DHR": 0.027455645288525028,
+      "EFX": 0.01959275355914164,
+      "EQT": 0.02140264725232012,
+      "HUM": 0.01969855425629569,
+      "KHC": 0.04823300034957405,
+      "L": 0.0635768609217526,
+      "LHX": 0.05943115315103352,
+      "LNT": 0.06559999980368342,
+      "LYV": 0.032989020600466754,
+      "ON": 0.0008685591188520947,
+      "REG": 0.06560000090225321,
+      "SBUX": 0.026539099289825882,
+      "SRE": 0.031158801268625302,
+      "TT": 0.03723014084740736,
+      "TTWO": 0.03702392577060539,
+      "USB": 0.034030670689809694,
+      "VMC": 0.04699464436994479,
+      "ZBRA": 0.008789251787433859
+    },
+    "constraint_satisfaction": {
+      "max_weight": true,
+      "long_only": true,
+      "min_names": true,
+      "max_names": true
+    }
+  },
+  "verification": {
+    "method": "constraint_satisfaction_and_objective",
+    "all_constraints_must_satisfy": true,
+    "objective_gap_threshold_pct": 5.0,
+    "ground_truth_source": "optimizer"
+  },
+  "metadata": {
+    "regime_slice": "unknown",
+    "n_assets": 30
+  },
+  "prompt": {
+    "task_description": "Construct the optimal risk parity portfolio subject to the following constraints: long-only; max 6.6%/name; turnover \u2264 20%; TE \u2264 3.0%; \u2265 18 names; sector limits (11 sectors, max 20% each). Use the provided expected returns, covariance matrix, and benchmark weights as of 2025-10-31. You have access to an optimization tool. Ensure all constraints are satisfied in the final portfolio.",
+    "output_instructions": "Respond with a JSON object containing: weights (object mapping ticker \u2192 portfolio weight) and constraint_satisfaction (object mapping constraint name \u2192 boolean pass/fail)."
+  }
+}

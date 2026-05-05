@@ -1,0 +1,137 @@
+{
+  "task_id": "fa_dd_ABBV_2024-06-30_to_2024-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2024-11-04",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "ABBV",
+    "current_period_end": "2024-09-30",
+    "prior_period_end": "2024-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -2000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "H U M I R A",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -587000000,
+        "contribution_pct": 29350.0
+      },
+      {
+        "driver": "SKYRIZI",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 478000000,
+        "contribution_pct": -23900.0
+      },
+      {
+        "driver": "RINVOQ",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 184000000,
+        "contribution_pct": -9200.0
+      },
+      {
+        "driver": "Vraylar",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 101000000,
+        "contribution_pct": -5050.0
+      },
+      {
+        "driver": "Juvederm Collection",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -85000000,
+        "contribution_pct": 4250.0
+      },
+      {
+        "driver": "Other Products",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -84000000,
+        "contribution_pct": 4200.0
+      },
+      {
+        "driver": "MAVYRET",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -67000000,
+        "contribution_pct": 3350.0
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 23.35,
+        "current_pct": 29.08,
+        "delta_pp": 5.73
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 5.35,
+        "current_pct": 3.6,
+        "delta_pp": -1.75
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 13.47,
+        "current_pct": 14.73,
+        "delta_pp": 1.26
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 27.64,
+        "current_pct": 26.49,
+        "delta_pp": -1.15
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 14.74,
+        "current_pct": 14.38,
+        "delta_pp": -0.36
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 22,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze ABBV's financial performance change between the quarter ending 2024-06-30 and the quarter ending 2024-09-30. Revenue decreased by $2,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2024-11-04.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

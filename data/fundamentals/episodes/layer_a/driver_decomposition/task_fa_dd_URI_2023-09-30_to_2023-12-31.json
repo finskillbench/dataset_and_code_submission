@@ -1,0 +1,129 @@
+{
+  "task_id": "fa_dd_URI_2023-09-30_to_2023-12-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2024-01-24",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "URI",
+    "current_period_end": "2023-12-31",
+    "prior_period_end": "2023-09-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -37000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Owned Equipment Rentals",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -81000000,
+        "contribution_pct": 218.92
+      },
+      {
+        "driver": "Rental Equipment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 72000000,
+        "contribution_pct": -194.59
+      },
+      {
+        "driver": "Ancillary and Other Rental Revenue",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -13000000,
+        "contribution_pct": 35.14
+      },
+      {
+        "driver": "Re-rent Revenue",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -11000000,
+        "contribution_pct": 29.73
+      },
+      {
+        "driver": "Contractor Supplies",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -3000000,
+        "contribution_pct": 8.11
+      },
+      {
+        "driver": "Service and Other Revenues",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1000000,
+        "contribution_pct": 2.7
+      },
+      {
+        "driver": "New Equipment",
+        "type": "product_segment",
+        "direction": "flat",
+        "magnitude_usd": 0,
+        "contribution_pct": -0.0
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 29.32,
+        "current_pct": 28.62,
+        "delta_pp": -0.7
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 9.93,
+        "current_pct": 10.54,
+        "delta_pp": 0.61
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.37,
+        "current_pct": 5.98,
+        "delta_pp": -0.39
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 18.46,
+        "current_pct": 18.7,
+        "delta_pp": 0.24
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 7,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 4,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze URI's financial performance change between the quarter ending 2023-09-30 and the quarter ending 2023-12-31. Revenue decreased by $37,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2024-01-24.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

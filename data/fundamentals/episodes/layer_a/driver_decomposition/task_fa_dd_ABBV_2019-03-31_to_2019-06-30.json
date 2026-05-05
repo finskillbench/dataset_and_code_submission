@@ -1,0 +1,161 @@
+{
+  "task_id": "fa_dd_ABBV_2019-03-31_to_2019-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-08-05",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "ABBV",
+    "current_period_end": "2019-06-30",
+    "prior_period_end": "2019-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 427000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 2721000000,
+        "contribution_pct": 637.24
+      },
+      {
+        "driver": "Non-US",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 816000000,
+        "contribution_pct": 191.1
+      },
+      {
+        "driver": "H U M I R A",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 424000000,
+        "contribution_pct": 99.3
+      },
+      {
+        "driver": "Other Products",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 140000000,
+        "contribution_pct": 32.79
+      },
+      {
+        "driver": "Imbruvica",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 77000000,
+        "contribution_pct": 18.03
+      },
+      {
+        "driver": "SKYRIZI",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 48000000,
+        "contribution_pct": 11.24
+      },
+      {
+        "driver": "VENCLEXTA",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 18000000,
+        "contribution_pct": 4.22
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 38.45,
+        "current_pct": 41.19,
+        "delta_pp": 2.74
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 18.45,
+        "current_pct": 16.74,
+        "delta_pp": -1.71
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 21.46,
+        "current_pct": 20.04,
+        "delta_pp": -1.43
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.94,
+        "current_pct": 4.34,
+        "delta_pp": -0.61
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 78.36,
+        "current_pct": 77.96,
+        "delta_pp": -0.39
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 21.64,
+        "current_pct": 22.04,
+        "delta_pp": 0.39
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.43,
+        "current_pct": 6.08,
+        "delta_pp": -0.34
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 1.12,
+        "current_pct": 0.8,
+        "delta_pp": -0.32
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 7,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze ABBV's financial performance change between the quarter ending 2019-03-31 and the quarter ending 2019-06-30. Revenue increased by $427,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-08-05.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "task_id": "fa_dd_GRMN_2022-06-25_to_2022-09-24",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2022-10-26",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "GRMN",
+    "current_period_end": "2022-09-24",
+    "prior_period_end": "2022-06-25",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -100399000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Aviation",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 362809000,
+        "contribution_pct": -361.37
+      },
+      {
+        "driver": "Automotive Mobile",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 273949000,
+        "contribution_pct": -272.86
+      },
+      {
+        "driver": "Americas",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -82862000,
+        "contribution_pct": 82.53
+      },
+      {
+        "driver": "Marine Segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -46288000,
+        "contribution_pct": 46.1
+      },
+      {
+        "driver": "Outdoor",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -41527000,
+        "contribution_pct": 41.36
+      },
+      {
+        "driver": "EMEA",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -29685000,
+        "contribution_pct": 29.57
+      },
+      {
+        "driver": "Asia Pacific",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 12148000,
+        "contribution_pct": -12.1
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 23.59,
+        "current_pct": 20.99,
+        "delta_pp": -2.6
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 16.24,
+        "current_pct": 18.3,
+        "delta_pp": 2.06
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 1.7,
+        "current_pct": 0.83,
+        "delta_pp": -0.87
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 18.9,
+        "current_pct": 19.5,
+        "delta_pp": 0.6
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2022_tightening",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 4,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze GRMN's financial performance change between the quarter ending 2022-06-25 and the quarter ending 2022-09-24. Revenue decreased by $100,399,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2022-10-26.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

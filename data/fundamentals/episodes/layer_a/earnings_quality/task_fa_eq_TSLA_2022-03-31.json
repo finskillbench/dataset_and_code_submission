@@ -1,0 +1,58 @@
+{
+  "task_id": "fa_eq_TSLA_2022-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "earnings_quality",
+  "as_of_date": "2022-04-25",
+  "difficulty": "easy",
+  "input": {
+    "symbol": "TSLA",
+    "period_end": "2022-03-31",
+    "form_type": "10-Q",
+    "filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "piotroski_score": 7,
+    "piotroski_components": {
+      "roa_positive": 1,
+      "cfo_positive": 1,
+      "delta_roa_positive": 1,
+      "accruals_negative": 1,
+      "delta_leverage_negative": 1,
+      "delta_current_ratio_positive": 0,
+      "no_dilution": 1,
+      "delta_gross_margin_positive": 1,
+      "delta_asset_turnover_positive": 0
+    },
+    "beneish_m_score": -2.2048,
+    "beneish_flag": false,
+    "accruals_ratio": -0.010252,
+    "income_quality_ratio": 1.218,
+    "flags": []
+  },
+  "verification": {
+    "method": "earnings_quality_composite",
+    "piotroski_tolerance": 1,
+    "beneish_flag_weight": 0.3,
+    "component_weight": 0.4,
+    "flag_f1_weight": 0.3,
+    "metrics": [
+      "piotroski_mae",
+      "beneish_flag_accuracy",
+      "flag_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2022_tightening",
+    "form_type": "10-Q",
+    "flag_count": 0,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Assess the earnings quality of TSLA for the period ending 2022-03-31 using its 10-Q filing and structured financial data. Compute the Piotroski F-Score (9 binary components covering profitability, leverage, and efficiency), the Beneish M-Score (8 variable model for earnings manipulation detection), the accruals ratio, and the income quality ratio. Flag any material concerns (low Piotroski score ≤ 3, Beneish M-Score > −1.78, high accruals > 10%, or negative income quality). Use only data available as of 2022-04-25.",
+    "output_instructions": "Respond with a JSON object containing: piotroski_score (int 0–9), piotroski_components (object with 9 boolean fields), beneish_m_score (float), beneish_flag (boolean), accruals_ratio (float), income_quality_ratio (float), and flags (array of string flag names)."
+  }
+}

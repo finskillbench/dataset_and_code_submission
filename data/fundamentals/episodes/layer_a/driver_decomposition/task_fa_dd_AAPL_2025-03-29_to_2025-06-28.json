@@ -1,0 +1,137 @@
+{
+  "task_id": "fa_dd_AAPL_2025-03-29_to_2025-06-28",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2025-08-01",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "AAPL",
+    "current_period_end": "2025-06-28",
+    "prior_period_end": "2025-03-29",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -1323000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "iPhone",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2259000000,
+        "contribution_pct": 170.75
+      },
+      {
+        "driver": "Japan Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1516000000,
+        "contribution_pct": 114.59
+      },
+      {
+        "driver": "Americas Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 883000000,
+        "contribution_pct": -66.74
+      },
+      {
+        "driver": "Service",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 778000000,
+        "contribution_pct": -58.81
+      },
+      {
+        "driver": "Greater China Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -633000000,
+        "contribution_pct": 47.85
+      },
+      {
+        "driver": "Europe Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -440000000,
+        "contribution_pct": 33.26
+      },
+      {
+        "driver": "Rest of Asia Pacific Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 383000000,
+        "contribution_pct": -28.95
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 31.03,
+        "current_pct": 29.99,
+        "delta_pp": -1.04
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 47.05,
+        "current_pct": 46.49,
+        "delta_pp": -0.56
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 52.95,
+        "current_pct": 53.51,
+        "delta_pp": 0.56
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 8.97,
+        "current_pct": 9.43,
+        "delta_pp": 0.46
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.79,
+        "current_pct": 3.01,
+        "delta_pp": 0.22
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze AAPL's financial performance change between the quarter ending 2025-03-29 and the quarter ending 2025-06-28. Revenue decreased by $1,323,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2025-08-01.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

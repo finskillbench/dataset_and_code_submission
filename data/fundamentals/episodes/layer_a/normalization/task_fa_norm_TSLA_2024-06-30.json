@@ -1,0 +1,48 @@
+{
+  "task_id": "fa_norm_TSLA_2024-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "normalization",
+  "as_of_date": "2024-07-24",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "TSLA",
+    "period_end": "2024-06-30",
+    "form_type": "10-Q",
+    "filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "metrics": {
+      "revenue": 25500000000,
+      "operating_income": 1605000000,
+      "net_income": 1494000000,
+      "eps_diluted": 0.42,
+      "total_assets": 112832000000,
+      "total_liabilities": 45569000000,
+      "stockholders_equity": 66468000000,
+      "operating_cash_flow": 3854000000,
+      "operating_margin": 0.0629
+    }
+  },
+  "verification": {
+    "method": "metric_absolute_error",
+    "tolerance_pct": 5.0,
+    "metrics": [
+      "mae",
+      "within_threshold_pct"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "form_type": "10-Q",
+    "tier": 2,
+    "cross_source_agreement": false
+  },
+  "prompt": {
+    "task_description": "You are given TSLA's 10-Q filing for the quarter ending 2024-06-30. Extract and normalize the following financial metrics from the filing and XBRL data: revenue, operating_income, net_income, eps_diluted, total_assets, total_liabilities, stockholders_equity, operating_cash_flow, and operating_margin. Report all monetary values in USD (unscaled). Use only information available as of the filing date (2024-07-24).",
+    "output_instructions": "Respond with a JSON object containing a 'metrics' key mapping each metric name to its numeric value."
+  }
+}

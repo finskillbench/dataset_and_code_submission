@@ -1,0 +1,146 @@
+{
+  "task_id": "fa_dd_TSLA_2021-06-30_to_2021-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2021-10-25",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "TSLA",
+    "current_period_end": "2021-09-30",
+    "prior_period_end": "2021-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 1799000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Automotive",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1851000000,
+        "contribution_pct": 102.89
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 1209000000,
+        "contribution_pct": 67.2
+      },
+      {
+        "driver": "Other Countries",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 336000000,
+        "contribution_pct": 18.68
+      },
+      {
+        "driver": "CHINA",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 254000000,
+        "contribution_pct": 14.12
+      },
+      {
+        "driver": "Services And Other",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -57000000,
+        "contribution_pct": -3.17
+      },
+      {
+        "driver": "Energy Generation And Storage Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 5000000,
+        "contribution_pct": 0.28
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 10.97,
+        "current_pct": 14.57,
+        "delta_pp": 3.6
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 24.12,
+        "current_pct": 26.6,
+        "delta_pp": 2.49
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 75.88,
+        "current_pct": 73.4,
+        "delta_pp": -2.49
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 8.14,
+        "current_pct": 7.23,
+        "delta_pp": -0.91
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 0.96,
+        "current_pct": 1.62,
+        "delta_pp": 0.66
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.82,
+        "current_pct": 4.44,
+        "delta_pp": -0.38
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 0.63,
+        "current_pct": 0.92,
+        "delta_pp": 0.29
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze TSLA's financial performance change between the quarter ending 2021-06-30 and the quarter ending 2021-09-30. Revenue increased by $1,799,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2021-10-25.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

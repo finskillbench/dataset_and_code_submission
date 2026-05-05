@@ -1,0 +1,87 @@
+{
+  "task_id": "fa_dd_SW_2017-03-31_to_2017-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2017-06-30",
+  "difficulty": "easy",
+  "input": {
+    "symbol": "SW",
+    "current_period_end": "2017-06-30",
+    "prior_period_end": "2017-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 131771417,
+    "top_revenue_drivers": [],
+    "margin_drivers": [
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 1.88,
+        "current_pct": 3.23,
+        "delta_pp": 1.35
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 7.89,
+        "current_pct": 9.03,
+        "delta_pp": 1.14
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 28.51,
+        "current_pct": 29.18,
+        "delta_pp": 0.67
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 71.49,
+        "current_pct": 70.82,
+        "delta_pp": -0.67
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 20.62,
+        "current_pct": 20.15,
+        "delta_pp": -0.47
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": false,
+    "has_geographic_segments": false,
+    "n_product_drivers": 0,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze SW's financial performance change between the quarter ending 2017-03-31 and the quarter ending 2017-06-30. Revenue increased by $131,771,417. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2017-06-30.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

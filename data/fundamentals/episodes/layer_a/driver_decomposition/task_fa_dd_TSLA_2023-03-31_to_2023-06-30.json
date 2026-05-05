@@ -1,0 +1,122 @@
+{
+  "task_id": "fa_dd_TSLA_2023-03-31_to_2023-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-07-24",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "TSLA",
+    "current_period_end": "2023-06-30",
+    "prior_period_end": "2023-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 1598000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Automotive",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1305000000,
+        "contribution_pct": 81.66
+      },
+      {
+        "driver": "CHINA",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 840000000,
+        "contribution_pct": 52.57
+      },
+      {
+        "driver": "Other Countries",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 673000000,
+        "contribution_pct": 42.12
+      },
+      {
+        "driver": "Services And Other",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 313000000,
+        "contribution_pct": 19.59
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 85000000,
+        "contribution_pct": 5.32
+      },
+      {
+        "driver": "Energy Generation And Storage Segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -20000000,
+        "contribution_pct": -1.25
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 11.42,
+        "current_pct": 9.62,
+        "delta_pp": -1.8
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 19.34,
+        "current_pct": 18.19,
+        "delta_pp": -1.15
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 80.66,
+        "current_pct": 81.81,
+        "delta_pp": 1.15
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.3,
+        "current_pct": 3.78,
+        "delta_pp": 0.48
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 4,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze TSLA's financial performance change between the quarter ending 2023-03-31 and the quarter ending 2023-06-30. Revenue increased by $1,598,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-07-24.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

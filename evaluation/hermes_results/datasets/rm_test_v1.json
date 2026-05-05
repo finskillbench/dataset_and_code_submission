@@ -1,0 +1,110 @@
+{
+  "dataset_id": "jb_rm_test_v1",
+  "description": "12-episode smoke/eval set \u2014 first 3 (by sorted task_id) from each RM subtask.",
+  "count": 12,
+  "subtasks": [
+    "risk_identification",
+    "constraint_monitoring",
+    "stress_testing",
+    "risk_remediation"
+  ],
+  "selection_method": "task_loader.load_episodes([subtask], max_tasks=3)",
+  "episodes": [
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_000",
+      "sub_task": "risk_identification",
+      "difficulty": "easy",
+      "portfolio_type": "concentrated",
+      "regime_slice": "2023_24_rebound",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_001",
+      "sub_task": "risk_identification",
+      "difficulty": "easy",
+      "portfolio_type": "concentrated",
+      "regime_slice": "2023_24_rebound",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_ri_portfolio_concentrated_2023_24_rebound_002",
+      "sub_task": "risk_identification",
+      "difficulty": "easy",
+      "portfolio_type": "concentrated",
+      "regime_slice": "2023_24_rebound",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_aggressive_growth",
+      "sub_task": "constraint_monitoring",
+      "difficulty": "medium",
+      "portfolio_type": "concentrated",
+      "regime_slice": "2023_24_rebound",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_01",
+      "sub_task": "constraint_monitoring",
+      "difficulty": "hard",
+      "portfolio_type": "concentrated",
+      "regime_slice": "2023_24_rebound",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_cm_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_02",
+      "sub_task": "constraint_monitoring",
+      "difficulty": "hard",
+      "portfolio_type": "concentrated",
+      "regime_slice": "2023_24_rebound",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2018_selloff",
+      "sub_task": "stress_testing",
+      "difficulty": "easy",
+      "portfolio_type": "concentrated",
+      "regime_slice": "2023_24_rebound",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2022_tightening",
+      "sub_task": "stress_testing",
+      "difficulty": "easy",
+      "portfolio_type": "concentrated",
+      "regime_slice": "2023_24_rebound",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_2023_24_reversal",
+      "sub_task": "stress_testing",
+      "difficulty": "easy",
+      "portfolio_type": "concentrated",
+      "regime_slice": "2023_24_rebound",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_000_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "difficulty": "hard",
+      "portfolio_type": "concentrated",
+      "regime_slice": "2023_24_rebound",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_000_mandate_balanced_01",
+      "sub_task": "risk_remediation",
+      "difficulty": "hard",
+      "portfolio_type": "concentrated",
+      "regime_slice": "2023_24_rebound",
+      "as_of_date": "2024-01-01"
+    },
+    {
+      "task_id": "rm_rr_portfolio_concentrated_2023_24_rebound_001_mandate_aggressive_growth",
+      "sub_task": "risk_remediation",
+      "difficulty": "hard",
+      "portfolio_type": "concentrated",
+      "regime_slice": "2023_24_rebound",
+      "as_of_date": "2024-01-01"
+    }
+  ]
+}

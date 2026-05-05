@@ -1,0 +1,145 @@
+{
+  "task_id": "fa_dd_LLY_2020-03-31_to_2020-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2020-07-31",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "LLY",
+    "current_period_end": "2020-06-30",
+    "prior_period_end": "2020-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -360400000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Diabetes",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -189900000,
+        "contribution_pct": 52.69
+      },
+      {
+        "driver": "Europe",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -188000000,
+        "contribution_pct": 52.16
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -184000000,
+        "contribution_pct": 51.05
+      },
+      {
+        "driver": "Other Product, Total",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -159100000,
+        "contribution_pct": 44.15
+      },
+      {
+        "driver": "JAPAN",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 74400000,
+        "contribution_pct": -20.64
+      },
+      {
+        "driver": "Oncology",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 67100000,
+        "contribution_pct": -18.62
+      },
+      {
+        "driver": "Neuroscience",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -41000000,
+        "contribution_pct": 11.38
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 29.82,
+        "current_pct": 26.81,
+        "delta_pp": -3.01
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 23.76,
+        "current_pct": 25.28,
+        "delta_pp": 1.52
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 79.26,
+        "current_pct": 77.78,
+        "delta_pp": -1.48
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 20.74,
+        "current_pct": 22.22,
+        "delta_pp": 1.48
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.67,
+        "current_pct": 5.9,
+        "delta_pp": 1.23
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.81,
+        "current_pct": 4.21,
+        "delta_pp": 0.4
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze LLY's financial performance change between the quarter ending 2020-03-31 and the quarter ending 2020-06-30. Revenue decreased by $360,400,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2020-07-31.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

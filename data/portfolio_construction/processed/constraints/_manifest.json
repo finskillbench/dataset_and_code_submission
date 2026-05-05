@@ -1,0 +1,26 @@
+{
+  "easy": {
+    "max_weight": 0.06,
+    "min_names": 20,
+    "max_names": 30,
+    "factor_neutrality": false,
+    "n_sector_limits": 11,
+    "description": "Long-only, max 6.0%/name, max 25%/sector, min 20 names"
+  },
+  "medium": {
+    "max_weight": 0.0656,
+    "min_names": 18,
+    "max_names": 30,
+    "factor_neutrality": false,
+    "n_sector_limits": 11,
+    "description": "Max 6.6%/name, max 20%/sector, 18-30 names, turnover<=20%, TE<=3%"
+  },
+  "hard": {
+    "max_weight": 0.0767,
+    "min_names": 15,
+    "max_names": 30,
+    "factor_neutrality": true,
+    "n_sector_limits": 11,
+    "description": "Max 7.7%/name, max 15%/sector, 15-30 names, turnover<=15%, TE<=2%, factor-neutral"
+  }
+}

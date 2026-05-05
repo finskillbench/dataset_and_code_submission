@@ -1,0 +1,208 @@
+{
+  "task_id": "rm_cm_portfolio_factor_tilted_2023_24_rebound_006_mandate_balanced_02",
+  "skill": "risk_management",
+  "sub_task": "constraint_monitoring",
+  "as_of_date": "2024-01-01",
+  "input": {
+    "portfolio": {
+      "portfolio_id": "portfolio_factor_tilted_2023_24_rebound_006",
+      "holdings": [
+        {
+          "symbol": "ON",
+          "weight": 0.099999
+        },
+        {
+          "symbol": "ZBRA",
+          "weight": 0.099999
+        },
+        {
+          "symbol": "USB",
+          "weight": 0.099999
+        },
+        {
+          "symbol": "CARR",
+          "weight": 0.099999
+        },
+        {
+          "symbol": "LYV",
+          "weight": 0.099999
+        },
+        {
+          "symbol": "ARE",
+          "weight": 0.099999
+        },
+        {
+          "symbol": "SRE",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "BAX",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "CMG",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "LHX",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "KHC",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "HUM",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "SBUX",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "CPAY",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "TT",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "TTWO",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "EFX",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "CPRT",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "VMC",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "AIG",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "DD",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "REG",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "EQT",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "BF-B",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "C",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "L",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "BR",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "CTRA",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "DHR",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "LNT",
+          "weight": 0.016667
+        }
+      ],
+      "total_nav": 10000000
+    },
+    "mandate": {
+      "mandate_id": "mandate_balanced_02"
+    },
+    "market_data": {
+      "covariance": "data/risk_management/processed/covariance/"
+    }
+  },
+  "expected_output": {
+    "overall_compliant": false,
+    "violations_count": 3,
+    "constraints": [
+      {
+        "type": "position_limit_max",
+        "status": "FAIL",
+        "worst_symbol": "ON",
+        "value": 0.099999,
+        "limit": 0.06,
+        "violation_magnitude": 0.039999
+      },
+      {
+        "type": "sector_limit_max",
+        "status": "PASS",
+        "worst_sector": "Technology",
+        "value": 0.249999,
+        "limit": 0.25
+      },
+      {
+        "type": "tracking_error_max",
+        "status": "FAIL",
+        "value": 0.06949,
+        "limit": 0.04,
+        "violation_magnitude": 0.02949
+      },
+      {
+        "type": "beta_range",
+        "status": "FAIL",
+        "value": 1.1536,
+        "min": 0.85,
+        "max": 1.15,
+        "violation_magnitude": 0.0036
+      },
+      {
+        "type": "turnover_max_monthly",
+        "status": "PASS",
+        "value": 0.0,
+        "limit": 0.15
+      },
+      {
+        "type": "cash_max",
+        "status": "PASS",
+        "value": 0.0,
+        "limit": 0.03
+      },
+      {
+        "type": "long_only",
+        "status": "PASS",
+        "value": true,
+        "limit": true
+      }
+    ]
+  },
+  "verification": {
+    "method": "exact_match",
+    "metrics": [
+      "constraint_accuracy",
+      "violation_detection_recall"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "difficulty": "hard",
+    "portfolio_type": "factor_tilted",
+    "num_constraints": 7,
+    "num_violations": 3
+  }
+}

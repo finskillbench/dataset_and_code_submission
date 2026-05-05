@@ -1,0 +1,107 @@
+{
+  "task_id": "fa_dd_GD_2018-07-01_to_2018-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2018-10-24",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "GD",
+    "current_period_end": "2018-09-30",
+    "prior_period_end": "2018-07-01",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -92000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Marine Systems",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -165000000,
+        "contribution_pct": 179.35
+      },
+      {
+        "driver": "Aerospace",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 136000000,
+        "contribution_pct": -147.83
+      },
+      {
+        "driver": "Information Technology",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -135000000,
+        "contribution_pct": 146.74
+      },
+      {
+        "driver": "Mission Systems",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 83000000,
+        "contribution_pct": -90.22
+      },
+      {
+        "driver": "Combat Systems",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -11000000,
+        "contribution_pct": 11.96
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 11.84,
+        "current_pct": 12.48,
+        "delta_pp": 0.64
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.66,
+        "current_pct": 6.07,
+        "delta_pp": -0.59
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 2.0,
+        "current_pct": 1.75,
+        "delta_pp": -0.25
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 3,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze GD's financial performance change between the quarter ending 2018-07-01 and the quarter ending 2018-09-30. Revenue decreased by $92,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2018-10-24.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

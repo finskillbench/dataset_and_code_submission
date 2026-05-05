@@ -1,0 +1,123 @@
+{
+  "task_id": "fa_dd_CSCO_2017-10-28_to_2018-01-27",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2018-02-20",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "CSCO",
+    "current_period_end": "2018-01-27",
+    "prior_period_end": "2017-10-28",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -249000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Product",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -368000000,
+        "contribution_pct": 147.79
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -346000000,
+        "contribution_pct": 138.96
+      },
+      {
+        "driver": "Europe Middle East And Africa",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 153000000,
+        "contribution_pct": -61.45
+      },
+      {
+        "driver": "Service",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 96000000,
+        "contribution_pct": -38.55
+      },
+      {
+        "driver": "Asia Pacific Japan And China",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -56000000,
+        "contribution_pct": 22.49
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.68,
+        "current_pct": 101.03,
+        "delta_pp": 96.35
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 22.71,
+        "current_pct": 25.85,
+        "delta_pp": 3.14
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 61.2,
+        "current_pct": 63.08,
+        "delta_pp": 1.88
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 38.8,
+        "current_pct": 36.92,
+        "delta_pp": -1.88
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 23.82,
+        "current_pct": 22.87,
+        "delta_pp": -0.96
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze CSCO's financial performance change between the quarter ending 2017-10-28 and the quarter ending 2018-01-27. Revenue decreased by $249,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2018-02-20.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

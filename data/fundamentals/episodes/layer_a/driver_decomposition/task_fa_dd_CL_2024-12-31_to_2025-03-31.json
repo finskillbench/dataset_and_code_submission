@@ -1,0 +1,110 @@
+{
+  "task_id": "fa_dd_CL_2024-12-31_to_2025-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2025-04-25",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "CL",
+    "current_period_end": "2025-03-31",
+    "prior_period_end": "2024-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -33000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Pet Nutrition",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -23000000,
+        "contribution_pct": 69.7
+      },
+      {
+        "driver": "Oral, Personal and Home Care",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -12000000,
+        "contribution_pct": 36.36
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 7.18,
+        "current_pct": 0.0,
+        "delta_pp": -7.18
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 60.34,
+        "current_pct": 60.82,
+        "delta_pp": 0.49
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 39.66,
+        "current_pct": 39.18,
+        "delta_pp": -0.49
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 38.29,
+        "current_pct": 38.63,
+        "delta_pp": 0.34
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.33,
+        "current_pct": 4.62,
+        "delta_pp": 0.29
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 22.05,
+        "current_pct": 22.2,
+        "delta_pp": 0.15
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze CL's financial performance change between the quarter ending 2024-12-31 and the quarter ending 2025-03-31. Revenue decreased by $33,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2025-04-25.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

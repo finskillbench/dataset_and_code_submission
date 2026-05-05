@@ -1,0 +1,146 @@
+{
+  "task_id": "fa_dd_PM_2024-06-30_to_2024-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2024-10-24",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "PM",
+    "current_period_end": "2024-09-30",
+    "prior_period_end": "2024-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 443000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "European Union",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 306000000,
+        "contribution_pct": 69.07
+      },
+      {
+        "driver": "Combustible Products",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 276000000,
+        "contribution_pct": 62.3
+      },
+      {
+        "driver": "SSEA, CIS & MEA Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 193000000,
+        "contribution_pct": 43.57
+      },
+      {
+        "driver": "Reduced-Risk Products",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 167000000,
+        "contribution_pct": 37.7
+      },
+      {
+        "driver": "East Asia And Australia",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -71000000,
+        "contribution_pct": -16.03
+      },
+      {
+        "driver": "Americas Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 19000000,
+        "contribution_pct": 4.29
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 25.04,
+        "current_pct": 29.17,
+        "delta_pp": 4.13
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.47,
+        "current_pct": 1.91,
+        "delta_pp": -1.57
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 64.67,
+        "current_pct": 66.04,
+        "delta_pp": 1.37
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 35.33,
+        "current_pct": 33.96,
+        "delta_pp": -1.37
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 36.38,
+        "current_pct": 36.87,
+        "delta_pp": 0.49
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 7.75,
+        "current_pct": 7.42,
+        "delta_pp": -0.34
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.7,
+        "current_pct": 5.02,
+        "delta_pp": 0.32
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 4,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze PM's financial performance change between the quarter ending 2024-06-30 and the quarter ending 2024-09-30. Revenue increased by $443,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2024-10-24.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

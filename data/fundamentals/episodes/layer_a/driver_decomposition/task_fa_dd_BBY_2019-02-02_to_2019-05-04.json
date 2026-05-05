@@ -1,0 +1,145 @@
+{
+  "task_id": "fa_dd_BBY_2019-02-02_to_2019-05-04",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-06-07",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "BBY",
+    "current_period_end": "2019-05-04",
+    "prior_period_end": "2019-02-02",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -5659000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Domestic Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -5016000000,
+        "contribution_pct": 88.64
+      },
+      {
+        "driver": "Computing And Mobile Phones",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 4156000000,
+        "contribution_pct": -73.44
+      },
+      {
+        "driver": "Consumer Electronics",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2463000000,
+        "contribution_pct": 43.52
+      },
+      {
+        "driver": "Entertainment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -942000000,
+        "contribution_pct": 16.65
+      },
+      {
+        "driver": "International Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -643000000,
+        "contribution_pct": 11.36
+      },
+      {
+        "driver": "Appliances",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -248000000,
+        "contribution_pct": 4.38
+      },
+      {
+        "driver": "Services",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -115000000,
+        "contribution_pct": 2.03
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 15.58,
+        "current_pct": 20.07,
+        "delta_pp": 4.49
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 6.61,
+        "current_pct": 3.65,
+        "delta_pp": -2.95
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 22.18,
+        "current_pct": 23.73,
+        "delta_pp": 1.54
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 77.82,
+        "current_pct": 76.27,
+        "delta_pp": -1.54
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 1.6,
+        "current_pct": 0.71,
+        "delta_pp": -0.89
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 1.49,
+        "current_pct": 2.19,
+        "delta_pp": 0.7
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 6,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze BBY's financial performance change between the quarter ending 2019-02-02 and the quarter ending 2019-05-04. Revenue decreased by $5,659,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-06-07.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

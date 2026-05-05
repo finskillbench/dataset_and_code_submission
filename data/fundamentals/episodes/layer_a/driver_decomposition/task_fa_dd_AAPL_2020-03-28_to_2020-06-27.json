@@ -1,0 +1,129 @@
+{
+  "task_id": "fa_dd_AAPL_2020-03-28_to_2020-06-27",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2020-07-31",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "AAPL",
+    "current_period_end": "2020-06-27",
+    "prior_period_end": "2020-03-28",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 1372000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "iPhone",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2544000000,
+        "contribution_pct": -185.42
+      },
+      {
+        "driver": "iPad",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 2214000000,
+        "contribution_pct": 161.37
+      },
+      {
+        "driver": "Mac",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1728000000,
+        "contribution_pct": 125.95
+      },
+      {
+        "driver": "Americas Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 1545000000,
+        "contribution_pct": 112.61
+      },
+      {
+        "driver": "Rest of Asia Pacific Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 314000000,
+        "contribution_pct": 22.89
+      },
+      {
+        "driver": "Japan Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -240000000,
+        "contribution_pct": -17.49
+      },
+      {
+        "driver": "Service",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -192000000,
+        "contribution_pct": -13.99
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 8.49,
+        "current_pct": 8.09,
+        "delta_pp": -0.4
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 38.36,
+        "current_pct": 38.0,
+        "delta_pp": -0.36
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 61.64,
+        "current_pct": 62.0,
+        "delta_pp": 0.36
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 22.04,
+        "current_pct": 21.93,
+        "delta_pp": -0.11
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 4,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze AAPL's financial performance change between the quarter ending 2020-03-28 and the quarter ending 2020-06-27. Revenue increased by $1,372,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2020-07-31.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

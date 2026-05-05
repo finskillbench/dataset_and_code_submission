@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_MRK_2018-12-31_to_2019-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-05-08",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "MRK",
+    "current_period_end": "2019-03-31",
+    "prior_period_end": "2018-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -182000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Pharmaceutical segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -9765000000,
+        "contribution_pct": 5365.38
+      },
+      {
+        "driver": "Asia Pacific",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 1602000000,
+        "contribution_pct": -880.22
+      },
+      {
+        "driver": "CHINA",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1438000000,
+        "contribution_pct": 790.11
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -291000000,
+        "contribution_pct": 159.89
+      },
+      {
+        "driver": "EMEA",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 109000000,
+        "contribution_pct": -59.89
+      },
+      {
+        "driver": "Latin America",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -106000000,
+        "contribution_pct": 58.24
+      },
+      {
+        "driver": "Other Segments",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -64000000,
+        "contribution_pct": 35.16
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 7.51,
+        "current_pct": 1.9,
+        "delta_pp": -5.62
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 25.93,
+        "current_pct": 31.51,
+        "delta_pp": 5.58
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 20.13,
+        "current_pct": 17.85,
+        "delta_pp": -2.28
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 70.09,
+        "current_pct": 71.78,
+        "delta_pp": 1.69
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 29.91,
+        "current_pct": 28.22,
+        "delta_pp": -1.69
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 9.96,
+        "current_pct": 8.3,
+        "delta_pp": -1.65
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 24.03,
+        "current_pct": 22.42,
+        "delta_pp": -1.61
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 7,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze MRK's financial performance change between the quarter ending 2018-12-31 and the quarter ending 2019-03-31. Revenue decreased by $182,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-05-08.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

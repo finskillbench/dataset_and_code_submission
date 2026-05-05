@@ -1,0 +1,89 @@
+{
+  "portfolio_id": "portfolio_concentrated_2023_24_rebound_019",
+  "portfolio_type": "concentrated",
+  "as_of_date": "2024-01-01",
+  "holdings": [
+    {
+      "symbol": "CMG",
+      "weight": 0.199999
+    },
+    {
+      "symbol": "CPRT",
+      "weight": 0.199999
+    },
+    {
+      "symbol": "SBUX",
+      "weight": 0.199999
+    },
+    {
+      "symbol": "AIG",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "ARE",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "BAX",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "BF-B",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "BR",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "C",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "CARR",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "CPAY",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "CTRA",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "DD",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "DHR",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "EFX",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "EQT",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "HUM",
+      "weight": 0.026667
+    },
+    {
+      "symbol": "KHC",
+      "weight": 0.026667
+    }
+  ],
+  "planted_risks": [
+    "sector_concentration",
+    "single_name_risk",
+    "low_diversification"
+  ],
+  "metadata": {
+    "target_sector": "Consumer Cyclical",
+    "top_n_weight": 0.6,
+    "num_holdings": 18
+  }
+}

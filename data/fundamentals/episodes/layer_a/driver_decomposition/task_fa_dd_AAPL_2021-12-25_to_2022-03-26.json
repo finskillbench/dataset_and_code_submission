@@ -1,0 +1,129 @@
+{
+  "task_id": "fa_dd_AAPL_2021-12-25_to_2022-03-26",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2022-04-29",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "AAPL",
+    "current_period_end": "2022-03-26",
+    "prior_period_end": "2021-12-25",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -26667000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "iPhone",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -21058000000,
+        "contribution_pct": 78.97
+      },
+      {
+        "driver": "Americas Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -10614000000,
+        "contribution_pct": 39.8
+      },
+      {
+        "driver": "Greater China Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -7440000000,
+        "contribution_pct": 27.9
+      },
+      {
+        "driver": "Europe Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -6462000000,
+        "contribution_pct": 24.23
+      },
+      {
+        "driver": "Wearables, Home and Accessories",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -5895000000,
+        "contribution_pct": 22.11
+      },
+      {
+        "driver": "Rest of Asia Pacific Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2768000000,
+        "contribution_pct": 10.38
+      },
+      {
+        "driver": "Japan Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 617000000,
+        "contribution_pct": -2.31
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 33.47,
+        "current_pct": 30.82,
+        "delta_pp": -2.66
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.09,
+        "current_pct": 6.57,
+        "delta_pp": 1.48
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.2,
+        "current_pct": 6.37,
+        "delta_pp": 1.16
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.18,
+        "current_pct": 2.81,
+        "delta_pp": 0.64
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2022_tightening",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 4,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze AAPL's financial performance change between the quarter ending 2021-12-25 and the quarter ending 2022-03-26. Revenue decreased by $26,667,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2022-04-29.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

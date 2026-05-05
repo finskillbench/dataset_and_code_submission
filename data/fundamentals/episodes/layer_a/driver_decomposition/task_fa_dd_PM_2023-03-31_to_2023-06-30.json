@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_PM_2023-03-31_to_2023-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-07-27",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "PM",
+    "current_period_end": "2023-06-30",
+    "prior_period_end": "2023-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 948000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Combustible Products",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 567000000,
+        "contribution_pct": 59.81
+      },
+      {
+        "driver": "European Union",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 492000000,
+        "contribution_pct": 51.9
+      },
+      {
+        "driver": "Reduced-Risk Products",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 381000000,
+        "contribution_pct": 40.19
+      },
+      {
+        "driver": "SSEA, CIS & MEA Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 191000000,
+        "contribution_pct": 20.15
+      },
+      {
+        "driver": "East Asia And Australia",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 160000000,
+        "contribution_pct": 16.88
+      },
+      {
+        "driver": "Swedish Match AB Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 84000000,
+        "contribution_pct": 8.86
+      },
+      {
+        "driver": "Americas Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 31000000,
+        "contribution_pct": 3.27
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 28.33,
+        "current_pct": 34.15,
+        "delta_pp": 5.81
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 34.06,
+        "current_pct": 28.62,
+        "delta_pp": -5.44
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 62.34,
+        "current_pct": 64.0,
+        "delta_pp": 1.66
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 37.66,
+        "current_pct": 36.0,
+        "delta_pp": -1.66
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.34,
+        "current_pct": 6.25,
+        "delta_pp": 0.91
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.87,
+        "current_pct": 3.31,
+        "delta_pp": 0.44
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.73,
+        "current_pct": 3.36,
+        "delta_pp": -0.37
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 6,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze PM's financial performance change between the quarter ending 2023-03-31 and the quarter ending 2023-06-30. Revenue increased by $948,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-07-27.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

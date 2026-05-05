@@ -1,0 +1,48 @@
+{
+  "task_id": "fa_norm_GRMN_2025-03-29",
+  "skill": "fundamental_analysis",
+  "sub_task": "normalization",
+  "as_of_date": "2025-04-30",
+  "difficulty": "easy",
+  "input": {
+    "symbol": "GRMN",
+    "period_end": "2025-03-29",
+    "form_type": "10-Q",
+    "filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "metrics": {
+      "revenue": 1535099000,
+      "operating_income": 332824000,
+      "net_income": 332769000,
+      "eps_diluted": 1.72,
+      "total_assets": 9787622000,
+      "total_liabilities": 1608144000,
+      "stockholders_equity": 8179478000,
+      "operating_cash_flow": 420788000,
+      "operating_margin": 0.2168
+    }
+  },
+  "verification": {
+    "method": "metric_absolute_error",
+    "tolerance_pct": 5.0,
+    "metrics": [
+      "mae",
+      "within_threshold_pct"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "form_type": "10-Q",
+    "tier": 2,
+    "cross_source_agreement": true
+  },
+  "prompt": {
+    "task_description": "You are given GRMN's 10-Q filing for the quarter ending 2025-03-29. Extract and normalize the following financial metrics from the filing and XBRL data: revenue, operating_income, net_income, eps_diluted, total_assets, total_liabilities, stockholders_equity, operating_cash_flow, and operating_margin. Report all monetary values in USD (unscaled). Use only information available as of the filing date (2025-04-30).",
+    "output_instructions": "Respond with a JSON object containing a 'metrics' key mapping each metric name to its numeric value."
+  }
+}

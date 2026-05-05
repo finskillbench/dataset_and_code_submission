@@ -1,0 +1,15 @@
+# Tier 2: Full evaluation dependencies (run_benchmark.py)
+# Requires Python >= 3.12
+
+# Core agent loop
+litellm==1.83.10
+openai==2.24.0
+tenacity==9.1.4
+python-dotenv==1.0.1
+
+# Financial engines (scorers + skill scripts)
+cvxpy==1.8.2
+numpy==2.4.4
+pandas==3.0.2
+pyarrow==23.0.1
+scipy==1.17.1

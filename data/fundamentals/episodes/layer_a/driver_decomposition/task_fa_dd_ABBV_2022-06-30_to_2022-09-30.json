@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_ABBV_2022-06-30_to_2022-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2022-11-04",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "ABBV",
+    "current_period_end": "2022-09-30",
+    "prior_period_end": "2022-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 229000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 353000000,
+        "contribution_pct": 154.15
+      },
+      {
+        "driver": "H U M I R A",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 196000000,
+        "contribution_pct": 85.59
+      },
+      {
+        "driver": "SKYRIZI",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 145000000,
+        "contribution_pct": 63.32
+      },
+      {
+        "driver": "Non-US",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -124000000,
+        "contribution_pct": -54.15
+      },
+      {
+        "driver": "RINVOQ",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 103000000,
+        "contribution_pct": 44.98
+      },
+      {
+        "driver": "Other Products",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -84000000,
+        "contribution_pct": -36.68
+      },
+      {
+        "driver": "Other Neuroscience",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -63000000,
+        "contribution_pct": -27.51
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 37.11,
+        "current_pct": 22.31,
+        "delta_pp": -14.81
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 22.59,
+        "current_pct": 31.08,
+        "delta_pp": 8.48
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 71.41,
+        "current_pct": 66.1,
+        "delta_pp": -5.31
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 28.59,
+        "current_pct": 33.9,
+        "delta_pp": 5.31
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 12.88,
+        "current_pct": 11.17,
+        "delta_pp": -1.71
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 1.75,
+        "current_pct": 3.02,
+        "delta_pp": 1.28
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 14.07,
+        "current_pct": 14.89,
+        "delta_pp": 0.82
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2022_tightening",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 18,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze ABBV's financial performance change between the quarter ending 2022-06-30 and the quarter ending 2022-09-30. Revenue increased by $229,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2022-11-04.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "task_id": "fa_dd_PM_2017-12-31_to_2018-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2018-04-26",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "PM",
+    "current_period_end": "2018-03-31",
+    "prior_period_end": "2017-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -1398000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "East Asia And Australia",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -4993000000,
+        "contribution_pct": 357.15
+      },
+      {
+        "driver": "European Union",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -4869000000,
+        "contribution_pct": 348.28
+      },
+      {
+        "driver": "Eastern Europe Middle East And Africa",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -3907000000,
+        "contribution_pct": 279.47
+      },
+      {
+        "driver": "Latin America And Canada",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2001000000,
+        "contribution_pct": 143.13
+      },
+      {
+        "driver": "South And Southeast Asia",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 1081000000,
+        "contribution_pct": -77.32
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 27.31,
+        "current_pct": 8.11,
+        "delta_pp": -19.2
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 5.46,
+        "current_pct": 0.0,
+        "delta_pp": -5.46
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 40.0,
+        "current_pct": 35.09,
+        "delta_pp": -4.91
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 23.54,
+        "current_pct": 26.67,
+        "delta_pp": 3.13
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 63.82,
+        "current_pct": 62.08,
+        "delta_pp": -1.74
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 36.18,
+        "current_pct": 37.92,
+        "delta_pp": 1.74
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.93,
+        "current_pct": 3.51,
+        "delta_pp": 0.58
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": false,
+    "has_geographic_segments": true,
+    "n_product_drivers": 0,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze PM's financial performance change between the quarter ending 2017-12-31 and the quarter ending 2018-03-31. Revenue decreased by $1,398,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2018-04-26.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

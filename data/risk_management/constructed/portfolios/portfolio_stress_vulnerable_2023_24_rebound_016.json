@@ -1,0 +1,76 @@
+{
+  "portfolio_id": "portfolio_stress_vulnerable_2023_24_rebound_016",
+  "portfolio_type": "stress_vulnerable",
+  "as_of_date": "2024-01-01",
+  "holdings": [
+    {
+      "symbol": "CARR",
+      "weight": 0.15
+    },
+    {
+      "symbol": "EFX",
+      "weight": 0.15
+    },
+    {
+      "symbol": "LHX",
+      "weight": 0.15
+    },
+    {
+      "symbol": "TT",
+      "weight": 0.15
+    },
+    {
+      "symbol": "AIG",
+      "weight": 0.04
+    },
+    {
+      "symbol": "ARE",
+      "weight": 0.04
+    },
+    {
+      "symbol": "BAX",
+      "weight": 0.04
+    },
+    {
+      "symbol": "BF-B",
+      "weight": 0.04
+    },
+    {
+      "symbol": "BR",
+      "weight": 0.04
+    },
+    {
+      "symbol": "C",
+      "weight": 0.04
+    },
+    {
+      "symbol": "CMG",
+      "weight": 0.04
+    },
+    {
+      "symbol": "CPAY",
+      "weight": 0.04
+    },
+    {
+      "symbol": "CPRT",
+      "weight": 0.04
+    },
+    {
+      "symbol": "CTRA",
+      "weight": 0.04
+    }
+  ],
+  "planted_risks": [
+    "stress_vulnerability_credit_crisis",
+    "sector_concentration"
+  ],
+  "metadata": {
+    "vulnerability_type": "credit_crisis",
+    "vulnerable_sectors": [
+      "Consumer Discretionary",
+      "Industrials",
+      "Materials"
+    ],
+    "num_holdings": 14
+  }
+}

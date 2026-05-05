@@ -1,0 +1,124 @@
+{
+  "task_id": "fa_dd_PM_2016-12-31_to_2017-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2017-04-27",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "PM",
+    "current_period_end": "2017-03-31",
+    "prior_period_end": "2016-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -907000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Eastern Europe Middle East And Africa",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -941000000,
+        "contribution_pct": 103.75
+      },
+      {
+        "driver": "East Asia And Australia",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -679000000,
+        "contribution_pct": 74.86
+      },
+      {
+        "driver": "European Union",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -576000000,
+        "contribution_pct": 63.51
+      },
+      {
+        "driver": "Latin America And Canada",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -437000000,
+        "contribution_pct": 48.18
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.15,
+        "current_pct": 0.0,
+        "delta_pp": -6.15
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 37.47,
+        "current_pct": 39.84,
+        "delta_pp": 2.37
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 26.42,
+        "current_pct": 24.22,
+        "delta_pp": -2.2
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 5.44,
+        "current_pct": 3.61,
+        "delta_pp": -1.83
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 9.44,
+        "current_pct": 8.92,
+        "delta_pp": -0.52
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.8,
+        "current_pct": 3.25,
+        "delta_pp": 0.45
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": false,
+    "has_geographic_segments": true,
+    "n_product_drivers": 0,
+    "n_geographic_drivers": 4,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze PM's financial performance change between the quarter ending 2016-12-31 and the quarter ending 2017-03-31. Revenue decreased by $907,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2017-04-27.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

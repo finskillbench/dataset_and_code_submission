@@ -1,0 +1,31 @@
+{
+  "scenario_id": "stress_strong_dollar",
+  "type": "hypothetical",
+  "name": "USD +10% (Strong Dollar Shock)",
+  "description": "Dollar strengthens 10%. Hurts exporters and EM.",
+  "shocks": [
+    {
+      "factor": "equity_market",
+      "magnitude_pct": -4.0,
+      "type": "correlated_move"
+    },
+    {
+      "factor": "credit_spread",
+      "magnitude_bp": 40,
+      "type": "correlated_move"
+    }
+  ],
+  "sector_sensitivities": {
+    "Real Estate": -0.15,
+    "Utilities": -0.1,
+    "Technology": -0.08,
+    "Healthcare": -0.03,
+    "Financial Services": 0.03,
+    "Energy": 0.0,
+    "Consumer Staples": -0.02,
+    "Consumer Discretionary": -0.06,
+    "Industrials": -0.04,
+    "Materials": -0.03,
+    "Communication Services": -0.05
+  }
+}

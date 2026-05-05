@@ -1,0 +1,132 @@
+{
+  "task_id": "fa_dd_WBD_2023-09-30_to_2023-12-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2024-02-23",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "WBD",
+    "current_period_end": "2023-12-31",
+    "prior_period_end": "2023-09-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 305000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Advertising",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 291000000,
+        "contribution_pct": 95.41
+      },
+      {
+        "driver": "Content Licensing Contracts",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 123000000,
+        "contribution_pct": 40.33
+      },
+      {
+        "driver": "Distribution Revenue",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -113000000,
+        "contribution_pct": -37.05
+      },
+      {
+        "driver": "Service, Other",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 4000000,
+        "contribution_pct": 1.31
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 46.8,
+        "current_pct": 42.67,
+        "delta_pp": -4.13
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 53.2,
+        "current_pct": 57.33,
+        "delta_pp": 4.13
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 0.97,
+        "current_pct": -1.77,
+        "delta_pp": -2.74
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 51.86,
+        "current_pct": 53.49,
+        "delta_pp": 1.63
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 22.96,
+        "current_pct": 23.87,
+        "delta_pp": 0.91
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": -1.25,
+        "current_pct": -2.15,
+        "delta_pp": -0.9
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 5.75,
+        "current_pct": 4.88,
+        "delta_pp": -0.87
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 4,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze WBD's financial performance change between the quarter ending 2023-09-30 and the quarter ending 2023-12-31. Revenue increased by $305,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2024-02-23.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

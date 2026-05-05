@@ -1,0 +1,36 @@
+{
+  "scenario_id": "stress_equity_crash_20",
+  "type": "hypothetical",
+  "name": "Equity -20% Broad Market Crash",
+  "description": "Sudden equity drawdown with liquidity stress.",
+  "shocks": [
+    {
+      "factor": "equity_market",
+      "magnitude_pct": -20.0,
+      "type": "broad_crash"
+    },
+    {
+      "factor": "interest_rate",
+      "magnitude_bp": -50,
+      "type": "flight_to_quality"
+    },
+    {
+      "factor": "credit_spread",
+      "magnitude_bp": 200,
+      "type": "risk_off"
+    }
+  ],
+  "sector_sensitivities": {
+    "Real Estate": -0.15,
+    "Utilities": -0.1,
+    "Technology": -0.08,
+    "Healthcare": -0.03,
+    "Financial Services": 0.03,
+    "Energy": 0.0,
+    "Consumer Staples": -0.02,
+    "Consumer Discretionary": -0.06,
+    "Industrials": -0.04,
+    "Materials": -0.03,
+    "Communication Services": -0.05
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "task_id": "fa_dd_BKR_2016-12-31_to_2017-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2018-04-27",
+  "difficulty": "easy",
+  "input": {
+    "symbol": "BKR",
+    "current_period_end": "2017-03-31",
+    "prior_period_end": "2016-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -452000000,
+    "top_revenue_drivers": [],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 8.08,
+        "current_pct": 2.81,
+        "delta_pp": -5.27
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 27.62,
+        "current_pct": 22.39,
+        "delta_pp": -5.23
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 72.38,
+        "current_pct": 77.61,
+        "delta_pp": 5.23
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.36,
+        "current_pct": 0.26,
+        "delta_pp": -3.09
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 13.14,
+        "current_pct": 16.06,
+        "delta_pp": 2.92
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.16,
+        "current_pct": 4.31,
+        "delta_pp": 1.15
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 0.0,
+        "current_pct": 0.65,
+        "delta_pp": 0.65
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.82,
+        "current_pct": 3.23,
+        "delta_pp": 0.42
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": false,
+    "has_geographic_segments": false,
+    "n_product_drivers": 0,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze BKR's financial performance change between the quarter ending 2016-12-31 and the quarter ending 2017-03-31. Revenue decreased by $452,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2018-04-27.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

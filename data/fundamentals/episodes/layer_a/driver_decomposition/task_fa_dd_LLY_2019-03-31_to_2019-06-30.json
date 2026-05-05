@@ -1,0 +1,161 @@
+{
+  "task_id": "fa_dd_LLY_2019-03-31_to_2019-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-08-02",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "LLY",
+    "current_period_end": "2019-06-30",
+    "prior_period_end": "2019-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 544500000,
+    "top_revenue_drivers": [
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 361700000,
+        "contribution_pct": 66.43
+      },
+      {
+        "driver": "Endocrinology",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 296200000,
+        "contribution_pct": 54.4
+      },
+      {
+        "driver": "Oncology",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 184500000,
+        "contribution_pct": 33.88
+      },
+      {
+        "driver": "Immunology",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 121400000,
+        "contribution_pct": 22.3
+      },
+      {
+        "driver": "JAPAN",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 109500000,
+        "contribution_pct": 20.11
+      },
+      {
+        "driver": "Other Product, Total",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -98100000,
+        "contribution_pct": -18.02
+      },
+      {
+        "driver": "Neuroscience",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 59600000,
+        "contribution_pct": 10.95
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 24.78,
+        "current_pct": 27.91,
+        "delta_pp": 3.13
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 7.0,
+        "current_pct": 4.39,
+        "delta_pp": -2.61
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 77.64,
+        "current_pct": 80.04,
+        "delta_pp": 2.4
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 22.36,
+        "current_pct": 19.96,
+        "delta_pp": -2.4
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 28.69,
+        "current_pct": 27.26,
+        "delta_pp": -1.44
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.34,
+        "current_pct": 2.46,
+        "delta_pp": -0.88
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 24.16,
+        "current_pct": 24.88,
+        "delta_pp": 0.71
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 1.7,
+        "current_pct": 1.97,
+        "delta_pp": 0.27
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 4,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze LLY's financial performance change between the quarter ending 2019-03-31 and the quarter ending 2019-06-30. Revenue increased by $544,500,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-08-02.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

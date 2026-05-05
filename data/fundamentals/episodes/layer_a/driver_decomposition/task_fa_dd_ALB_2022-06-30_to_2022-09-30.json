@@ -1,0 +1,133 @@
+{
+  "task_id": "fa_dd_ALB_2022-06-30_to_2022-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2022-11-02",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "ALB",
+    "current_period_end": "2022-09-30",
+    "prior_period_end": "2022-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 612212000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Lithium",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 609557000,
+        "contribution_pct": 99.57
+      },
+      {
+        "driver": "Catalysts",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 25499000,
+        "contribution_pct": 4.17
+      },
+      {
+        "driver": "Bromine Specialties",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -22844000,
+        "contribution_pct": -3.73
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 29.81,
+        "current_pct": 42.7,
+        "delta_pp": 12.89
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 39.26,
+        "current_pct": 49.9,
+        "delta_pp": 10.64
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 60.74,
+        "current_pct": 50.1,
+        "delta_pp": -10.64
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 6.02,
+        "current_pct": 9.41,
+        "delta_pp": 3.4
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 8.28,
+        "current_pct": 6.33,
+        "delta_pp": -1.95
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 2.8,
+        "current_pct": 1.42,
+        "delta_pp": -1.38
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.8,
+        "current_pct": 3.72,
+        "delta_pp": -1.08
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 1.18,
+        "current_pct": 0.88,
+        "delta_pp": -0.3
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2022_tightening",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze ALB's financial performance change between the quarter ending 2022-06-30 and the quarter ending 2022-09-30. Revenue increased by $612,212,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2022-11-02.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

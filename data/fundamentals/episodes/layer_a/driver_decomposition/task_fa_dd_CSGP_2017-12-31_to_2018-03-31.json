@@ -1,0 +1,137 @@
+{
+  "task_id": "fa_dd_CSGP_2017-12-31_to_2018-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2018-04-25",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "CSGP",
+    "current_period_end": "2018-03-31",
+    "prior_period_end": "2017-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 19727000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Information And Analytics",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 130361000,
+        "contribution_pct": 660.83
+      },
+      {
+        "driver": "CoStar Suite",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -122098000,
+        "contribution_pct": -618.94
+      },
+      {
+        "driver": "Online Marketplaces",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 87683000,
+        "contribution_pct": 444.48
+      },
+      {
+        "driver": "Multifamily Online Marketplace",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -75531000,
+        "contribution_pct": -382.88
+      },
+      {
+        "driver": "North America",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 19035000,
+        "contribution_pct": 96.49
+      },
+      {
+        "driver": "Information services",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -17254000,
+        "contribution_pct": -87.46
+      },
+      {
+        "driver": "Europe",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 690000,
+        "contribution_pct": 3.5
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 1.77,
+        "current_pct": 1.28,
+        "delta_pp": -0.48
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 19.98,
+        "current_pct": 19.53,
+        "delta_pp": -0.46
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 46.89,
+        "current_pct": 47.16,
+        "delta_pp": 0.26
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 8.58,
+        "current_pct": 8.37,
+        "delta_pp": -0.21
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 77.05,
+        "current_pct": 77.17,
+        "delta_pp": 0.13
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze CSGP's financial performance change between the quarter ending 2017-12-31 and the quarter ending 2018-03-31. Revenue increased by $19,727,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2018-04-25.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_ABBV_2019-12-31_to_2020-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2020-05-08",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "ABBV",
+    "current_period_end": "2020-03-31",
+    "prior_period_end": "2019-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -85000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -4711000000,
+        "contribution_pct": 5542.35
+      },
+      {
+        "driver": "Non-US",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 2461000000,
+        "contribution_pct": -2895.29
+      },
+      {
+        "driver": "H U M I R A",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -214000000,
+        "contribution_pct": 251.76
+      },
+      {
+        "driver": "RINVOQ",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 86000000,
+        "contribution_pct": -101.18
+      },
+      {
+        "driver": "SKYRIZI",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 84000000,
+        "contribution_pct": -98.82
+      },
+      {
+        "driver": "MAVYRET",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -69000000,
+        "contribution_pct": 81.18
+      },
+      {
+        "driver": "VENCLEXTA",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 66000000,
+        "contribution_pct": -77.65
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 45.45,
+        "current_pct": 41.8,
+        "delta_pp": -3.65
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 19.31,
+        "current_pct": 16.0,
+        "delta_pp": -3.31
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 22.41,
+        "current_pct": 19.67,
+        "delta_pp": -2.75
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.14,
+        "current_pct": 1.02,
+        "delta_pp": -2.12
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.85,
+        "current_pct": 6.49,
+        "delta_pp": 0.64
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 76.95,
+        "current_pct": 77.47,
+        "delta_pp": 0.52
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 23.05,
+        "current_pct": 22.53,
+        "delta_pp": -0.52
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2020_covid",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 8,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze ABBV's financial performance change between the quarter ending 2019-12-31 and the quarter ending 2020-03-31. Revenue decreased by $85,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2020-05-08.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

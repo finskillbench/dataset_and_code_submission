@@ -1,0 +1,134 @@
+{
+  "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_009_mandate_aggressive_growth",
+  "skill": "risk_management",
+  "sub_task": "constraint_monitoring",
+  "as_of_date": "2024-01-01",
+  "input": {
+    "portfolio": {
+      "portfolio_id": "portfolio_liquidity_stressed_2023_24_rebound_009",
+      "holdings": [
+        {
+          "symbol": "KHC",
+          "weight": 0.151686
+        },
+        {
+          "symbol": "DD",
+          "weight": 0.168508
+        },
+        {
+          "symbol": "USB",
+          "weight": 0.147246
+        },
+        {
+          "symbol": "LYV",
+          "weight": 0.029601
+        },
+        {
+          "symbol": "CMG",
+          "weight": 0.028864
+        },
+        {
+          "symbol": "LHX",
+          "weight": 0.046616
+        },
+        {
+          "symbol": "REG",
+          "weight": 0.06399
+        },
+        {
+          "symbol": "BAX",
+          "weight": 0.022729
+        },
+        {
+          "symbol": "CTRA",
+          "weight": 0.018287
+        },
+        {
+          "symbol": "SBUX",
+          "weight": 0.066975
+        },
+        {
+          "symbol": "CARR",
+          "weight": 0.057724
+        },
+        {
+          "symbol": "VMC",
+          "weight": 0.067328
+        },
+        {
+          "symbol": "DHR",
+          "weight": 0.025374
+        },
+        {
+          "symbol": "LNT",
+          "weight": 0.037495
+        },
+        {
+          "symbol": "L",
+          "weight": 0.067577
+        }
+      ],
+      "total_nav": 10000000
+    },
+    "mandate": {
+      "mandate_id": "mandate_aggressive_growth"
+    },
+    "market_data": {
+      "covariance": "data/risk_management/processed/covariance/"
+    }
+  },
+  "expected_output": {
+    "overall_compliant": false,
+    "violations_count": 1,
+    "constraints": [
+      {
+        "type": "position_limit_max",
+        "status": "FAIL",
+        "worst_symbol": "DD",
+        "value": 0.168508,
+        "limit": 0.1,
+        "violation_magnitude": 0.068508
+      },
+      {
+        "type": "sector_limit_max",
+        "status": "PASS",
+        "worst_sector": "Basic Materials",
+        "value": 0.235836,
+        "limit": 0.35
+      },
+      {
+        "type": "beta_range",
+        "status": "PASS",
+        "value": 0.9729,
+        "min": 0.9,
+        "max": 1.4
+      },
+      {
+        "type": "long_only",
+        "status": "PASS",
+        "value": true,
+        "limit": true
+      },
+      {
+        "type": "turnover_max_monthly",
+        "status": "PASS",
+        "value": 0.0,
+        "limit": 0.2
+      }
+    ]
+  },
+  "verification": {
+    "method": "exact_match",
+    "metrics": [
+      "constraint_accuracy",
+      "violation_detection_recall"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "difficulty": "easy",
+    "portfolio_type": "liquidity_stressed",
+    "num_constraints": 5,
+    "num_violations": 1
+  }
+}

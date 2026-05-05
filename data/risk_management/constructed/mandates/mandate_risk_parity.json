@@ -1,0 +1,50 @@
+{
+  "mandate_id": "mandate_risk_parity",
+  "name": "Risk-Parity Inspired",
+  "difficulty": "hard",
+  "benchmark": "SPY",
+  "constraints": [
+    {
+      "type": "position_limit_max",
+      "value": 0.05,
+      "description": "No single name > 5%"
+    },
+    {
+      "type": "sector_limit_max",
+      "value": 0.2,
+      "description": "No sector > 20%"
+    },
+    {
+      "type": "beta_range",
+      "min": 0.5,
+      "max": 0.8,
+      "description": "Beta 0.5-0.8 (lower risk)"
+    },
+    {
+      "type": "tracking_error_max",
+      "value": 0.05,
+      "description": "TE < 5%"
+    },
+    {
+      "type": "long_only",
+      "value": true,
+      "description": "No short positions"
+    },
+    {
+      "type": "hhi_max",
+      "value": 0.04,
+      "description": "HHI < 0.04 (well diversified)"
+    },
+    {
+      "type": "cash_max",
+      "value": 0.05,
+      "description": "Cash < 5%"
+    },
+    {
+      "type": "factor_exposure_max",
+      "factor": "mkt_rf",
+      "value": 0.8,
+      "description": "Market beta < 0.8"
+    }
+  ]
+}

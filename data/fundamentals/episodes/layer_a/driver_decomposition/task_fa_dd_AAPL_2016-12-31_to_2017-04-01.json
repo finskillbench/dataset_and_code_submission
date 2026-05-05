@@ -1,0 +1,147 @@
+{
+  "task_id": "fa_dd_AAPL_2016-12-31_to_2017-04-01",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2017-05-03",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "AAPL",
+    "current_period_end": "2017-04-01",
+    "prior_period_end": "2016-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -25455000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Americas Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -10811000000,
+        "contribution_pct": 42.47
+      },
+      {
+        "driver": "Europe Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -5788000000,
+        "contribution_pct": 22.74
+      },
+      {
+        "driver": "Greater China Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -5507000000,
+        "contribution_pct": 21.63
+      },
+      {
+        "driver": "Rest of Asia Pacific Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2068000000,
+        "contribution_pct": 8.12
+      },
+      {
+        "driver": "Japan Segment",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1281000000,
+        "contribution_pct": 5.03
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 29.81,
+        "current_pct": 26.65,
+        "delta_pp": -3.16
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.04,
+        "current_pct": 7.03,
+        "delta_pp": 1.99
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.66,
+        "current_pct": 5.25,
+        "delta_pp": 1.58
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 8.03,
+        "current_pct": 6.91,
+        "delta_pp": -1.12
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.81,
+        "current_pct": 4.41,
+        "delta_pp": 0.6
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 38.51,
+        "current_pct": 38.93,
+        "delta_pp": 0.41
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 61.49,
+        "current_pct": 61.07,
+        "delta_pp": -0.41
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 0.67,
+        "current_pct": 1.0,
+        "delta_pp": 0.33
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": false,
+    "has_geographic_segments": true,
+    "n_product_drivers": 0,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze AAPL's financial performance change between the quarter ending 2016-12-31 and the quarter ending 2017-04-01. Revenue decreased by $25,455,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2017-05-03.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "task_id": "rm_ri_portfolio_mandate_violating_2023_24_rebound_001",
+  "skill": "risk_management",
+  "sub_task": "risk_identification",
+  "as_of_date": "2024-01-01",
+  "input": {
+    "portfolio": {
+      "portfolio_id": "portfolio_mandate_violating_2023_24_rebound_001",
+      "holdings": [
+        {
+          "symbol": "CTRA",
+          "weight": 0.118604
+        },
+        {
+          "symbol": "AIG",
+          "weight": 0.073988
+        },
+        {
+          "symbol": "SRE",
+          "weight": 0.090931
+        },
+        {
+          "symbol": "REG",
+          "weight": 0.085336
+        },
+        {
+          "symbol": "LYV",
+          "weight": 0.093417
+        },
+        {
+          "symbol": "EQT",
+          "weight": 0.035526
+        },
+        {
+          "symbol": "USB",
+          "weight": 0.061246
+        },
+        {
+          "symbol": "BR",
+          "weight": 0.155443
+        },
+        {
+          "symbol": "TT",
+          "weight": 0.021292
+        },
+        {
+          "symbol": "CPAY",
+          "weight": 0.014702
+        },
+        {
+          "symbol": "CPRT",
+          "weight": 0.080401
+        },
+        {
+          "symbol": "HUM",
+          "weight": 0.035955
+        },
+        {
+          "symbol": "TTWO",
+          "weight": 0.081989
+        },
+        {
+          "symbol": "VMC",
+          "weight": 0.012419
+        },
+        {
+          "symbol": "EFX",
+          "weight": 0.010739
+        },
+        {
+          "symbol": "L",
+          "weight": 0.006711
+        },
+        {
+          "symbol": "BF-B",
+          "weight": 0.001469
+        },
+        {
+          "symbol": "KHC",
+          "weight": 0.001796
+        },
+        {
+          "symbol": "CARR",
+          "weight": 0.008072
+        },
+        {
+          "symbol": "DHR",
+          "weight": 0.009964
+        }
+      ],
+      "total_nav": 10000000
+    },
+    "market_data": {
+      "factor_exposures": "data/risk_management/processed/factor_exposures.parquet",
+      "returns": "data/risk_management/processed/returns/daily_returns.parquet"
+    }
+  },
+  "expected_output": {
+    "top_risk_exposures": [
+      {
+        "rank": 1,
+        "type": "factor_tilt",
+        "detail": "mkt_rf beta +0.983",
+        "magnitude": 0.9827
+      },
+      {
+        "rank": 2,
+        "type": "factor_tilt",
+        "detail": "hml beta +0.329",
+        "magnitude": 0.3289
+      },
+      {
+        "rank": 3,
+        "type": "sector_concentration",
+        "detail": "Technology sector 25.2%",
+        "magnitude": 0.2521
+      },
+      {
+        "rank": 4,
+        "type": "single_name",
+        "detail": "BR at 15.5%",
+        "magnitude": 0.1554
+      },
+      {
+        "rank": 5,
+        "type": "concentration",
+        "detail": "HHI=0.0886, top-5=54.4%",
+        "magnitude": 0.0886
+      }
+    ]
+  },
+  "verification": {
+    "method": "ranked_list_recall",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "recall_at_5",
+      "precision_at_5",
+      "ndcg_at_5"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "difficulty": "hard",
+    "portfolio_type": "mandate_violating",
+    "planted_risks": [
+      "position_limit_breach",
+      "concentration_risk",
+      "potential_tracking_error_drift"
+    ]
+  }
+}

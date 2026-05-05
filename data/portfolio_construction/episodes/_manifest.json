@@ -1,0 +1,26 @@
+{
+  "unconstrained": {
+    "count": 40,
+    "description": "unconstrained_optimization"
+  },
+  "constrained": {
+    "count": 40,
+    "description": "constrained_optimization"
+  },
+  "rebalancing": {
+    "count": 40,
+    "description": "rebalancing"
+  },
+  "tool_use_parameterization": {
+    "count": 40,
+    "description": "tool_use_parameterization"
+  },
+  "infeasibility_detection": {
+    "count": 10,
+    "description": "infeasibility_detection"
+  },
+  "black_litterman": {
+    "count": 40,
+    "description": "black_litterman"
+  }
+}

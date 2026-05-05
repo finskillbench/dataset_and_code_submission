@@ -1,0 +1,132 @@
+{
+  "task_id": "fa_dd_APA_2022-12-31_to_2023-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-05-04",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "APA",
+    "current_period_end": "2023-03-31",
+    "prior_period_end": "2022-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -464000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Segment United States",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -344000000,
+        "contribution_pct": 74.14
+      },
+      {
+        "driver": "Oil And Gas, Excluding Purchased",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -304000000,
+        "contribution_pct": 65.52
+      },
+      {
+        "driver": "North Sea",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 206000000,
+        "contribution_pct": -44.4
+      },
+      {
+        "driver": "Oil and Gas, Purchased",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -160000000,
+        "contribution_pct": 34.48
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 10.64,
+        "current_pct": 24.1,
+        "delta_pp": 13.46
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.84,
+        "current_pct": 3.24,
+        "delta_pp": -3.6
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 14.32,
+        "current_pct": 16.53,
+        "delta_pp": 2.21
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.16,
+        "current_pct": 4.13,
+        "delta_pp": 0.98
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 53.56,
+        "current_pct": 52.84,
+        "delta_pp": -0.72
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 46.44,
+        "current_pct": 47.16,
+        "delta_pp": 0.72
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 41.1,
+        "current_pct": 41.43,
+        "delta_pp": 0.33
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze APA's financial performance change between the quarter ending 2022-12-31 and the quarter ending 2023-03-31. Revenue decreased by $464,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-05-04.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

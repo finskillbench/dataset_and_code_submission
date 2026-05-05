@@ -1,0 +1,124 @@
+{
+  "task_id": "fa_dd_KIM_2018-12-31_to_2019-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-05-03",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "KIM",
+    "current_period_end": "2019-03-31",
+    "prior_period_end": "2018-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 10809000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Revenues from Rental Properties",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -214230000,
+        "contribution_pct": -1981.96
+      },
+      {
+        "driver": "Reimbursement Income",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -63452000,
+        "contribution_pct": -587.03
+      },
+      {
+        "driver": "Other Rental Property Income",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -4122000,
+        "contribution_pct": -38.13
+      },
+      {
+        "driver": "Management and Other Fee Incomes",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1979000,
+        "contribution_pct": 18.31
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 37.8,
+        "current_pct": 45.46,
+        "delta_pp": 7.66
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 26.13,
+        "current_pct": 24.26,
+        "delta_pp": -1.87
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 7.05,
+        "current_pct": 8.76,
+        "delta_pp": 1.71
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 0.91,
+        "current_pct": 0.21,
+        "delta_pp": -0.7
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 71.57,
+        "current_pct": 71.89,
+        "delta_pp": 0.32
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 28.43,
+        "current_pct": 28.11,
+        "delta_pp": -0.32
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 4,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze KIM's financial performance change between the quarter ending 2018-12-31 and the quarter ending 2019-03-31. Revenue increased by $10,809,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-05-03.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

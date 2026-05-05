@@ -1,0 +1,191 @@
+{
+  "task_id": "rm_ri_portfolio_factor_tilted_2023_24_rebound_002",
+  "skill": "risk_management",
+  "sub_task": "risk_identification",
+  "as_of_date": "2024-01-01",
+  "input": {
+    "portfolio": {
+      "portfolio_id": "portfolio_factor_tilted_2023_24_rebound_002",
+      "holdings": [
+        {
+          "symbol": "USB",
+          "weight": 0.099999
+        },
+        {
+          "symbol": "AIG",
+          "weight": 0.099999
+        },
+        {
+          "symbol": "C",
+          "weight": 0.099999
+        },
+        {
+          "symbol": "EQT",
+          "weight": 0.099999
+        },
+        {
+          "symbol": "CTRA",
+          "weight": 0.099999
+        },
+        {
+          "symbol": "L",
+          "weight": 0.099999
+        },
+        {
+          "symbol": "EFX",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "CPRT",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "ZBRA",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "BR",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "ON",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "CMG",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "DD",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "LHX",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "CARR",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "SRE",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "TT",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "REG",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "LYV",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "ARE",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "CPAY",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "KHC",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "VMC",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "SBUX",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "HUM",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "BF-B",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "DHR",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "BAX",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "LNT",
+          "weight": 0.016667
+        },
+        {
+          "symbol": "TTWO",
+          "weight": 0.016667
+        }
+      ],
+      "total_nav": 10000000
+    },
+    "market_data": {
+      "factor_exposures": "data/risk_management/processed/factor_exposures.parquet",
+      "returns": "data/risk_management/processed/returns/daily_returns.parquet"
+    }
+  },
+  "expected_output": {
+    "top_risk_exposures": [
+      {
+        "rank": 1,
+        "type": "factor_tilt",
+        "detail": "mkt_rf beta +0.996",
+        "magnitude": 0.9961
+      },
+      {
+        "rank": 2,
+        "type": "factor_tilt",
+        "detail": "hml beta +0.685",
+        "magnitude": 0.6853
+      },
+      {
+        "rank": 3,
+        "type": "sector_concentration",
+        "detail": "Financial Services sector 40.0%",
+        "magnitude": 0.4
+      },
+      {
+        "rank": 4,
+        "type": "single_name",
+        "detail": "USB at 10.0%",
+        "magnitude": 0.1
+      },
+      {
+        "rank": 5,
+        "type": "concentration",
+        "detail": "HHI=0.0667, top-5=50.0%",
+        "magnitude": 0.0667
+      }
+    ]
+  },
+  "verification": {
+    "method": "ranked_list_recall",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "recall_at_5",
+      "precision_at_5",
+      "ndcg_at_5"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "difficulty": "medium",
+    "portfolio_type": "factor_tilted",
+    "planted_risks": [
+      "factor_tilt",
+      "target_factor_hml"
+    ]
+  }
+}

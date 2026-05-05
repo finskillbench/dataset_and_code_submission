@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_GOOGL_2023-12-31_to_2024-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2024-04-26",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "GOOGL",
+    "current_period_end": "2024-03-31",
+    "prior_period_end": "2023-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -5771000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -3258000000,
+        "contribution_pct": 56.45
+      },
+      {
+        "driver": "Google Subscriptions, Platforms, And Devices",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2055000000,
+        "contribution_pct": 35.61
+      },
+      {
+        "driver": "Google Search & Other",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1864000000,
+        "contribution_pct": 32.3
+      },
+      {
+        "driver": "EMEA",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1222000000,
+        "contribution_pct": 21.17
+      },
+      {
+        "driver": "YouTube Ads",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1110000000,
+        "contribution_pct": 19.23
+      },
+      {
+        "driver": "Google Network",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -884000000,
+        "contribution_pct": 15.32
+      },
+      {
+        "driver": "Asia Pacific",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -690000000,
+        "contribution_pct": 11.96
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 27.46,
+        "current_pct": 31.63,
+        "delta_pp": 4.17
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 14.98,
+        "current_pct": 11.74,
+        "delta_pp": -3.24
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 1.81,
+        "current_pct": 4.24,
+        "delta_pp": 2.43
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 56.47,
+        "current_pct": 58.14,
+        "delta_pp": 1.68
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 43.53,
+        "current_pct": 41.86,
+        "delta_pp": -1.68
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.32,
+        "current_pct": 5.78,
+        "delta_pp": 1.46
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 14.03,
+        "current_pct": 14.78,
+        "delta_pp": 0.74
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 6,
+    "n_geographic_drivers": 4,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze GOOGL's financial performance change between the quarter ending 2023-12-31 and the quarter ending 2024-03-31. Revenue decreased by $5,771,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2024-04-26.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

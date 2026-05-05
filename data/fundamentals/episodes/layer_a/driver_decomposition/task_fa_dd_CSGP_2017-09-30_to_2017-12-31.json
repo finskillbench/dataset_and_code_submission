@@ -1,0 +1,131 @@
+{
+  "task_id": "fa_dd_CSGP_2017-09-30_to_2017-12-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2018-02-23",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "CSGP",
+    "current_period_end": "2017-12-31",
+    "prior_period_end": "2017-09-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 6458000,
+    "top_revenue_drivers": [
+      {
+        "driver": "North America",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 6223000,
+        "contribution_pct": 96.36
+      },
+      {
+        "driver": "CoStar Suite",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 4784000,
+        "contribution_pct": 74.08
+      },
+      {
+        "driver": "Multifamily Online Marketplace",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 3274000,
+        "contribution_pct": 50.7
+      },
+      {
+        "driver": "Information services",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1462000,
+        "contribution_pct": -22.64
+      },
+      {
+        "driver": "Europe",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 245000,
+        "contribution_pct": 3.79
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 8.48,
+        "current_pct": 1.77,
+        "delta_pp": -6.71
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 23.23,
+        "current_pct": 19.98,
+        "delta_pp": -3.25
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 43.91,
+        "current_pct": 46.89,
+        "delta_pp": 2.98
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 1.17,
+        "current_pct": 0.29,
+        "delta_pp": -0.88
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 77.59,
+        "current_pct": 77.05,
+        "delta_pp": -0.54
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 22.41,
+        "current_pct": 22.95,
+        "delta_pp": 0.54
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze CSGP's financial performance change between the quarter ending 2017-09-30 and the quarter ending 2017-12-31. Revenue increased by $6,458,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2018-02-23.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

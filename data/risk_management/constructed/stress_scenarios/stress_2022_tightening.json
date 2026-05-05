@@ -1,0 +1,17 @@
+{
+  "scenario_id": "stress_2022_tightening",
+  "type": "historical_replay",
+  "name": "2022 Rate-Driven Tightening (Jan-Oct 2022)",
+  "regime_slice": "2022_tightening",
+  "replay_window": {
+    "start": "2022-01-01",
+    "end": "2022-10-31"
+  },
+  "description": "S&P 500 down ~25%. Aggressive Fed hiking, growth-to-value rotation.",
+  "market_shocks": {
+    "equity_drawdown_pct": -25.4,
+    "vix_peak": 35.5,
+    "credit_spread_widening_bp": 250,
+    "rate_change_bp": 375
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_GRMN_2025-03-29_to_2025-06-28",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2025-07-30",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "GRMN",
+    "current_period_end": "2025-06-28",
+    "prior_period_end": "2025-03-29",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 279465000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Fitness",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 220703000,
+        "contribution_pct": 78.97
+      },
+      {
+        "driver": "Americas",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 132281000,
+        "contribution_pct": 47.33
+      },
+      {
+        "driver": "EMEA",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 108449000,
+        "contribution_pct": 38.81
+      },
+      {
+        "driver": "Outdoor",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 51861000,
+        "contribution_pct": 18.56
+      },
+      {
+        "driver": "Asia Pacific",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 38735000,
+        "contribution_pct": 13.86
+      },
+      {
+        "driver": "Aviation",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 26252000,
+        "contribution_pct": 9.39
+      },
+      {
+        "driver": "Marine Segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -20176000,
+        "contribution_pct": -7.22
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 21.68,
+        "current_pct": 26.03,
+        "delta_pp": 4.35
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 17.47,
+        "current_pct": 15.25,
+        "delta_pp": -2.22
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 57.62,
+        "current_pct": 58.8,
+        "delta_pp": 1.18
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 42.38,
+        "current_pct": 41.2,
+        "delta_pp": -1.18
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 18.47,
+        "current_pct": 17.53,
+        "delta_pp": -0.95
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.67,
+        "current_pct": 4.38,
+        "delta_pp": 0.71
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.02,
+        "current_pct": 2.6,
+        "delta_pp": -0.42
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze GRMN's financial performance change between the quarter ending 2025-03-29 and the quarter ending 2025-06-28. Revenue increased by $279,465,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2025-07-30.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

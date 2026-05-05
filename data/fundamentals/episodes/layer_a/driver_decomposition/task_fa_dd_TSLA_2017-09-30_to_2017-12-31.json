@@ -1,0 +1,161 @@
+{
+  "task_id": "fa_dd_TSLA_2017-09-30_to_2017-12-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2018-02-23",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "TSLA",
+    "current_period_end": "2017-12-31",
+    "prior_period_end": "2017-09-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 303574000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Automotive",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 339306000,
+        "contribution_pct": 111.77
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 258903000,
+        "contribution_pct": 85.28
+      },
+      {
+        "driver": "NORWAY",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 114655000,
+        "contribution_pct": 37.77
+      },
+      {
+        "driver": "CHINA",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -67580000,
+        "contribution_pct": -22.26
+      },
+      {
+        "driver": "Energy Generation And Storage Segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -19468000,
+        "contribution_pct": -6.41
+      },
+      {
+        "driver": "Services And Other",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -16264000,
+        "contribution_pct": -5.36
+      },
+      {
+        "driver": "Other Countries",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2404000,
+        "contribution_pct": -0.79
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 15.05,
+        "current_pct": 13.34,
+        "delta_pp": -1.7
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 84.95,
+        "current_pct": 86.66,
+        "delta_pp": 1.7
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 21.88,
+        "current_pct": 20.75,
+        "delta_pp": -1.13
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 13.42,
+        "current_pct": 14.28,
+        "delta_pp": 0.86
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.92,
+        "current_pct": 4.45,
+        "delta_pp": 0.53
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 11.11,
+        "current_pct": 10.78,
+        "delta_pp": -0.33
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": -0.01,
+        "current_pct": -0.28,
+        "delta_pp": -0.27
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": -17.94,
+        "current_pct": -18.19,
+        "delta_pp": -0.25
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 4,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze TSLA's financial performance change between the quarter ending 2017-09-30 and the quarter ending 2017-12-31. Revenue increased by $303,574,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2018-02-23.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

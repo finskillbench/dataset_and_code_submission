@@ -1,0 +1,161 @@
+{
+  "task_id": "fa_dd_CSCO_2024-04-27_to_2024-07-27",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2024-09-05",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "CSCO",
+    "current_period_end": "2024-07-27",
+    "prior_period_end": "2024-04-27",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 940000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 695000000,
+        "contribution_pct": 73.94
+      },
+      {
+        "driver": "Security",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 484000000,
+        "contribution_pct": 51.49
+      },
+      {
+        "driver": "Networking",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 280000000,
+        "contribution_pct": 29.79
+      },
+      {
+        "driver": "Asia Pacific Japan And China",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 190000000,
+        "contribution_pct": 20.21
+      },
+      {
+        "driver": "Service",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 106000000,
+        "contribution_pct": 11.28
+      },
+      {
+        "driver": "Europe Middle East And Africa",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 53000000,
+        "contribution_pct": 5.64
+      },
+      {
+        "driver": "Observability",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 35000000,
+        "contribution_pct": 3.72
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 17.25,
+        "current_pct": 19.19,
+        "delta_pp": 1.94
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 2.75,
+        "current_pct": 1.72,
+        "delta_pp": -1.03
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 65.13,
+        "current_pct": 64.37,
+        "delta_pp": -0.76
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 34.87,
+        "current_pct": 35.63,
+        "delta_pp": 0.76
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.78,
+        "current_pct": 6.03,
+        "delta_pp": -0.75
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 15.34,
+        "current_pct": 15.97,
+        "delta_pp": 0.64
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 25.94,
+        "current_pct": 26.42,
+        "delta_pp": 0.48
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.81,
+        "current_pct": 3.06,
+        "delta_pp": 0.25
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze CSCO's financial performance change between the quarter ending 2024-04-27 and the quarter ending 2024-07-27. Revenue increased by $940,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2024-09-05.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

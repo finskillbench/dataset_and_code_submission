@@ -1,0 +1,17 @@
+{
+  "scenario_id": "stress_covid_2020",
+  "type": "historical_replay",
+  "name": "COVID-19 Market Crash (Feb-Apr 2020)",
+  "regime_slice": "2020_covid",
+  "replay_window": {
+    "start": "2020-02-19",
+    "end": "2020-04-30"
+  },
+  "description": "S&P 500 fell 34% in 23 trading days. Unprecedented speed and correlation spike.",
+  "market_shocks": {
+    "equity_drawdown_pct": -33.9,
+    "vix_peak": 82.69,
+    "credit_spread_widening_bp": 600,
+    "rate_change_bp": -150
+  }
+}

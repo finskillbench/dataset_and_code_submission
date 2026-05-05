@@ -1,0 +1,135 @@
+{
+  "portfolio_id": "portfolio_factor_tilted_2023_24_rebound_006",
+  "portfolio_type": "factor_tilted",
+  "as_of_date": "2024-01-01",
+  "holdings": [
+    {
+      "symbol": "ON",
+      "weight": 0.099999
+    },
+    {
+      "symbol": "ZBRA",
+      "weight": 0.099999
+    },
+    {
+      "symbol": "USB",
+      "weight": 0.099999
+    },
+    {
+      "symbol": "CARR",
+      "weight": 0.099999
+    },
+    {
+      "symbol": "LYV",
+      "weight": 0.099999
+    },
+    {
+      "symbol": "ARE",
+      "weight": 0.099999
+    },
+    {
+      "symbol": "SRE",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "BAX",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "CMG",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "LHX",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "KHC",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "HUM",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "SBUX",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "CPAY",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "TT",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "TTWO",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "EFX",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "CPRT",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "VMC",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "AIG",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "DD",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "REG",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "EQT",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "BF-B",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "C",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "L",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "BR",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "CTRA",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "DHR",
+      "weight": 0.016667
+    },
+    {
+      "symbol": "LNT",
+      "weight": 0.016667
+    }
+  ],
+  "planted_risks": [
+    "factor_tilt",
+    "target_factor_mkt_rf"
+  ],
+  "metadata": {
+    "target_factor": "mkt_rf",
+    "num_holdings": 30
+  }
+}

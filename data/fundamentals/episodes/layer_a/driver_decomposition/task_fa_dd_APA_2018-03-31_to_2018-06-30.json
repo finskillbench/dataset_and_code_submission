@@ -1,0 +1,146 @@
+{
+  "task_id": "fa_dd_APA_2018-03-31_to_2018-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2018-08-02",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "APA",
+    "current_period_end": "2018-06-30",
+    "prior_period_end": "2018-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 208000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Oil and Gas",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1392000000,
+        "contribution_pct": -669.23
+      },
+      {
+        "driver": "Natural Gas",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -218000000,
+        "contribution_pct": -104.81
+      },
+      {
+        "driver": "North Sea",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 135000000,
+        "contribution_pct": 64.9
+      },
+      {
+        "driver": "Natural Gas Liquids",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -118000000,
+        "contribution_pct": -56.73
+      },
+      {
+        "driver": "Oil and Gas, Purchased",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 98000000,
+        "contribution_pct": 47.12
+      },
+      {
+        "driver": "Segment United States",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 73000000,
+        "contribution_pct": 35.1
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 27.78,
+        "current_pct": 31.61,
+        "delta_pp": 3.83
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 42.82,
+        "current_pct": 45.97,
+        "delta_pp": 3.15
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 57.18,
+        "current_pct": 54.03,
+        "delta_pp": -3.15
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 10.53,
+        "current_pct": 12.35,
+        "delta_pp": 1.81
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.08,
+        "current_pct": 5.06,
+        "delta_pp": -1.01
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 32.0,
+        "current_pct": 31.4,
+        "delta_pp": -0.6
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.6,
+        "current_pct": 6.04,
+        "delta_pp": -0.55
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 4,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze APA's financial performance change between the quarter ending 2018-03-31 and the quarter ending 2018-06-30. Revenue increased by $208,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2018-08-02.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

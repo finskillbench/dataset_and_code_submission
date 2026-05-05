@@ -1,0 +1,163 @@
+{
+  "task_id": "rm_st_portfolio_concentrated_2023_24_rebound_000_stress_correlation_spike",
+  "skill": "risk_management",
+  "sub_task": "stress_testing",
+  "as_of_date": "2024-01-01",
+  "input": {
+    "portfolio": {
+      "portfolio_id": "portfolio_concentrated_2023_24_rebound_000",
+      "holdings": [
+        {
+          "symbol": "AIG",
+          "weight": 0.149999
+        },
+        {
+          "symbol": "C",
+          "weight": 0.149999
+        },
+        {
+          "symbol": "L",
+          "weight": 0.149999
+        },
+        {
+          "symbol": "USB",
+          "weight": 0.149999
+        },
+        {
+          "symbol": "ARE",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "BAX",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "BF-B",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "BR",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "CARR",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "CMG",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "CPAY",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "CPRT",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "CTRA",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "DD",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "DHR",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "EFX",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "EQT",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "HUM",
+          "weight": 0.026667
+        },
+        {
+          "symbol": "KHC",
+          "weight": 0.026667
+        }
+      ],
+      "total_nav": 50000000
+    },
+    "stress_scenario": {
+      "scenario_id": "stress_correlation_spike"
+    },
+    "market_data": {
+      "factor_exposures": "data/risk_management/processed/factor_exposures.parquet"
+    }
+  },
+  "expected_output": {
+    "estimated_pnl_pct": -0.094206,
+    "attribution": {
+      "by_sector": [
+        {
+          "sector": "Financial Services",
+          "contribution_pct": -0.058842
+        },
+        {
+          "sector": "Healthcare",
+          "contribution_pct": -0.005896
+        },
+        {
+          "sector": "Industrials",
+          "contribution_pct": -0.005612
+        },
+        {
+          "sector": "Technology",
+          "contribution_pct": -0.005022
+        },
+        {
+          "sector": "Energy",
+          "contribution_pct": -0.004476
+        },
+        {
+          "sector": "Consumer Cyclical",
+          "contribution_pct": -0.004457
+        },
+        {
+          "sector": "Consumer Defensive",
+          "contribution_pct": -0.004399
+        },
+        {
+          "sector": "Real Estate",
+          "contribution_pct": -0.003067
+        },
+        {
+          "sector": "Basic Materials",
+          "contribution_pct": -0.002435
+        }
+      ],
+      "by_factor": [
+        {
+          "factor": "market",
+          "contribution_pct": -0.079772
+        },
+        {
+          "factor": "credit",
+          "contribution_pct": -0.014434
+        }
+      ]
+    }
+  },
+  "verification": {
+    "method": "absolute_error",
+    "tolerance_pct": 1.0,
+    "metrics": [
+      "pnl_absolute_error",
+      "sector_attribution_mae"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "difficulty": "hard",
+    "portfolio_type": "concentrated",
+    "scenario_type": "hypothetical"
+  }
+}

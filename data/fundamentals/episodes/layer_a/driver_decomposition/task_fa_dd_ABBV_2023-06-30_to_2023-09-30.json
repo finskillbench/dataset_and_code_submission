@@ -1,0 +1,145 @@
+{
+  "task_id": "fa_dd_ABBV_2023-06-30_to_2023-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-11-06",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "ABBV",
+    "current_period_end": "2023-09-30",
+    "prior_period_end": "2023-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 62000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "H U M I R A",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -465000000,
+        "contribution_pct": -750.0
+      },
+      {
+        "driver": "SKYRIZI",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 243000000,
+        "contribution_pct": 391.94
+      },
+      {
+        "driver": "RINVOQ",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 192000000,
+        "contribution_pct": 309.68
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 132000000,
+        "contribution_pct": 212.9
+      },
+      {
+        "driver": "Vraylar",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 93000000,
+        "contribution_pct": 150.0
+      },
+      {
+        "driver": "Non-US",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -70000000,
+        "contribution_pct": -112.9
+      },
+      {
+        "driver": "Botox Cosmetic",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -65000000,
+        "contribution_pct": -104.84
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 32.55,
+        "current_pct": 16.38,
+        "delta_pp": -16.17
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 69.42,
+        "current_pct": 53.44,
+        "delta_pp": -15.98
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 30.58,
+        "current_pct": 46.56,
+        "delta_pp": 15.98
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.2,
+        "current_pct": 1.24,
+        "delta_pp": -2.97
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 23.57,
+        "current_pct": 24.21,
+        "delta_pp": 0.64
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 16.3,
+        "current_pct": 16.05,
+        "delta_pp": -0.25
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 22,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze ABBV's financial performance change between the quarter ending 2023-06-30 and the quarter ending 2023-09-30. Revenue increased by $62,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-11-06.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

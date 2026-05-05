@@ -1,0 +1,145 @@
+{
+  "task_id": "fa_dd_PM_2022-12-31_to_2023-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-04-26",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "PM",
+    "current_period_end": "2023-03-31",
+    "prior_period_end": "2022-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -133000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "SSEA, CIS & MEA Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 2477000000,
+        "contribution_pct": -1862.41
+      },
+      {
+        "driver": "South And Southeast Asia",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1100000000,
+        "contribution_pct": 827.07
+      },
+      {
+        "driver": "European Union",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -972000000,
+        "contribution_pct": 730.83
+      },
+      {
+        "driver": "Eastern Europe Middle East And Africa",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -924000000,
+        "contribution_pct": 694.74
+      },
+      {
+        "driver": "Swedish Match AB Segment",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 581000000,
+        "contribution_pct": -436.84
+      },
+      {
+        "driver": "Reduced-Risk Products",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -415000000,
+        "contribution_pct": 312.03
+      },
+      {
+        "driver": "East Asia And Australia",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 198000000,
+        "contribution_pct": -148.87
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 7.88,
+        "current_pct": 0.0,
+        "delta_pp": -7.88
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 35.87,
+        "current_pct": 34.06,
+        "delta_pp": -1.81
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 29.65,
+        "current_pct": 28.33,
+        "delta_pp": -1.32
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.09,
+        "current_pct": 2.87,
+        "delta_pp": 0.78
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.02,
+        "current_pct": 5.34,
+        "delta_pp": 0.32
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 62.18,
+        "current_pct": 62.34,
+        "delta_pp": 0.16
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 8,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze PM's financial performance change between the quarter ending 2022-12-31 and the quarter ending 2023-03-31. Revenue decreased by $133,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-04-26.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

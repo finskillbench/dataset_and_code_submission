@@ -1,0 +1,132 @@
+{
+  "task_id": "fa_dd_APA_2020-03-31_to_2020-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2020-07-30",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "APA",
+    "current_period_end": "2020-06-30",
+    "prior_period_end": "2020-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -592000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Oil And Gas, Excluding Purchased",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -539000000,
+        "contribution_pct": 91.05
+      },
+      {
+        "driver": "North Sea",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -302000000,
+        "contribution_pct": 51.01
+      },
+      {
+        "driver": "Segment United States",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -291000000,
+        "contribution_pct": 49.16
+      },
+      {
+        "driver": "Oil and Gas, Purchased",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -53000000,
+        "contribution_pct": 8.95
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 7.51,
+        "current_pct": -35.11,
+        "delta_pp": -42.62
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 21.28,
+        "current_pct": -6.38,
+        "delta_pp": -27.66
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 78.72,
+        "current_pct": 106.38,
+        "delta_pp": 27.66
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 42.11,
+        "current_pct": 55.59,
+        "delta_pp": 13.47
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.17,
+        "current_pct": -5.05,
+        "delta_pp": -9.22
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.06,
+        "current_pct": 12.5,
+        "delta_pp": 7.44
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 7.81,
+        "current_pct": 14.23,
+        "delta_pp": 6.42
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze APA's financial performance change between the quarter ending 2020-03-31 and the quarter ending 2020-06-30. Revenue decreased by $592,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2020-07-30.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

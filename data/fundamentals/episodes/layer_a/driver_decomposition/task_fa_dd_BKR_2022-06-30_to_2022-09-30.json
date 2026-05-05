@@ -1,0 +1,138 @@
+{
+  "task_id": "fa_dd_BKR_2022-06-30_to_2022-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2022-10-20",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "BKR",
+    "current_period_end": "2022-09-30",
+    "prior_period_end": "2022-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 322000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Non-US",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 257000000,
+        "contribution_pct": 79.81
+      },
+      {
+        "driver": "Oilfield Services And Equipment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 153000000,
+        "contribution_pct": 47.52
+      },
+      {
+        "driver": "Turbomachinery and Process Solutions",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 145000000,
+        "contribution_pct": 45.03
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 65000000,
+        "contribution_pct": 20.19
+      },
+      {
+        "driver": "Oilfield Equipment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 20000000,
+        "contribution_pct": 6.21
+      },
+      {
+        "driver": "Digital Solutions",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 4000000,
+        "contribution_pct": 1.24
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": -0.5,
+        "current_pct": 5.01,
+        "delta_pp": 5.51
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 19.22,
+        "current_pct": 20.93,
+        "delta_pp": 1.72
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 80.78,
+        "current_pct": 79.07,
+        "delta_pp": -1.72
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 12.36,
+        "current_pct": 11.55,
+        "delta_pp": -0.82
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.61,
+        "current_pct": 2.85,
+        "delta_pp": -0.76
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 5.43,
+        "current_pct": 4.75,
+        "delta_pp": -0.68
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2022_tightening",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 4,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze BKR's financial performance change between the quarter ending 2022-06-30 and the quarter ending 2022-09-30. Revenue increased by $322,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2022-10-20.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

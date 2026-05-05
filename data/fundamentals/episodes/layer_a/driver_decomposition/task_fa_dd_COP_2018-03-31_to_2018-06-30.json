@@ -1,0 +1,145 @@
+{
+  "task_id": "fa_dd_COP_2018-03-31_to_2018-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2018-07-31",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "COP",
+    "current_period_end": "2018-06-30",
+    "prior_period_end": "2018-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -231000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Libya",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 668000000,
+        "contribution_pct": -289.18
+      },
+      {
+        "driver": "Natural Gas Product Line",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -502000000,
+        "contribution_pct": 217.32
+      },
+      {
+        "driver": "Crude oil product line",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 326000000,
+        "contribution_pct": -141.13
+      },
+      {
+        "driver": "NORWAY",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -307000000,
+        "contribution_pct": 132.9
+      },
+      {
+        "driver": "International",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -202000000,
+        "contribution_pct": 87.45
+      },
+      {
+        "driver": "Other Products",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -152000000,
+        "contribution_pct": 65.8
+      },
+      {
+        "driver": "Australia",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -137000000,
+        "contribution_pct": 59.31
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 27.3,
+        "current_pct": 30.69,
+        "delta_pp": 3.39
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 72.7,
+        "current_pct": 69.31,
+        "delta_pp": -3.39
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 24.08,
+        "current_pct": 26.1,
+        "delta_pp": 2.03
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 10.01,
+        "current_pct": 11.32,
+        "delta_pp": 1.32
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 16.36,
+        "current_pct": 17.06,
+        "delta_pp": 0.7
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 1.13,
+        "current_pct": 1.38,
+        "delta_pp": 0.25
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 10,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze COP's financial performance change between the quarter ending 2018-03-31 and the quarter ending 2018-06-30. Revenue decreased by $231,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2018-07-31.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

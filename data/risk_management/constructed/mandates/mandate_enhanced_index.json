@@ -1,0 +1,49 @@
+{
+  "mandate_id": "mandate_enhanced_index",
+  "name": "Enhanced Index",
+  "difficulty": "hard",
+  "benchmark": "SPY",
+  "constraints": [
+    {
+      "type": "position_limit_max",
+      "value": 0.035,
+      "description": "No single name > 3.5%"
+    },
+    {
+      "type": "sector_limit_max",
+      "value": 0.2,
+      "description": "No sector > 20%"
+    },
+    {
+      "type": "tracking_error_max",
+      "value": 0.015,
+      "description": "TE < 1.5%"
+    },
+    {
+      "type": "beta_range",
+      "min": 0.95,
+      "max": 1.05,
+      "description": "Beta 0.95-1.05"
+    },
+    {
+      "type": "turnover_max_monthly",
+      "value": 0.08,
+      "description": "Monthly turnover < 8%"
+    },
+    {
+      "type": "gross_exposure_max",
+      "value": 1.0,
+      "description": "Gross exposure <= 100%"
+    },
+    {
+      "type": "long_only",
+      "value": true,
+      "description": "No short positions"
+    },
+    {
+      "type": "hhi_max",
+      "value": 0.05,
+      "description": "HHI < 0.05 (min ~20 names)"
+    }
+  ]
+}

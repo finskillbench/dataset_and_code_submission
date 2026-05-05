@@ -1,0 +1,139 @@
+{
+  "task_id": "fa_dd_CSCO_2019-01-26_to_2019-04-27",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-05-21",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "CSCO",
+    "current_period_end": "2019-04-27",
+    "prior_period_end": "2019-01-26",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 512000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Product",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 466000000,
+        "contribution_pct": 91.02
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 343000000,
+        "contribution_pct": 66.99
+      },
+      {
+        "driver": "Europe Middle East And Africa",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 133000000,
+        "contribution_pct": 25.98
+      },
+      {
+        "driver": "Service",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 63000000,
+        "contribution_pct": 12.3
+      },
+      {
+        "driver": "Asia Pacific Japan And China",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 35000000,
+        "contribution_pct": 6.84
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 25.8,
+        "current_pct": 27.11,
+        "delta_pp": 1.31
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 62.45,
+        "current_pct": 63.07,
+        "delta_pp": 0.62
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 37.55,
+        "current_pct": 36.93,
+        "delta_pp": -0.62
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 22.34,
+        "current_pct": 22.72,
+        "delta_pp": 0.38
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 12.51,
+        "current_pct": 12.8,
+        "delta_pp": 0.29
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.19,
+        "current_pct": 4.41,
+        "delta_pp": 0.22
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.91,
+        "current_pct": 3.71,
+        "delta_pp": -0.2
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze CSCO's financial performance change between the quarter ending 2019-01-26 and the quarter ending 2019-04-27. Revenue increased by $512,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-05-21.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

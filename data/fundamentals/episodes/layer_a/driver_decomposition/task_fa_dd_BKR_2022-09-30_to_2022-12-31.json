@@ -1,0 +1,137 @@
+{
+  "task_id": "fa_dd_BKR_2022-09-30_to_2022-12-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-02-14",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "BKR",
+    "current_period_end": "2022-12-31",
+    "prior_period_end": "2022-09-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 536000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Oilfield Services And Equipment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 2367000000,
+        "contribution_pct": 441.6
+      },
+      {
+        "driver": "Turbomachinery and Process Solutions",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1438000000,
+        "contribution_pct": -268.28
+      },
+      {
+        "driver": "Industrial And Energy Technology",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 694000000,
+        "contribution_pct": 129.48
+      },
+      {
+        "driver": "Oilfield Equipment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -561000000,
+        "contribution_pct": -104.66
+      },
+      {
+        "driver": "Digital Solutions",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -528000000,
+        "contribution_pct": -98.51
+      },
+      {
+        "driver": "Non-US",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 491000000,
+        "contribution_pct": 91.6
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 45000000,
+        "contribution_pct": 8.4
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 5.01,
+        "current_pct": 11.23,
+        "delta_pp": 6.22
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 20.93,
+        "current_pct": 22.64,
+        "delta_pp": 1.71
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 79.07,
+        "current_pct": 77.36,
+        "delta_pp": -1.71
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 11.55,
+        "current_pct": 10.92,
+        "delta_pp": -0.62
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.75,
+        "current_pct": 4.32,
+        "delta_pp": -0.43
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze BKR's financial performance change between the quarter ending 2022-09-30 and the quarter ending 2022-12-31. Revenue increased by $536,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-02-14.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

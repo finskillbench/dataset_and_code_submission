@@ -1,0 +1,141 @@
+{
+  "task_id": "pc_bl_2025-05-30_v1",
+  "skill": "portfolio_construction",
+  "sub_task": "black_litterman",
+  "as_of_date": "2025-05-30",
+  "difficulty": "medium",
+  "input": {
+    "market_cap_weights": {},
+    "covariance_matrix": {
+      "ref": "data/portfolio_construction/processed/covariance/2025-05-30.npz"
+    },
+    "risk_free_rate": 0.045,
+    "analyst_views": [
+      {
+        "view": {
+          "type": "relative",
+          "symbols": [
+            "SRE",
+            "TT"
+          ],
+          "return": 0.09242465679821796,
+          "confidence": 0.8064733918807481
+        },
+        "prior_return": -0.013817829029600631,
+        "posterior_return": 0.07570137868216201
+      },
+      {
+        "view": {
+          "type": "relative",
+          "symbols": [
+            "DHR",
+            "VMC"
+          ],
+          "return": 0.023741844568733295,
+          "confidence": 0.8558539041558262
+        },
+        "prior_return": 0.012647442758942834,
+        "posterior_return": 0.022568816947593377
+      },
+      {
+        "view": {
+          "type": "relative",
+          "symbols": [
+            "LNT",
+            "CPRT"
+          ],
+          "return": 0.009799574108945087,
+          "confidence": 0.3461519929091237
+        },
+        "prior_return": -0.026938893199492706,
+        "posterior_return": 0.003133468479355063
+      }
+    ],
+    "tools_available": [
+      "black_litterman",
+      "optimize_portfolio"
+    ],
+    "instruction": "Translate the analyst views into Black-Litterman inputs, compute posterior returns, and construct an optimal portfolio."
+  },
+  "expected_output": {
+    "posterior_returns": {
+      "AIG": 0.06889434619986233,
+      "ARE": 0.08031177578167589,
+      "BAX": 0.08700964568831322,
+      "BF-B": 0.06237164758344881,
+      "BR": 0.06185848434232725,
+      "C": 0.10503840710104694,
+      "CARR": 0.08056827844653308,
+      "CMG": 0.05891355275623337,
+      "CPAY": 0.10962224912291722,
+      "CPRT": 0.04867757251966832,
+      "CTRA": 0.07091773863336853,
+      "DD": 0.10459046331927987,
+      "DHR": 0.08207745653274291,
+      "EFX": 0.09173119453642521,
+      "EQT": 0.07322065629197054,
+      "HUM": 0.055167415829281696,
+      "KHC": 0.04846920982045889,
+      "L": 0.0715854301354242,
+      "LHX": 0.04350214342374482,
+      "LNT": 0.05181104099902338,
+      "LYV": 0.08556263019443065,
+      "ON": 0.14456747023019978,
+      "REG": 0.059169537423995854,
+      "SBUX": 0.08551514238382135,
+      "SRE": 0.11425517150914505,
+      "TT": 0.03855379282698304,
+      "TTWO": 0.05097339440734581,
+      "USB": 0.09780777401907337,
+      "VMC": 0.059508639585149535,
+      "ZBRA": 0.11415916647162948
+    },
+    "optimal_weights": {
+      "AIG": 0.02728822740260143,
+      "ARE": 0.027288227402601485,
+      "BAX": 0.027288227402601485,
+      "BF-B": 0.02728822740260167,
+      "BR": 0.02728822740260165,
+      "C": 0.02728822740260176,
+      "CARR": 0.027288227402601617,
+      "CMG": 0.02728822740260159,
+      "CPAY": 0.027288227402601554,
+      "CPRT": 0.0,
+      "CTRA": 0.02728822740260185,
+      "DD": 0.027288227402601638,
+      "DHR": 0.050943567758689606,
+      "EFX": 0.027288227402601537,
+      "EQT": 0.027288227402601548,
+      "HUM": 0.027288227402601662,
+      "KHC": 0.027288227402601475,
+      "L": 0.02728822740260167,
+      "LHX": 0.027288227402601496,
+      "LNT": 0.05968030131436373,
+      "LYV": 0.027288227402601537,
+      "ON": 0.027288227402601638,
+      "REG": 0.027288227402601752,
+      "SBUX": 0.027288227402601582,
+      "SRE": 0.2308257862179944,
+      "TT": 0.0,
+      "TTWO": 0.027288227402601638,
+      "USB": 0.02728822740260153,
+      "VMC": 0.003632887046513999,
+      "ZBRA": 0.027288227402601548
+    }
+  },
+  "verification": {
+    "method": "view_specification_and_weights",
+    "view_direction_must_match": true,
+    "view_magnitude_tolerance_pct": 20.0,
+    "weight_l2_threshold": 0.1,
+    "ground_truth_source": "bl_optimizer"
+  },
+  "metadata": {
+    "regime_slice": "unknown",
+    "n_assets": 30
+  },
+  "prompt": {
+    "task_description": "Apply the Black-Litterman model to a 0-asset universe. Combine the market-implied equilibrium returns (derived from market-cap weights and the covariance matrix) with the provided analyst views. Compute the posterior expected returns and construct the optimal portfolio under the posterior. Use data as of 2025-05-30.",
+    "output_instructions": "Respond with a JSON object containing: posterior_returns (object mapping ticker \u2192 posterior expected return) and optimal_weights (object mapping ticker \u2192 portfolio weight)."
+  }
+}

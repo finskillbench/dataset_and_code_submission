@@ -1,0 +1,145 @@
+{
+  "task_id": "fa_dd_URI_2024-06-30_to_2024-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2024-10-23",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "URI",
+    "current_period_end": "2024-09-30",
+    "prior_period_end": "2024-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 219000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Owned Equipment Rentals",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 200000000,
+        "contribution_pct": 91.32
+      },
+      {
+        "driver": "Rental Equipment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -44000000,
+        "contribution_pct": -20.09
+      },
+      {
+        "driver": "Ancillary and Other Rental Revenue",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 35000000,
+        "contribution_pct": 15.98
+      },
+      {
+        "driver": "New Equipment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 16000000,
+        "contribution_pct": 7.31
+      },
+      {
+        "driver": "Re-rent Revenue",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 13000000,
+        "contribution_pct": 5.94
+      },
+      {
+        "driver": "Contractor Supplies",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -4000000,
+        "contribution_pct": -1.83
+      },
+      {
+        "driver": "Service and Other Revenues",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 3000000,
+        "contribution_pct": 1.37
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 26.64,
+        "current_pct": 28.13,
+        "delta_pp": 1.49
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 37.34,
+        "current_pct": 38.55,
+        "delta_pp": 1.21
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 62.66,
+        "current_pct": 61.45,
+        "delta_pp": -1.21
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.27,
+        "current_pct": 6.04,
+        "delta_pp": 0.76
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 19.0,
+        "current_pct": 18.49,
+        "delta_pp": -0.52
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 10.71,
+        "current_pct": 10.42,
+        "delta_pp": -0.29
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 7,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze URI's financial performance change between the quarter ending 2024-06-30 and the quarter ending 2024-09-30. Revenue increased by $219,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2024-10-23.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

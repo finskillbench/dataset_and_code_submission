@@ -1,0 +1,118 @@
+{
+  "task_id": "fa_dd_CRH_2024-12-31_to_2025-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2025-05-05",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "CRH",
+    "current_period_end": "2025-03-31",
+    "prior_period_end": "2024-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -2324025720,
+    "top_revenue_drivers": [
+      {
+        "driver": "Service",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1185000000,
+        "contribution_pct": 50.99
+      },
+      {
+        "driver": "Product",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -929000000,
+        "contribution_pct": 39.97
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 14.07,
+        "current_pct": 0.13,
+        "delta_pp": -13.94
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 35.63,
+        "current_pct": 27.19,
+        "delta_pp": -8.44
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 64.37,
+        "current_pct": 72.81,
+        "delta_pp": 8.44
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 21.56,
+        "current_pct": 27.06,
+        "delta_pp": 5.5
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 1.61,
+        "current_pct": -0.86,
+        "delta_pp": -2.47
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.75,
+        "current_pct": 7.06,
+        "delta_pp": 1.31
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 1.8,
+        "current_pct": 2.68,
+        "delta_pp": 0.88
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze CRH's financial performance change between the quarter ending 2024-12-31 and the quarter ending 2025-03-31. Revenue decreased by $2,324,025,720. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2025-05-05.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

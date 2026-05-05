@@ -1,0 +1,132 @@
+{
+  "task_id": "fa_dd_FCX_2021-03-31_to_2021-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2021-08-05",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "FCX",
+    "current_period_end": "2021-06-30",
+    "prior_period_end": "2021-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 940000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Rod and Refining Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 380000000,
+        "contribution_pct": 40.43
+      },
+      {
+        "driver": "Grasberg Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 370000000,
+        "contribution_pct": 39.36
+      },
+      {
+        "driver": "Morenci",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 157000000,
+        "contribution_pct": 16.7
+      },
+      {
+        "driver": "Molybdenum",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 19000000,
+        "contribution_pct": 2.02
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 29.05,
+        "current_pct": 34.45,
+        "delta_pp": 5.4
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 31.31,
+        "current_pct": 36.6,
+        "delta_pp": 5.29
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 68.69,
+        "current_pct": 63.4,
+        "delta_pp": -5.29
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 9.53,
+        "current_pct": 10.79,
+        "delta_pp": 1.26
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 2.15,
+        "current_pct": 1.56,
+        "delta_pp": -0.59
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.03,
+        "current_pct": 2.58,
+        "delta_pp": -0.46
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 9.02,
+        "current_pct": 8.65,
+        "delta_pp": -0.37
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 4,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze FCX's financial performance change between the quarter ending 2021-03-31 and the quarter ending 2021-06-30. Revenue increased by $940,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2021-08-05.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

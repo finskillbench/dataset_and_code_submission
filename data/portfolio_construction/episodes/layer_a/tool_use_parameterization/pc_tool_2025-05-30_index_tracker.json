@@ -1,0 +1,48 @@
+{
+  "task_id": "pc_tool_2025-05-30_index_tracker",
+  "skill": "portfolio_construction",
+  "sub_task": "tool_use_parameterization",
+  "as_of_date": "2025-05-30",
+  "difficulty": "medium",
+  "input": {
+    "scenario_description": "You are a portfolio manager running a US large-cap equity fund benchmarked to the S&P 500. Your research team has provided updated expected returns. Your mandate requires tracking error below 3% annualized, no single position above 5%, and sector weights within 5% of benchmark. Formulate the correct optimizer call.",
+    "expected_returns": {},
+    "covariance_matrix": {
+      "ref": "data/portfolio_construction/processed/covariance/2025-05-30.npz"
+    },
+    "benchmark_weights": {},
+    "current_portfolio": {},
+    "sector_mapping": {},
+    "tools_available": [
+      "optimize_portfolio"
+    ],
+    "tool_documentation": "See _optimizer.py optimize_portfolio() API docs"
+  },
+  "expected_output": {
+    "optimizer_call": {
+      "constraints": {
+        "long_only": true,
+        "max_weight_per_name": 0.05,
+        "tracking_error_limit": 0.03
+      },
+      "objective": "max_sharpe"
+    }
+  },
+  "verification": {
+    "method": "parameter_match",
+    "required_parameters": [
+      "constraints",
+      "objective"
+    ],
+    "ground_truth_source": "expert_authored"
+  },
+  "metadata": {
+    "regime_slice": "unknown",
+    "tests_skill": "translating mandate language into optimizer parameters",
+    "scenario_type": "index_tracker"
+  },
+  "prompt": {
+    "task_description": "You are a portfolio manager with the mandate described below. Translate the mandate requirements into the correct parameters for the optimize_portfolio tool. The scenario: You are a portfolio manager running a US large-cap equity fund benchmarked to the S&P 500. Your research team has provided updated expected returns. Your mandate requires tracking error below 3% annualized, no single position above 5%, and sector weights within 5% of benchmark. Formulate the correct optimizer call. Formulate the correct optimizer call with appropriate constraints, objective, and inputs as of 2025-05-30.",
+    "output_instructions": "Respond with a JSON object containing: optimizer_call (object with constraints, objective, and any other required parameters matching the optimize_portfolio API)."
+  }
+}

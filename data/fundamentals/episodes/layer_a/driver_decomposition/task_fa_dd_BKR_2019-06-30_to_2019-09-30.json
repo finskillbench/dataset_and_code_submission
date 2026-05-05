@@ -1,0 +1,122 @@
+{
+  "task_id": "fa_dd_BKR_2019-06-30_to_2019-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-10-30",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "BKR",
+    "current_period_end": "2019-09-30",
+    "prior_period_end": "2019-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -112000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Turbomachinery and Process Solutions",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -208000000,
+        "contribution_pct": 185.71
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -116000000,
+        "contribution_pct": 103.57
+      },
+      {
+        "driver": "Oilfield Services And Equipment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 85000000,
+        "contribution_pct": -75.89
+      },
+      {
+        "driver": "Oilfield Equipment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 35000000,
+        "contribution_pct": -31.25
+      },
+      {
+        "driver": "Digital Solutions",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -23000000,
+        "contribution_pct": 20.54
+      },
+      {
+        "driver": "Non-US",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 4000000,
+        "contribution_pct": -3.57
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 17.72,
+        "current_pct": 18.72,
+        "delta_pp": 1.0
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 82.28,
+        "current_pct": 81.28,
+        "delta_pp": -1.0
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 4.52,
+        "current_pct": 5.05,
+        "delta_pp": 0.53
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 1.58,
+        "current_pct": 1.82,
+        "delta_pp": 0.23
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 4,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 4,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze BKR's financial performance change between the quarter ending 2019-06-30 and the quarter ending 2019-09-30. Revenue decreased by $112,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-10-30.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

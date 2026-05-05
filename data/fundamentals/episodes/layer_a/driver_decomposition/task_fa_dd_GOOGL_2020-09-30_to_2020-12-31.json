@@ -1,0 +1,145 @@
+{
+  "task_id": "fa_dd_GOOGL_2020-09-30_to_2020-12-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2021-02-03",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "GOOGL",
+    "current_period_end": "2020-12-31",
+    "prior_period_end": "2020-09-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 10725000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Google Search & Other",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 5565000000,
+        "contribution_pct": 51.89
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 5261000000,
+        "contribution_pct": 49.05
+      },
+      {
+        "driver": "EMEA",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 3314000000,
+        "contribution_pct": 30.9
+      },
+      {
+        "driver": "YouTube Ads",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1848000000,
+        "contribution_pct": 17.23
+      },
+      {
+        "driver": "Google Network",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1691000000,
+        "contribution_pct": 15.77
+      },
+      {
+        "driver": "Asia Pacific",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 1451000000,
+        "contribution_pct": 13.53
+      },
+      {
+        "driver": "Google Subscriptions, Platforms, And Devices",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1196000000,
+        "contribution_pct": 11.15
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 24.28,
+        "current_pct": 27.51,
+        "delta_pp": 3.22
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 14.85,
+        "current_pct": 12.34,
+        "delta_pp": -2.51
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.57,
+        "current_pct": 6.08,
+        "delta_pp": 1.51
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 7.53,
+        "current_pct": 6.55,
+        "delta_pp": -0.99
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 15.13,
+        "current_pct": 14.32,
+        "delta_pp": -0.82
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 54.27,
+        "current_pct": 54.16,
+        "delta_pp": -0.1
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 6,
+    "n_geographic_drivers": 4,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze GOOGL's financial performance change between the quarter ending 2020-09-30 and the quarter ending 2020-12-31. Revenue increased by $10,725,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2021-02-03.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "task_id": "fa_dd_ALB_2017-06-30_to_2017-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2017-11-09",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "ALB",
+    "current_period_end": "2017-09-30",
+    "prior_period_end": "2017-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 17608000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Lithium and Advanced Materials",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 25698000,
+        "contribution_pct": 145.95
+      },
+      {
+        "driver": "Refining Solutions",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -13942000,
+        "contribution_pct": -79.18
+      },
+      {
+        "driver": "Bromine Specialties",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 8978000,
+        "contribution_pct": 50.99
+      },
+      {
+        "driver": "Other Segments",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2683000,
+        "contribution_pct": -15.24
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 15.18,
+        "current_pct": 13.6,
+        "delta_pp": -1.57
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 3.14,
+        "current_pct": 2.45,
+        "delta_pp": -0.69
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 19.6,
+        "current_pct": 20.27,
+        "delta_pp": 0.67
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.35,
+        "current_pct": 2.88,
+        "delta_pp": 0.53
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 37.13,
+        "current_pct": 36.76,
+        "delta_pp": -0.38
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 62.87,
+        "current_pct": 63.24,
+        "delta_pp": 0.38
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 4,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze ALB's financial performance change between the quarter ending 2017-06-30 and the quarter ending 2017-09-30. Revenue increased by $17,608,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2017-11-09.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_PM_2019-09-30_to_2019-12-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2020-02-07",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "PM",
+    "current_period_end": "2019-12-31",
+    "prior_period_end": "2019-09-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 71000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Combustible Products",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -5627000000,
+        "contribution_pct": -7925.35
+      },
+      {
+        "driver": "South And Southeast Asia",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 241000000,
+        "contribution_pct": 339.44
+      },
+      {
+        "driver": "Reduced-Risk Products",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 190000000,
+        "contribution_pct": 267.61
+      },
+      {
+        "driver": "Eastern Europe Middle East And Africa",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -143000000,
+        "contribution_pct": -201.41
+      },
+      {
+        "driver": "European Union",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -126000000,
+        "contribution_pct": -177.46
+      },
+      {
+        "driver": "Latin America And Canada",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 81000000,
+        "contribution_pct": 114.08
+      },
+      {
+        "driver": "East Asia And Australia",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 18000000,
+        "contribution_pct": 25.35
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 0.0,
+        "current_pct": 6.03,
+        "delta_pp": 6.03
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 36.51,
+        "current_pct": 32.49,
+        "delta_pp": -4.02
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 29.49,
+        "current_pct": 31.65,
+        "delta_pp": 2.15
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 65.91,
+        "current_pct": 63.98,
+        "delta_pp": -1.93
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 34.09,
+        "current_pct": 36.02,
+        "delta_pp": 1.93
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 8.31,
+        "current_pct": 8.08,
+        "delta_pp": -0.23
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.1,
+        "current_pct": 3.31,
+        "delta_pp": 0.2
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 5,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze PM's financial performance change between the quarter ending 2019-09-30 and the quarter ending 2019-12-31. Revenue increased by $71,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2020-02-07.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

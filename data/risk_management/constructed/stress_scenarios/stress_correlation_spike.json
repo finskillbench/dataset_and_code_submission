@@ -1,0 +1,31 @@
+{
+  "scenario_id": "stress_correlation_spike",
+  "type": "hypothetical",
+  "name": "Correlation Spike to 0.8",
+  "description": "Diversification failure. All equities move together.",
+  "shocks": [
+    {
+      "factor": "equity_market",
+      "magnitude_pct": -8.0,
+      "type": "correlation_spike"
+    },
+    {
+      "factor": "credit_spread",
+      "magnitude_bp": 100,
+      "type": "correlated_move"
+    }
+  ],
+  "sector_sensitivities": {
+    "Real Estate": -0.15,
+    "Utilities": -0.1,
+    "Technology": -0.08,
+    "Healthcare": -0.03,
+    "Financial Services": 0.03,
+    "Energy": 0.0,
+    "Consumer Staples": -0.02,
+    "Consumer Discretionary": -0.06,
+    "Industrials": -0.04,
+    "Materials": -0.03,
+    "Communication Services": -0.05
+  }
+}

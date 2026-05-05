@@ -1,0 +1,28 @@
+{
+  "mandate_id": "mandate_diversified",
+  "name": "Diversified Equity",
+  "difficulty": "easy",
+  "benchmark": "SPY",
+  "constraints": [
+    {
+      "type": "long_only",
+      "value": true,
+      "description": "No short positions"
+    },
+    {
+      "type": "position_limit_max",
+      "value": 0.05,
+      "description": "No single name > 5%"
+    },
+    {
+      "type": "position_limit_min",
+      "value": 0.005,
+      "description": "Min position 50bp"
+    },
+    {
+      "type": "sector_limit_max",
+      "value": 0.25,
+      "description": "No sector > 25%"
+    }
+  ]
+}

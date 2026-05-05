@@ -1,0 +1,23 @@
+{
+  "mandate_id": "mandate_simple_long_only",
+  "name": "Simple Long-Only Equity",
+  "difficulty": "easy",
+  "benchmark": "SPY",
+  "constraints": [
+    {
+      "type": "long_only",
+      "value": true,
+      "description": "No short positions"
+    },
+    {
+      "type": "position_limit_max",
+      "value": 0.08,
+      "description": "No single name > 8%"
+    },
+    {
+      "type": "sector_limit_max",
+      "value": 0.3,
+      "description": "No sector > 30%"
+    }
+  ]
+}

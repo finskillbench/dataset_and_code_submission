@@ -1,0 +1,109 @@
+{
+  "task_id": "fa_dd_TRV_2024-03-31_to_2024-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2024-07-19",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "TRV",
+    "current_period_end": "2024-06-30",
+    "prior_period_end": "2024-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 55000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Personal Insurance",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 98000000,
+        "contribution_pct": 178.18
+      },
+      {
+        "driver": "Business Insurance",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 35000000,
+        "contribution_pct": 63.64
+      },
+      {
+        "driver": "Bond & Specialty Insurance",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 22000000,
+        "contribution_pct": 40.0
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 12.2,
+        "current_pct": 5.81,
+        "delta_pp": -6.39
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 25.6,
+        "current_pct": 19.78,
+        "delta_pp": -5.81
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 74.4,
+        "current_pct": 80.22,
+        "delta_pp": 5.81
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 2.2,
+        "current_pct": 1.08,
+        "delta_pp": -1.12
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 12.52,
+        "current_pct": 13.1,
+        "delta_pp": 0.58
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze TRV's financial performance change between the quarter ending 2024-03-31 and the quarter ending 2024-06-30. Revenue increased by $55,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2024-07-19.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

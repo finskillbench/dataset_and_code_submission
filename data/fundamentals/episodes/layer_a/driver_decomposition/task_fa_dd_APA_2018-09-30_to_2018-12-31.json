@@ -1,0 +1,118 @@
+{
+  "task_id": "fa_dd_APA_2018-09-30_to_2018-12-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2019-03-01",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "APA",
+    "current_period_end": "2018-12-31",
+    "prior_period_end": "2018-09-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -273000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "North Sea",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -178000000,
+        "contribution_pct": 65.2
+      },
+      {
+        "driver": "Segment United States",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -90000000,
+        "contribution_pct": 32.97
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 30.87,
+        "current_pct": 51.61,
+        "delta_pp": 20.74
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 32.29,
+        "current_pct": 12.68,
+        "delta_pp": -19.6
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 12.4,
+        "current_pct": 0.35,
+        "delta_pp": -12.05
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 45.14,
+        "current_pct": 36.93,
+        "delta_pp": -8.21
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 54.86,
+        "current_pct": 63.07,
+        "delta_pp": 8.21
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.01,
+        "current_pct": 5.93,
+        "delta_pp": 0.92
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.26,
+        "current_pct": 5.81,
+        "delta_pp": 0.55
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2018_selloff",
+    "has_product_segments": false,
+    "has_geographic_segments": true,
+    "n_product_drivers": 0,
+    "n_geographic_drivers": 2,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze APA's financial performance change between the quarter ending 2018-09-30 and the quarter ending 2018-12-31. Revenue decreased by $273,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2019-03-01.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

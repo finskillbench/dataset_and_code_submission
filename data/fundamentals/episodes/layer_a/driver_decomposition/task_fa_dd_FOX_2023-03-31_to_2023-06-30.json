@@ -1,0 +1,102 @@
+{
+  "task_id": "fa_dd_FOX_2023-03-31_to_2023-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2023-08-11",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "FOX",
+    "current_period_end": "2023-06-30",
+    "prior_period_end": "2023-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -1052000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Television Segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -888000000,
+        "contribution_pct": 84.41
+      },
+      {
+        "driver": "Cable Network Programming Segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -160000000,
+        "contribution_pct": 15.21
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": -0.02,
+        "current_pct": 4.49,
+        "delta_pp": 4.51
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 12.93,
+        "current_pct": 17.25,
+        "delta_pp": 4.32
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 17.7,
+        "current_pct": 20.71,
+        "delta_pp": 3.01
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.6,
+        "current_pct": 3.4,
+        "delta_pp": 0.8
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.11,
+        "current_pct": 2.87,
+        "delta_pp": 0.76
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 5,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze FOX's financial performance change between the quarter ending 2023-03-31 and the quarter ending 2023-06-30. Revenue decreased by $1,052,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2023-08-11.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

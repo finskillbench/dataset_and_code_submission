@@ -1,0 +1,36 @@
+{
+  "scenario_id": "stress_rates_up_200",
+  "type": "hypothetical",
+  "name": "Rates +200bp Shock",
+  "description": "Parallel shift in yield curve +200bp. Tests rate sensitivity.",
+  "shocks": [
+    {
+      "factor": "interest_rate",
+      "magnitude_bp": 200,
+      "type": "parallel_shift"
+    },
+    {
+      "factor": "equity_market",
+      "magnitude_pct": -5.0,
+      "type": "correlated_move"
+    },
+    {
+      "factor": "credit_spread",
+      "magnitude_bp": 50,
+      "type": "correlated_move"
+    }
+  ],
+  "sector_sensitivities": {
+    "Real Estate": -0.15,
+    "Utilities": -0.1,
+    "Technology": -0.08,
+    "Healthcare": -0.03,
+    "Financial Services": 0.03,
+    "Energy": 0.0,
+    "Consumer Staples": -0.02,
+    "Consumer Discretionary": -0.06,
+    "Industrials": -0.04,
+    "Materials": -0.03,
+    "Communication Services": -0.05
+  }
+}

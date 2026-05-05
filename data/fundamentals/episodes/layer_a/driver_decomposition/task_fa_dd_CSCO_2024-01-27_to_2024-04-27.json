@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_CSCO_2024-01-27_to_2024-04-27",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2024-05-21",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "CSCO",
+    "current_period_end": "2024-04-27",
+    "prior_period_end": "2024-01-27",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -89000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Networking",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -561000000,
+        "contribution_pct": 630.34
+      },
+      {
+        "driver": "Security",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 331000000,
+        "contribution_pct": -371.91
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -138000000,
+        "contribution_pct": 155.06
+      },
+      {
+        "driver": "Service",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 119000000,
+        "contribution_pct": -133.71
+      },
+      {
+        "driver": "Asia Pacific Japan And China",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 75000000,
+        "contribution_pct": -84.27
+      },
+      {
+        "driver": "Europe Middle East And Africa",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -26000000,
+        "contribution_pct": 29.21
+      },
+      {
+        "driver": "Observability",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 24000000,
+        "contribution_pct": -26.97
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 24.2,
+        "current_pct": 17.25,
+        "delta_pp": -6.96
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.3,
+        "current_pct": 6.78,
+        "delta_pp": 3.48
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 0.94,
+        "current_pct": 2.81,
+        "delta_pp": 1.87
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 24.24,
+        "current_pct": 25.94,
+        "delta_pp": 1.71
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.12,
+        "current_pct": 2.75,
+        "delta_pp": -1.37
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 64.24,
+        "current_pct": 65.13,
+        "delta_pp": 0.89
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 35.76,
+        "current_pct": 34.87,
+        "delta_pp": -0.89
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 5,
+    "n_geographic_drivers": 3,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze CSCO's financial performance change between the quarter ending 2024-01-27 and the quarter ending 2024-04-27. Revenue decreased by $89,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2024-05-21.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

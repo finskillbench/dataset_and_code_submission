@@ -1,0 +1,97 @@
+{
+  "task_id": "pc_con_2025-05-30_medium_min_variance",
+  "skill": "portfolio_construction",
+  "sub_task": "constrained_optimization",
+  "as_of_date": "2025-05-30",
+  "difficulty": "medium",
+  "input": {
+    "expected_returns": {},
+    "covariance_matrix": {
+      "ref": "data/portfolio_construction/processed/covariance/2025-05-30.npz"
+    },
+    "constraints": {
+      "long_only": true,
+      "max_weight": 0.0656,
+      "min_weight": 0.0,
+      "sector_limits": {
+        "Consumer Staples": 0.2,
+        "Materials": 0.2,
+        "Consumer Discretionary": 0.2,
+        "Industrials": 0.2,
+        "Health Care": 0.2,
+        "Real Estate": 0.2,
+        "Financials": 0.2,
+        "Utilities": 0.2,
+        "Communication Services": 0.2,
+        "Information Technology": 0.2,
+        "Energy": 0.2
+      },
+      "min_names": 18,
+      "max_names": 30,
+      "max_turnover": 0.2,
+      "max_tracking_error": 0.03,
+      "factor_neutrality": false,
+      "description": "Max 6.6%/name, max 20%/sector, 18-30 names, turnover<=20%, TE<=3%"
+    },
+    "benchmark_weights": {},
+    "risk_free_rate": 0.045,
+    "objective": "min_variance",
+    "tools_available": [
+      "optimize_portfolio"
+    ]
+  },
+  "expected_output": {
+    "weights": {
+      "AIG": 0.05357976548673176,
+      "ARE": 0.0,
+      "BAX": 0.0009147325220381094,
+      "BF-B": 0.06560000022360662,
+      "BR": 0.065599997782138,
+      "C": 3.251944756317158e-09,
+      "CARR": 2.174063726215266e-09,
+      "CMG": 0.05497647846796742,
+      "CPAY": 2.0861275352760037e-09,
+      "CPRT": 0.06559999885236456,
+      "CTRA": 0.06560000063123277,
+      "DD": 4.049866311450162e-09,
+      "DHR": 0.008657339483355128,
+      "EFX": 0.0,
+      "EQT": 0.012596337960928747,
+      "HUM": 0.065599993861362,
+      "KHC": 0.065599997766242,
+      "L": 0.04430783870495874,
+      "LHX": 0.06559999706652742,
+      "LNT": 0.06559999680047121,
+      "LYV": 0.0012500340757884874,
+      "ON": 1.487736453288451e-08,
+      "REG": 0.06559999829956123,
+      "SBUX": 0.014636791721499658,
+      "SRE": 0.04581791741509926,
+      "TT": 0.041776014908002555,
+      "TTWO": 0.06559999884243052,
+      "USB": 1.3114337951608533e-09,
+      "VMC": 0.06548673566442662,
+      "ZBRA": 5.712466333240778e-09
+    },
+    "constraint_satisfaction": {
+      "max_weight": true,
+      "long_only": true,
+      "min_names": true,
+      "max_names": true
+    }
+  },
+  "verification": {
+    "method": "constraint_satisfaction_and_objective",
+    "all_constraints_must_satisfy": true,
+    "objective_gap_threshold_pct": 5.0,
+    "ground_truth_source": "optimizer"
+  },
+  "metadata": {
+    "regime_slice": "unknown",
+    "n_assets": 30
+  },
+  "prompt": {
+    "task_description": "Construct the optimal min variance portfolio subject to the following constraints: long-only; max 6.6%/name; turnover \u2264 20%; TE \u2264 3.0%; \u2265 18 names; sector limits (11 sectors, max 20% each). Use the provided expected returns, covariance matrix, and benchmark weights as of 2025-05-30. You have access to an optimization tool. Ensure all constraints are satisfied in the final portfolio.",
+    "output_instructions": "Respond with a JSON object containing: weights (object mapping ticker \u2192 portfolio weight) and constraint_satisfaction (object mapping constraint name \u2192 boolean pass/fail)."
+  }
+}

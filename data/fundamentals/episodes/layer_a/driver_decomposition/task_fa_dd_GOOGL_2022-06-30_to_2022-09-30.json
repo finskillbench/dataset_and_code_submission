@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_GOOGL_2022-06-30_to_2022-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2022-10-26",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "GOOGL",
+    "current_period_end": "2022-09-30",
+    "prior_period_end": "2022-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -593000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Google Search & Other",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1150000000,
+        "contribution_pct": 193.93
+      },
+      {
+        "driver": "EMEA",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1083000000,
+        "contribution_pct": 182.63
+      },
+      {
+        "driver": "UNITED STATES",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 645000000,
+        "contribution_pct": -108.77
+      },
+      {
+        "driver": "Google Cloud",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 592000000,
+        "contribution_pct": -99.83
+      },
+      {
+        "driver": "Google Network",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -387000000,
+        "contribution_pct": 65.26
+      },
+      {
+        "driver": "Google Subscriptions, Platforms, And Devices",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 342000000,
+        "contribution_pct": -57.67
+      },
+      {
+        "driver": "YouTube Ads",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -269000000,
+        "contribution_pct": 45.36
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 27.92,
+        "current_pct": 24.8,
+        "delta_pp": -3.12
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 56.8,
+        "current_pct": 54.9,
+        "delta_pp": -1.9
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 43.2,
+        "current_pct": 45.1,
+        "delta_pp": 1.9
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 4.32,
+        "current_pct": 3.36,
+        "delta_pp": -0.96
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 14.12,
+        "current_pct": 14.87,
+        "delta_pp": 0.75
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 14.76,
+        "current_pct": 15.23,
+        "delta_pp": 0.47
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 5.6,
+        "current_pct": 5.86,
+        "delta_pp": 0.26
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2022_tightening",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 6,
+    "n_geographic_drivers": 4,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze GOOGL's financial performance change between the quarter ending 2022-06-30 and the quarter ending 2022-09-30. Revenue decreased by $593,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2022-10-26.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

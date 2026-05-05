@@ -1,0 +1,134 @@
+{
+  "task_id": "rm_cm_portfolio_liquidity_stressed_2023_24_rebound_000_mandate_aggressive_growth",
+  "skill": "risk_management",
+  "sub_task": "constraint_monitoring",
+  "as_of_date": "2024-01-01",
+  "input": {
+    "portfolio": {
+      "portfolio_id": "portfolio_liquidity_stressed_2023_24_rebound_000",
+      "holdings": [
+        {
+          "symbol": "LYV",
+          "weight": 0.165889
+        },
+        {
+          "symbol": "LNT",
+          "weight": 0.139105
+        },
+        {
+          "symbol": "USB",
+          "weight": 0.187403
+        },
+        {
+          "symbol": "ZBRA",
+          "weight": 0.040771
+        },
+        {
+          "symbol": "DHR",
+          "weight": 0.038812
+        },
+        {
+          "symbol": "LHX",
+          "weight": 0.04511
+        },
+        {
+          "symbol": "TT",
+          "weight": 0.041672
+        },
+        {
+          "symbol": "VMC",
+          "weight": 0.038693
+        },
+        {
+          "symbol": "ON",
+          "weight": 0.023046
+        },
+        {
+          "symbol": "BR",
+          "weight": 0.071
+        },
+        {
+          "symbol": "SRE",
+          "weight": 0.054958
+        },
+        {
+          "symbol": "BF-B",
+          "weight": 0.035353
+        },
+        {
+          "symbol": "AIG",
+          "weight": 0.0213
+        },
+        {
+          "symbol": "BAX",
+          "weight": 0.044024
+        },
+        {
+          "symbol": "CPRT",
+          "weight": 0.052867
+        }
+      ],
+      "total_nav": 10000000
+    },
+    "mandate": {
+      "mandate_id": "mandate_aggressive_growth"
+    },
+    "market_data": {
+      "covariance": "data/risk_management/processed/covariance/"
+    }
+  },
+  "expected_output": {
+    "overall_compliant": false,
+    "violations_count": 1,
+    "constraints": [
+      {
+        "type": "position_limit_max",
+        "status": "FAIL",
+        "worst_symbol": "USB",
+        "value": 0.187403,
+        "limit": 0.1,
+        "violation_magnitude": 0.087403
+      },
+      {
+        "type": "sector_limit_max",
+        "status": "PASS",
+        "worst_sector": "Financial Services",
+        "value": 0.208703,
+        "limit": 0.35
+      },
+      {
+        "type": "beta_range",
+        "status": "PASS",
+        "value": 1.0527,
+        "min": 0.9,
+        "max": 1.4
+      },
+      {
+        "type": "long_only",
+        "status": "PASS",
+        "value": true,
+        "limit": true
+      },
+      {
+        "type": "turnover_max_monthly",
+        "status": "PASS",
+        "value": 0.0,
+        "limit": 0.2
+      }
+    ]
+  },
+  "verification": {
+    "method": "exact_match",
+    "metrics": [
+      "constraint_accuracy",
+      "violation_detection_recall"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "difficulty": "easy",
+    "portfolio_type": "liquidity_stressed",
+    "num_constraints": 5,
+    "num_violations": 1
+  }
+}

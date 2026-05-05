@@ -1,0 +1,24 @@
+{
+  "long_only": true,
+  "max_weight": 0.06,
+  "min_weight": 0.0,
+  "sector_limits": {
+    "Consumer Staples": 0.25,
+    "Materials": 0.25,
+    "Consumer Discretionary": 0.25,
+    "Industrials": 0.25,
+    "Health Care": 0.25,
+    "Real Estate": 0.25,
+    "Financials": 0.25,
+    "Utilities": 0.25,
+    "Communication Services": 0.25,
+    "Information Technology": 0.25,
+    "Energy": 0.25
+  },
+  "min_names": 20,
+  "max_names": 30,
+  "max_turnover": null,
+  "max_tracking_error": null,
+  "factor_neutrality": false,
+  "description": "Long-only, max 6.0%/name, max 25%/sector, min 20 names"
+}

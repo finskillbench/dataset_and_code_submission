@@ -1,0 +1,153 @@
+{
+  "task_id": "fa_dd_FCX_2019-12-31_to_2020-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2020-05-07",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "FCX",
+    "current_period_end": "2020-03-31",
+    "prior_period_end": "2019-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -778000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Rod and Refining Segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -3329000000,
+        "contribution_pct": 427.89
+      },
+      {
+        "driver": "Grasberg Segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2008000000,
+        "contribution_pct": 258.1
+      },
+      {
+        "driver": "Morenci",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -1406000000,
+        "contribution_pct": 180.72
+      },
+      {
+        "driver": "Copper In Concentrates",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 849000000,
+        "contribution_pct": -109.13
+      },
+      {
+        "driver": "Copper Cathode",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 837000000,
+        "contribution_pct": -107.58
+      },
+      {
+        "driver": "Refined Copper Products",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 542000000,
+        "contribution_pct": -69.67
+      },
+      {
+        "driver": "Gold",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 270000000,
+        "contribution_pct": -34.7
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 7.34,
+        "current_pct": -7.01,
+        "delta_pp": -14.35
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 10.46,
+        "current_pct": -2.53,
+        "delta_pp": -12.99
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 89.54,
+        "current_pct": 102.53,
+        "delta_pp": 12.99
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 8.62,
+        "current_pct": -1.97,
+        "delta_pp": -10.6
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.59,
+        "current_pct": 3.62,
+        "delta_pp": 1.03
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 10.25,
+        "current_pct": 10.96,
+        "delta_pp": 0.71
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.69,
+        "current_pct": 3.95,
+        "delta_pp": 0.25
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2020_covid",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 10,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze FCX's financial performance change between the quarter ending 2019-12-31 and the quarter ending 2020-03-31. Revenue decreased by $778,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2020-05-07.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

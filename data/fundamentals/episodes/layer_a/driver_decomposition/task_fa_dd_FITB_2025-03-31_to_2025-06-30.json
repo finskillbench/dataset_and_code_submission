@@ -1,0 +1,145 @@
+{
+  "task_id": "fa_dd_FITB_2025-03-31_to_2025-06-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2025-08-05",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "FITB",
+    "current_period_end": "2025-06-30",
+    "prior_period_end": "2025-03-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 137000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Total interest income",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -2432000000,
+        "contribution_pct": -1775.18
+      },
+      {
+        "driver": "Wealth and asset management revenue",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -172000000,
+        "contribution_pct": -125.55
+      },
+      {
+        "driver": "Commercial payments revenue",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -153000000,
+        "contribution_pct": -111.68
+      },
+      {
+        "driver": "Consumer banking revenue",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -137000000,
+        "contribution_pct": -100.0
+      },
+      {
+        "driver": "Wealth And Asset Management",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 100000000,
+        "contribution_pct": 72.99
+      },
+      {
+        "driver": "Capital markets fees",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -90000000,
+        "contribution_pct": -65.69
+      },
+      {
+        "driver": "Commercial Banking",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 89000000,
+        "contribution_pct": 64.96
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 21.24,
+        "current_pct": 25.16,
+        "delta_pp": 3.92
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 61.98,
+        "current_pct": 63.82,
+        "delta_pp": 1.84
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 38.02,
+        "current_pct": 36.18,
+        "delta_pp": -1.84
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 27.25,
+        "current_pct": 25.65,
+        "delta_pp": -1.6
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 32.36,
+        "current_pct": 30.79,
+        "delta_pp": -1.57
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.49,
+        "current_pct": 5.6,
+        "delta_pp": 1.12
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 11,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 6,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze FITB's financial performance change between the quarter ending 2025-03-31 and the quarter ending 2025-06-30. Revenue increased by $137,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2025-08-05.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

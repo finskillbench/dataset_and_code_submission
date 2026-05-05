@@ -1,0 +1,17 @@
+{
+  "scenario_id": "stress_2018_selloff",
+  "type": "historical_replay",
+  "name": "Late-2018 Selloff (Oct-Dec 2018)",
+  "regime_slice": "2018_selloff",
+  "replay_window": {
+    "start": "2018-10-01",
+    "end": "2018-12-31"
+  },
+  "description": "S&P 500 fell ~20% driven by rate hike fears and trade tensions.",
+  "market_shocks": {
+    "equity_drawdown_pct": -19.8,
+    "vix_peak": 36.2,
+    "credit_spread_widening_bp": 200,
+    "rate_change_bp": 25
+  }
+}

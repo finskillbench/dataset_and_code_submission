@@ -1,0 +1,161 @@
+{
+  "task_id": "fa_dd_COP_2020-09-30_to_2020-12-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2021-02-16",
+  "difficulty": "hard",
+  "input": {
+    "symbol": "COP",
+    "current_period_end": "2020-12-31",
+    "prior_period_end": "2020-09-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": 1149000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Lower 48",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 873000000,
+        "contribution_pct": 75.98
+      },
+      {
+        "driver": "Natural Gas Product Line",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 564000000,
+        "contribution_pct": 49.09
+      },
+      {
+        "driver": "Crude oil product line",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 434000000,
+        "contribution_pct": 37.77
+      },
+      {
+        "driver": "Natural Gas Liquids",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 164000000,
+        "contribution_pct": 14.27
+      },
+      {
+        "driver": "CANADA",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 107000000,
+        "contribution_pct": 9.31
+      },
+      {
+        "driver": "Libya",
+        "type": "geographic_segment",
+        "direction": "increase",
+        "magnitude_usd": 99000000,
+        "contribution_pct": 8.62
+      },
+      {
+        "driver": "CHINA",
+        "type": "geographic_segment",
+        "direction": "decrease",
+        "magnitude_usd": -75000000,
+        "contribution_pct": -6.53
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": -5.35,
+        "current_pct": -19.99,
+        "delta_pp": -14.64
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 0.96,
+        "current_pct": -13.36,
+        "delta_pp": -14.32
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 99.04,
+        "current_pct": 113.36,
+        "delta_pp": 14.32
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 33.43,
+        "current_pct": 45.62,
+        "delta_pp": 12.19
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": -1.42,
+        "current_pct": -5.71,
+        "delta_pp": -4.28
+      },
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 0.0,
+        "current_pct": 1.36,
+        "delta_pp": 1.36
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.02,
+        "current_pct": 4.71,
+        "delta_pp": -1.31
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 2.21,
+        "current_pct": 3.29,
+        "delta_pp": 1.08
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": true,
+    "n_product_drivers": 4,
+    "n_geographic_drivers": 9,
+    "n_margin_drivers": 8,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze COP's financial performance change between the quarter ending 2020-09-30 and the quarter ending 2020-12-31. Revenue increased by $1,149,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2021-02-16.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

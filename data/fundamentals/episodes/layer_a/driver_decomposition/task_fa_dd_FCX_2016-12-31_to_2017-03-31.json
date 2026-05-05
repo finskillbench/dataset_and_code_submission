@@ -1,0 +1,125 @@
+{
+  "task_id": "fa_dd_FCX_2016-12-31_to_2017-03-31",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2017-05-05",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "FCX",
+    "current_period_end": "2017-03-31",
+    "prior_period_end": "2016-12-31",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -1018000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Rod and Refining Segment",
+        "type": "product_segment",
+        "direction": "increase",
+        "magnitude_usd": 1107000000,
+        "contribution_pct": -108.74
+      },
+      {
+        "driver": "Molybdenum",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -452000000,
+        "contribution_pct": 44.4
+      },
+      {
+        "driver": "Oil and Gas Operations Segment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -172000000,
+        "contribution_pct": 16.9
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 17.18,
+        "current_pct": 13.88,
+        "delta_pp": -3.31
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "decrease",
+        "prior_pct": 20.83,
+        "current_pct": 18.83,
+        "delta_pp": -1.99
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 79.17,
+        "current_pct": 81.17,
+        "delta_pp": 1.99
+      },
+      {
+        "driver": "da_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 14.04,
+        "current_pct": 12.13,
+        "delta_pp": -1.91
+      },
+      {
+        "driver": "tax_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 6.91,
+        "current_pct": 5.43,
+        "delta_pp": -1.49
+      },
+      {
+        "driver": "interest_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 4.28,
+        "current_pct": 5.21,
+        "delta_pp": 0.92
+      },
+      {
+        "driver": "sga_ratio",
+        "type": "expense_ratio",
+        "direction": "increase",
+        "prior_pct": 3.6,
+        "current_pct": 4.12,
+        "delta_pp": 0.52
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "normal",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 3,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 7,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze FCX's financial performance change between the quarter ending 2016-12-31 and the quarter ending 2017-03-31. Revenue decreased by $1,018,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2017-05-05.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "2024-03-28": {
+    "n_symbols": 30,
+    "mean_expected_return": -0.0,
+    "std_expected_return": 0.004071
+  },
+  "2024-04-30": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.004146
+  },
+  "2024-05-31": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.003362
+  },
+  "2024-06-28": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.002732
+  },
+  "2024-07-31": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.003952
+  },
+  "2024-08-30": {
+    "n_symbols": 30,
+    "mean_expected_return": -0.0,
+    "std_expected_return": 0.004383
+  },
+  "2024-09-30": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.003551
+  },
+  "2024-10-31": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.003737
+  },
+  "2024-11-29": {
+    "n_symbols": 30,
+    "mean_expected_return": -0.0,
+    "std_expected_return": 0.003393
+  },
+  "2024-12-31": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.004116
+  },
+  "2025-01-31": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.002908
+  },
+  "2025-02-28": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.003599
+  },
+  "2025-03-31": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.004833
+  },
+  "2025-04-30": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.003421
+  },
+  "2025-05-30": {
+    "n_symbols": 30,
+    "mean_expected_return": -0.0,
+    "std_expected_return": 0.003552
+  },
+  "2025-06-30": {
+    "n_symbols": 30,
+    "mean_expected_return": -0.0,
+    "std_expected_return": 0.003435
+  },
+  "2025-07-31": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.003283
+  },
+  "2025-08-29": {
+    "n_symbols": 30,
+    "mean_expected_return": -0.0,
+    "std_expected_return": 0.003281
+  },
+  "2025-09-30": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.004203
+  },
+  "2025-10-31": {
+    "n_symbols": 30,
+    "mean_expected_return": 0.0,
+    "std_expected_return": 0.003516
+  },
+  "2025-11-28": {
+    "n_symbols": 30,
+    "mean_expected_return": -0.0,
+    "std_expected_return": 0.003903
+  },
+  "2025-12-31": {
+    "n_symbols": 30,
+    "mean_expected_return": -0.0,
+    "std_expected_return": 0.003658
+  }
+}

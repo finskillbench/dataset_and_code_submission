@@ -1,0 +1,48 @@
+{
+  "task_id": "pc_tool_2025-03-31_concentrated_alpha",
+  "skill": "portfolio_construction",
+  "sub_task": "tool_use_parameterization",
+  "as_of_date": "2025-03-31",
+  "difficulty": "medium",
+  "input": {
+    "scenario_description": "You manage a concentrated alpha fund with a maximum of 15 positions. The fund targets maximum Sharpe ratio with no single position exceeding 10% of NAV. The fund is long-only with no sector constraints or tracking error limits. Formulate the correct optimizer call.",
+    "expected_returns": {},
+    "covariance_matrix": {
+      "ref": "data/portfolio_construction/processed/covariance/2025-03-31.npz"
+    },
+    "benchmark_weights": {},
+    "current_portfolio": {},
+    "sector_mapping": {},
+    "tools_available": [
+      "optimize_portfolio"
+    ],
+    "tool_documentation": "See _optimizer.py optimize_portfolio() API docs"
+  },
+  "expected_output": {
+    "optimizer_call": {
+      "constraints": {
+        "long_only": true,
+        "max_weight_per_name": 0.1,
+        "max_names": 15
+      },
+      "objective": "max_sharpe"
+    }
+  },
+  "verification": {
+    "method": "parameter_match",
+    "required_parameters": [
+      "constraints",
+      "objective"
+    ],
+    "ground_truth_source": "expert_authored"
+  },
+  "metadata": {
+    "regime_slice": "unknown",
+    "tests_skill": "translating mandate language into optimizer parameters",
+    "scenario_type": "concentrated_alpha"
+  },
+  "prompt": {
+    "task_description": "You are a portfolio manager with the mandate described below. Translate the mandate requirements into the correct parameters for the optimize_portfolio tool. The scenario: You manage a concentrated alpha fund with a maximum of 15 positions. The fund targets maximum Sharpe ratio with no single position exceeding 10% of NAV. The fund is long-only with no sector constraints or tracking error limits. Formulate the correct optimizer call. Formulate the correct optimizer call with appropriate constraints, objective, and inputs as of 2025-03-31.",
+    "output_instructions": "Respond with a JSON object containing: optimizer_call (object with constraints, objective, and any other required parameters matching the optimize_portfolio API)."
+  }
+}

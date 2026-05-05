@@ -1,0 +1,94 @@
+{
+  "task_id": "fa_dd_BKR_2024-06-30_to_2024-09-30",
+  "skill": "fundamental_analysis",
+  "sub_task": "driver_decomposition",
+  "as_of_date": "2024-10-23",
+  "difficulty": "medium",
+  "input": {
+    "symbol": "BKR",
+    "current_period_end": "2024-09-30",
+    "prior_period_end": "2024-06-30",
+    "current_filing_dir": null,
+    "prior_filing_dir": null,
+    "xbrl_ref": "data/fundamentals/processed/feature_store",
+    "tools_available": [
+      "query_xbrl"
+    ]
+  },
+  "expected_output": {
+    "revenue_delta": -231000000,
+    "top_revenue_drivers": [
+      {
+        "driver": "Industrial And Energy Technology",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -183000000,
+        "contribution_pct": 79.22
+      },
+      {
+        "driver": "Oilfield Services And Equipment",
+        "type": "product_segment",
+        "direction": "decrease",
+        "magnitude_usd": -48000000,
+        "contribution_pct": 20.78
+      }
+    ],
+    "margin_drivers": [
+      {
+        "driver": "rnd_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 2.21,
+        "current_pct": 0.0,
+        "delta_pp": -2.21
+      },
+      {
+        "driver": "operating_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 11.67,
+        "current_pct": 13.46,
+        "delta_pp": 1.79
+      },
+      {
+        "driver": "gross_margin",
+        "type": "margin",
+        "direction": "increase",
+        "prior_pct": 23.06,
+        "current_pct": 24.61,
+        "delta_pp": 1.55
+      },
+      {
+        "driver": "cogs_ratio",
+        "type": "expense_ratio",
+        "direction": "decrease",
+        "prior_pct": 76.94,
+        "current_pct": 75.39,
+        "delta_pp": -1.55
+      }
+    ]
+  },
+  "verification": {
+    "method": "driver_f1_and_direction",
+    "top_k": 5,
+    "partial_credit": true,
+    "metrics": [
+      "driver_recall_at_5",
+      "direction_accuracy",
+      "margin_driver_f1"
+    ]
+  },
+  "metadata": {
+    "regime_slice": "2023_24_rebound",
+    "has_product_segments": true,
+    "has_geographic_segments": false,
+    "n_product_drivers": 2,
+    "n_geographic_drivers": 0,
+    "n_margin_drivers": 4,
+    "tier": 2
+  },
+  "prompt": {
+    "task_description": "Analyze BKR's financial performance change between the quarter ending 2024-06-30 and the quarter ending 2024-09-30. Revenue decreased by $231,000,000. Decompose this change into its key drivers: identify which product/business segments and geographic regions contributed most to the revenue change, and identify the main margin drivers (changes in gross margin, operating expenses as a percentage of revenue). Use only data available as of 2024-10-23.",
+    "output_instructions": "Respond with a JSON object containing: revenue_delta (int, USD), top_revenue_drivers (array of objects with driver, type, direction, magnitude_usd, contribution_pct), and margin_drivers (array of objects with driver, type, direction, delta_pp)."
+  }
+}
