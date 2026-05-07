@@ -16,8 +16,8 @@ The main evaluation harness used for paper §5–§6. Contains:
 Use the top-level `run_benchmark.py` CLI, which dispatches to these runners:
 
 ```bash
-python run_benchmark.py --smoke                    # Quick test
-python run_benchmark.py --model gpt-4.1 --subtask normalization --limit 5
+python3.12 run_benchmark.py --smoke                    # Quick test
+python3.12 run_benchmark.py --model gpt-4.1 --subtask normalization --limit 5
 ```
 
 ### Model registry

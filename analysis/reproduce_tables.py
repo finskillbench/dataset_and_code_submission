@@ -2,11 +2,11 @@
 """Reproduce every paper table from shipped result JSONL files.
 
 Usage:
-    python analysis/reproduce_tables.py --table all
-    python analysis/reproduce_tables.py --table 2
-    python analysis/reproduce_tables.py --table 2 --format json
+    python3.12 analysis/reproduce_tables.py --table all
+    python3.12 analysis/reproduce_tables.py --table 2
+    python3.12 analysis/reproduce_tables.py --table 2 --format json
 
-Requires: pip install -r analysis/requirements.txt  (pandas, numpy, scipy)
+Requires: python3.12 -m pip install -r analysis/requirements.txt  (pandas, numpy, scipy)
 No API keys needed.
 """
 from __future__ import annotations

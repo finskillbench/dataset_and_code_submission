@@ -1,19 +1,27 @@
-.PHONY: verify-submission verify-tables verify-claims manifest clean
+PYTHON ?= python3.12
+
+.PHONY: verify-submission verify-tables verify-claims verify-expected verify-tests manifest clean
 
 # Full verification pipeline
 verify-submission: manifest
-	python scripts/verify_submission_bundle.py --assert-match
+	$(PYTHON) scripts/verify_submission_bundle.py --assert-match
 
 # Individual checks
 verify-tables:
-	python analysis/reproduce_tables.py --table all
+	$(PYTHON) analysis/reproduce_tables.py --table all
 
 verify-claims:
-	python analysis/verify_claims.py --claim all
+	$(PYTHON) analysis/verify_claims.py --claim all
+
+verify-expected:
+	$(PYTHON) analysis/verify_expected_results.py
+
+verify-tests:
+	$(PYTHON) -m pytest evaluation/finskillbench_agent/tests evaluation/hermes_results/scoring/tests
 
 # Regenerate MANIFEST.sha256
 manifest:
-	python scripts/build_submission.py
+	$(PYTHON) scripts/build_submission.py
 
 # Clean generated files
 clean:

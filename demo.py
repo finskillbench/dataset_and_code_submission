@@ -6,11 +6,11 @@ shows the expected output schema, and scores a dummy response plus the
 ground truth to demonstrate the verifier.
 
 Usage:
-    python demo.py
-    python demo.py --subtask normalization
-    python demo.py --task-id fa_norm_AAPL_2024-03-31
+    python3.12 demo.py
+    python3.12 demo.py --subtask normalization
+    python3.12 demo.py --task-id fa_norm_AAPL_2024-03-31
 
-Requires: pip install -r analysis/requirements.txt  (pandas, numpy, scipy)
+Requires: python3.12 -m pip install -r analysis/requirements.txt  (pandas, numpy, scipy)
 """
 from __future__ import annotations
 

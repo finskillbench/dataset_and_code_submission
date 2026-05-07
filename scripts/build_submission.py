@@ -2,7 +2,7 @@
 """Generate MANIFEST.sha256 for all files in the submission bundle.
 
 Usage:
-    python scripts/build_submission.py
+    python3.12 scripts/build_submission.py
 """
 from __future__ import annotations
 

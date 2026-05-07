@@ -1,0 +1,137 @@
+{
+  "tables": [
+    {
+      "table": 2,
+      "data": {
+        "no_skill": {"mean": 0.366, "delta": 0.0, "ci": "---"},
+        "curated": {"mean": 0.528, "delta": 0.162, "ci": "[+0.152, +0.172]"},
+        "self_generated": {"mean": 0.371, "delta": 0.005, "ci": "[-0.003, +0.013]"}
+      }
+    },
+    {
+      "table": 3,
+      "data": {
+        "PC": {
+          "no_skill": 0.307,
+          "curated": 0.585,
+          "self_generated": 0.301,
+          "curated_delta": 0.278,
+          "selfgen_delta": -0.006,
+          "curated_ci": "[+0.256, +0.299]",
+          "selfgen_ci": "[-0.021, +0.010]"
+        },
+        "RM": {
+          "no_skill": 0.269,
+          "curated": 0.486,
+          "self_generated": 0.303,
+          "curated_delta": 0.218,
+          "selfgen_delta": 0.034,
+          "curated_ci": "[+0.196, +0.239]",
+          "selfgen_ci": "[+0.018, +0.050]"
+        },
+        "FA": {
+          "no_skill": 0.458,
+          "curated": 0.512,
+          "self_generated": 0.454,
+          "curated_delta": 0.054,
+          "selfgen_delta": -0.004,
+          "curated_ci": "[+0.044, +0.064]",
+          "selfgen_ci": "[-0.015, +0.007]"
+        }
+      }
+    },
+    {
+      "table": 4,
+      "data": {
+        "black_litterman": {"domain": "PC", "no_skill": 0.153, "curated": 0.375, "self_generated": 0.147, "delta": 0.222},
+        "constrained_optimization": {"domain": "PC", "no_skill": 0.148, "curated": 0.505, "self_generated": 0.127, "delta": 0.357},
+        "constraint_monitoring": {"domain": "RM", "no_skill": 0.597, "curated": 0.775, "self_generated": 0.651, "delta": 0.178},
+        "driver_decomposition": {"domain": "FA", "no_skill": 0.256, "curated": 0.322, "self_generated": 0.249, "delta": 0.066},
+        "earnings_quality": {"domain": "FA", "no_skill": 0.436, "curated": 0.535, "self_generated": 0.474, "delta": 0.099},
+        "normalization": {"domain": "FA", "no_skill": 0.681, "curated": 0.678, "self_generated": 0.638, "delta": -0.003},
+        "rebalancing": {"domain": "PC", "no_skill": 0.183, "curated": 0.451, "self_generated": 0.164, "delta": 0.268},
+        "risk_identification": {"domain": "RM", "no_skill": 0.023, "curated": 0.332, "self_generated": 0.055, "delta": 0.309},
+        "risk_remediation": {"domain": "RM", "no_skill": 0.438, "curated": 0.558, "self_generated": 0.478, "delta": 0.12},
+        "stress_testing": {"domain": "RM", "no_skill": 0.017, "curated": 0.281, "self_generated": 0.027, "delta": 0.264},
+        "tool_use_parameterization": {"domain": "PC", "no_skill": 0.803, "curated": 0.872, "self_generated": 0.831, "delta": 0.069},
+        "unconstrained_optimization": {"domain": "PC", "no_skill": 0.247, "curated": 0.719, "self_generated": 0.236, "delta": 0.472}
+      }
+    },
+    {
+      "table": 5,
+      "data": {
+        "DeepSeek-V3.2": {"overall": 0.521, "no_skill": 0.458, "curated": 0.658, "self_generated": 0.447, "curated_delta": 0.2},
+        "Phi-4": {"overall": 0.0, "no_skill": 0.0, "curated": 0.0, "self_generated": 0.0, "curated_delta": 0.0},
+        "claude-sonnet-4.6": {"overall": 0.56, "no_skill": 0.534, "curated": 0.659, "self_generated": 0.488, "curated_delta": 0.125},
+        "gemini-2.5-pro": {"overall": 0.49, "no_skill": 0.38, "curated": 0.678, "self_generated": 0.412, "curated_delta": 0.298},
+        "gemini-3.1-flash-lite": {"overall": 0.487, "no_skill": 0.419, "curated": 0.609, "self_generated": 0.434, "curated_delta": 0.19},
+        "glm-5.1": {"overall": 0.268, "no_skill": 0.274, "curated": 0.285, "self_generated": 0.245, "curated_delta": 0.011},
+        "gpt-4.1": {"overall": 0.488, "no_skill": 0.33, "curated": 0.735, "self_generated": 0.398, "curated_delta": 0.405},
+        "gpt-5.4": {"overall": 0.452, "no_skill": 0.43, "curated": 0.52, "self_generated": 0.405, "curated_delta": 0.09},
+        "grok-4": {"overall": 0.107, "no_skill": 0.104, "curated": 0.077, "self_generated": 0.138, "curated_delta": -0.027}
+      }
+    },
+    {
+      "table": 6,
+      "data": {
+        "no_skill": {"median_tokens": 19952, "mean_tokens": 38782, "median_latency": 59.75, "mean_episodes": 7.46},
+        "curated": {"median_tokens": 22546, "mean_tokens": 35378, "median_latency": 49.78, "mean_episodes": 7.3},
+        "self_generated": {"median_tokens": 40033, "mean_tokens": 63606, "median_latency": 76.75, "mean_episodes": 9.29}
+      }
+    },
+    {
+      "table": 7,
+      "data": {
+        "overall": {
+          "n_no_skill": 1920,
+          "no_skill": 0.354,
+          "no_skill_ci": "[-0.016, +0.016]",
+          "n_curated": 5280,
+          "curated": 0.679,
+          "curated_ci": "[-0.010, +0.010]",
+          "delta": 0.325
+        },
+        "by_domain": {
+          "FA": {"n_no_skill": 480, "no_skill": 0.439, "no_skill_ci": "[0.408, 0.470]", "n_curated": 2400, "curated": 0.567, "curated_ci": "[0.553, 0.582]", "delta": 0.129},
+          "PC": {"n_no_skill": 800, "no_skill": 0.325, "no_skill_ci": "[0.301, 0.350]", "n_curated": 1600, "curated": 0.76, "curated_ci": "[0.744, 0.776]", "delta": 0.435},
+          "RM": {"n_no_skill": 640, "no_skill": 0.325, "no_skill_ci": "[0.297, 0.354]", "n_curated": 1280, "curated": 0.785, "curated_ci": "[0.767, 0.802]", "delta": 0.459}
+        },
+        "by_model": {
+          "DeepSeek-V3.2": {"n_no_skill": 240, "no_skill": 0.371, "no_skill_ci": "[0.325, 0.419]", "n_curated": 660, "curated": 0.686, "curated_ci": "[0.659, 0.712]", "delta": 0.315},
+          "claude-sonnet-4.6": {"n_no_skill": 240, "no_skill": 0.304, "no_skill_ci": "[0.257, 0.353]", "n_curated": 660, "curated": 0.795, "curated_ci": "[0.775, 0.815]", "delta": 0.49},
+          "gemini-2.5-pro": {"n_no_skill": 240, "no_skill": 0.333, "no_skill_ci": "[0.291, 0.375]", "n_curated": 660, "curated": 0.477, "curated_ci": "[0.441, 0.512]", "delta": 0.144},
+          "gemma-4-31b-it": {"n_no_skill": 240, "no_skill": 0.375, "no_skill_ci": "[0.332, 0.418]", "n_curated": 660, "curated": 0.642, "curated_ci": "[0.614, 0.670]", "delta": 0.267},
+          "glm-5.1": {"n_no_skill": 240, "no_skill": 0.397, "no_skill_ci": "[0.350, 0.444]", "n_curated": 660, "curated": 0.779, "curated_ci": "[0.758, 0.801]", "delta": 0.383},
+          "gpt-4.1": {"n_no_skill": 240, "no_skill": 0.285, "no_skill_ci": "[0.244, 0.327]", "n_curated": 660, "curated": 0.699, "curated_ci": "[0.672, 0.726]", "delta": 0.414},
+          "gpt-5.4": {"n_no_skill": 240, "no_skill": 0.408, "no_skill_ci": "[0.365, 0.451]", "n_curated": 660, "curated": 0.66, "curated_ci": "[0.631, 0.687]", "delta": 0.252},
+          "grok-4.20": {"n_no_skill": 240, "no_skill": 0.357, "no_skill_ci": "[0.314, 0.401]", "n_curated": 660, "curated": 0.691, "curated_ci": "[0.664, 0.719]", "delta": 0.334}
+        }
+      }
+    }
+  ],
+  "claims": {
+    "episode_count": {"paper_value": 2603, "computed_value": 2603, "detail": "FA=2243 + PC=200 + RM=160"},
+    "eval_count": {"paper_value": 17820, "computed_value": 17820},
+    "validity": {"paper_value": "96.4%", "computed_value": "96.4%"},
+    "invalid_count": {"paper_value": 644, "computed_value": 644},
+    "max_turns": {"paper_value": 3736, "computed_value": 3736},
+    "phi4": {"paper_value": 0.0, "computed_value": 0.0},
+    "curated_delta": {"paper_value": "+0.162", "computed_value": "+0.162"},
+    "selfgen_delta": {"paper_value": "+0.005", "computed_value": "+0.005"},
+    "hermes_delta": {"paper_value": "+0.325", "computed_value": "+0.325"},
+    "selfgen_load": {"paper_value": "97.7%", "computed_value": "97.7%"}
+  },
+  "coverage": {
+    "results_all_rows": 17820,
+    "by_subtask_rows": 17820,
+    "by_subtask_matches_results_all": true,
+    "hermes_no_skill_rows": 1920,
+    "hermes_curated_rows": 5280,
+    "episode_counts": {
+      "portfolio_construction": 200,
+      "risk_management": 160,
+      "fundamental_analysis": 2243,
+      "total": 2603
+    }
+  }
+}

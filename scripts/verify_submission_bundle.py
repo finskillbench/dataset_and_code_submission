@@ -2,8 +2,8 @@
 """Verify the submission bundle reproduces all paper results.
 
 Usage:
-    python scripts/verify_submission_bundle.py
-    python scripts/verify_submission_bundle.py --assert-match
+    python3.12 scripts/verify_submission_bundle.py
+    python3.12 scripts/verify_submission_bundle.py --assert-match
 
 Runs inside the submission directory only. Does not read dev-repo files.
 """
@@ -165,6 +165,20 @@ def check_verify_claims() -> list[str]:
     return errors
 
 
+def check_expected_results() -> list[str]:
+    """Run golden paper-value verification."""
+    errors = []
+    script = SUBMISSION_ROOT / "analysis" / "verify_expected_results.py"
+    result = subprocess.run(
+        [sys.executable, str(script)],
+        capture_output=True, text=True, cwd=str(SUBMISSION_ROOT),
+    )
+    if result.returncode != 0:
+        output = (result.stderr or result.stdout).strip()
+        errors.append(f"verify_expected_results.py failed: {output[:1000]}")
+    return errors
+
+
 def main():
     parser = argparse.ArgumentParser(description="Verify submission bundle.")
     parser.add_argument("--assert-match", action="store_true",
@@ -178,6 +192,7 @@ def main():
         ("Hermes coverage (1,920 + 5,280)", check_hermes_coverage),
         ("reproduce_tables.py", check_reproduce_tables),
         ("verify_claims.py", check_verify_claims),
+        ("verify_expected_results.py", check_expected_results),
     ]
 
     all_errors = []

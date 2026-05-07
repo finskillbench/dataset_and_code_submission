@@ -2,11 +2,11 @@
 """Verify every inline numeric claim in the paper against shipped data.
 
 Usage:
-    python analysis/verify_claims.py --claim all
-    python analysis/verify_claims.py --claim episode_count
-    python analysis/verify_claims.py --claim all --format json
+    python3.12 analysis/verify_claims.py --claim all
+    python3.12 analysis/verify_claims.py --claim episode_count
+    python3.12 analysis/verify_claims.py --claim all --format json
 
-Requires: pip install -r analysis/requirements.txt  (pandas, numpy, scipy)
+Requires: python3.12 -m pip install -r analysis/requirements.txt  (pandas, numpy, scipy)
 No API keys needed.
 """
 from __future__ import annotations
@@ -83,7 +83,7 @@ def check_episode_count() -> dict:
         "paper_value": expected,
         "computed_value": actual,
         "detail": f"FA={fa_count} + PC={pc_tasks} + RM={rm_tasks}",
-        "pass": actual == expected,
+        "pass": bool(actual == expected),
     }
 
 
@@ -96,7 +96,7 @@ def check_eval_count() -> dict:
         "claim": "eval_count",
         "paper_value": expected,
         "computed_value": actual,
-        "pass": actual == expected,
+        "pass": bool(actual == expected),
     }
 
 
@@ -109,7 +109,7 @@ def check_validity() -> dict:
         "claim": "validity",
         "paper_value": f"{expected}%",
         "computed_value": f"{actual}%",
-        "pass": actual == expected,
+        "pass": bool(actual == expected),
     }
 
 
@@ -122,7 +122,7 @@ def check_invalid_count() -> dict:
         "claim": "invalid_count",
         "paper_value": expected,
         "computed_value": actual,
-        "pass": actual == expected,
+        "pass": bool(actual == expected),
     }
 
 
@@ -135,7 +135,7 @@ def check_max_turns() -> dict:
         "claim": "max_turns",
         "paper_value": expected,
         "computed_value": actual,
-        "pass": actual == expected,
+        "pass": bool(actual == expected),
     }
 
 
@@ -149,7 +149,7 @@ def check_phi4() -> dict:
         "claim": "phi4",
         "paper_value": expected,
         "computed_value": actual,
-        "pass": actual == expected,
+        "pass": bool(actual == expected),
     }
 
 
@@ -165,7 +165,7 @@ def check_curated_delta() -> dict:
         "claim": "curated_delta",
         "paper_value": f"+{expected}",
         "computed_value": f"+{actual}",
-        "pass": actual == expected,
+        "pass": bool(actual == expected),
     }
 
 
@@ -181,7 +181,7 @@ def check_selfgen_delta() -> dict:
         "claim": "selfgen_delta",
         "paper_value": f"+{expected}",
         "computed_value": f"+{actual}",
-        "pass": actual == expected,
+        "pass": bool(actual == expected),
     }
 
 
@@ -195,7 +195,7 @@ def check_hermes_delta() -> dict:
         "claim": "hermes_delta",
         "paper_value": f"+{expected}",
         "computed_value": f"+{actual}",
-        "pass": actual == expected,
+        "pass": bool(actual == expected),
     }
 
 
@@ -210,7 +210,7 @@ def check_selfgen_load() -> dict:
         "claim": "selfgen_load",
         "paper_value": f"{expected}%",
         "computed_value": f"{actual}%",
-        "pass": actual == expected,
+        "pass": bool(actual == expected),
     }
 
 

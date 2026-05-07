@@ -2,7 +2,7 @@
 """Merge per-subtask result files into results_all.jsonl.
 
 Usage:
-    python scripts/merge_results.py
+    python3.12 scripts/merge_results.py
 
 Reads from results/finskillbench_agent/by_subtask/*.jsonl and writes
 results/finskillbench_agent/results_all.jsonl.

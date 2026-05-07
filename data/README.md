@@ -71,7 +71,7 @@ data/
 │   ├── raw/                           #   Prices, factors, macro
 │   ├── processed/                     #   Returns, covariance, views, constraints
 │   ├── ground_truth/                  #   Optimizer-derived reference portfolios
-│   ├── episodes/                      #   52 task JSONs
+│   ├── episodes/                      #   200 task JSONs
 │   └── validation/                    #   Data quality checks
 ├── risk_management/                   # Skill 3: Risk Management
 │   ├── raw/                           #   Factors, macro

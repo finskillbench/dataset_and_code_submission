@@ -8,7 +8,7 @@ Replaces vendor-specific field values with neutral labels in:
 - Documentation files
 
 Usage:
-    python scripts/sanitize_submission_data.py
+    python3.12 scripts/sanitize_submission_data.py
 """
 from __future__ import annotations
 

@@ -4,9 +4,9 @@ Originally a bug-demonstrator for the Exp02 scorer. After the fixes landed,
 each probe now asserts the CORRECTED behavior — the summary still describes
 the old buggy behavior for context, but `is_bug` flips when the fix is present.
 
-Can target either scorer via --scorer:
-    uv run python experiments/jb_experiment/scoring/tests/test_exp02_bugs.py                # exp02 (default)
-    uv run python experiments/jb_experiment/scoring/tests/test_exp02_bugs.py --scorer jb    # jb_experiment
+Can target either packaged scorer via --scorer:
+    python3.12 evaluation/hermes_results/scoring/tests/test_exp02_bugs.py
+    python3.12 evaluation/hermes_results/scoring/tests/test_exp02_bugs.py --scorer jb
 """
 
 from __future__ import annotations
@@ -16,18 +16,18 @@ import importlib
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[3]
+SCORING_DIR = Path(__file__).resolve().parents[1]
 
 SCORER_TARGETS = {
     "exp02": {
-        "path": ROOT / "zqbok_experiment02",
-        "module": "inspect_tasks.scorers",
-        "label": "experiments/zqbok_experiment02/inspect_tasks/scorers.py",
+        "path": SCORING_DIR,
+        "module": "scorers_exp05",
+        "label": "evaluation/hermes_results/scoring/scorers_exp05.py",
     },
     "jb": {
-        "path": ROOT / "jb_experiment",
-        "module": "scoring.scorers",
-        "label": "experiments/jb_experiment/scoring/scorers.py",
+        "path": SCORING_DIR,
+        "module": "scorers",
+        "label": "evaluation/hermes_results/scoring/scorers.py",
     },
 }
 

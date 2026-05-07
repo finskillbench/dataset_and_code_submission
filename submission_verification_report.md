@@ -17,3 +17,6 @@
 
 ## verify_claims.py
 **✓ PASS**
+
+## verify_expected_results.py
+**✓ PASS**

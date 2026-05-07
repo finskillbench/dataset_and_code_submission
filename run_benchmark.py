@@ -3,20 +3,20 @@
 
 Usage:
     # Smoke test: 1 task per subtask, cheapest model, curated condition (~$2)
-    python run_benchmark.py --smoke
+    python3.12 run_benchmark.py --smoke
 
     # Specific slice
-    python run_benchmark.py --model gpt-4.1 --condition curated \\
+    python3.12 run_benchmark.py --model gpt-4.1 --condition curated \\
         --subtask unconstrained_optimization --limit 3
 
     # Re-score an existing run
-    python run_benchmark.py --score-only --run-id <id>
+    python3.12 run_benchmark.py --score-only --run-id <id>
 
     # Full paper replication (hours, ~$500+)
-    python run_benchmark.py --models all --conditions all --subtasks all \\
+    python3.12 run_benchmark.py --models all --conditions all --subtasks all \\
         --workers 16 --max-turns 12 --run-id full_replication
 
-Requires: pip install -r requirements.txt  (litellm, cvxpy, pandas, etc.)
+Requires: python3.12 -m pip install -r requirements.txt  (litellm, cvxpy, pandas, etc.)
 API keys: set OPENAI_API_KEY, AZURE_AI_API_KEY, etc. in .env or environment.
 """
 from __future__ import annotations

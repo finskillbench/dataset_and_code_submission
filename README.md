@@ -2,36 +2,50 @@
 
 A point-in-time investment-management benchmark with **2,603 task episodes** across 12 subtasks and 3 domains (portfolio construction, risk management, fundamental analysis). Each episode provides point-in-time inputs, hidden ground truth, and a task-specific verifier. The benchmark evaluates three conditions: no skill, curated skill packages, and self-generated skills.
 
-**Prerequisites:** Python ≥ 3.12 is required. Python 3.11 and earlier will not work (`pandas>=3.0.2` and `scipy>=1.17.1` require 3.12+).
+**Prerequisites:** Python ≥ 3.12 is required. Python 3.11 and earlier will not work (`pandas>=3.0.2` and `scipy>=1.17.1` require 3.12+). Commands below use `python3.12` explicitly so local `pyenv` shims or an uninstalled `.python-version` do not accidentally select an older interpreter.
 
 ---
 
 ## Quick Start: Verify Paper Results (2 minutes, no API keys)
 
 ```bash
-pip install -r analysis/requirements.txt   # pandas, numpy, scipy only
+python3.12 -m pip install -r analysis/requirements.txt   # pandas, numpy, scipy only
 
 # Reproduce all paper tables (Tables 2–7)
-python analysis/reproduce_tables.py --table all
+python3.12 analysis/reproduce_tables.py --table all
 
 # Verify every inline numeric claim
-python analysis/verify_claims.py --claim all
+python3.12 analysis/verify_claims.py --claim all
+
+# Verify golden paper values, coverage, and checksums
+python3.12 analysis/verify_expected_results.py
+python3.12 scripts/verify_submission_bundle.py --assert-match
+shasum -a 256 -c MANIFEST.sha256
 
 # Explore tasks interactively
-python demo.py
+python3.12 demo.py
+```
+
+Expected verification summary:
+
+```text
+verify_expected_results.py: all expected paper values match.
+verify_claims.py: All checks passed.
+verify_submission_bundle.py: All checks passed.
+MANIFEST.sha256: all files OK
 ```
 
 ## Run a Live Evaluation (~10 minutes, 1 API key, ~$2)
 
 ```bash
-pip install -r requirements.txt            # Full eval deps
+python3.12 -m pip install -r requirements.txt            # Full eval deps
 export OPENAI_API_KEY=...                  # or AZURE_AI_API_KEY, etc.
 
 # Smoke test: 1 task per subtask × 1 model × 1 condition
-python run_benchmark.py --smoke
+python3.12 run_benchmark.py --smoke
 
 # Specific slice
-python run_benchmark.py --model gpt-4.1 --condition curated \
+python3.12 run_benchmark.py --model gpt-4.1 --condition curated \
     --subtask unconstrained_optimization --limit 3
 ```
 
